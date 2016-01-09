@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SmartAdminMvc.Models.aloZona>
+@foreach (var o in Model)
+{
+    <tr class="awe-li" id="Zona@(o.Id)" data-val="@o.Id">
+        <td>@o.Id</td>
+        <td>@o.desc1</td>
+        <td>@o.desc2</td>
+        <td>@o.personas</td>
+        <td>@o.croquis</td>
+        <td>@o.precio</td>
+        <td>
+            @if (o.aloTipos != null)
+            {
+                @Html.DisplayFor(o1 => o.aloTipos.nombre)
+            }
+            else
+            {
+                <text>&nbsp;</text>
+            }
+        </td>
+
+        <td>
+            <button type="button" onclick="awe.open('editZona', {params: {id: '@o.Id' }})" class="awe-btn">
+                <span class="ico-edit"></span>
+            </button>
+        </td>
+        <td>
+            <button type="button" onclick="awe.open('deleteZona', {params: {id: '@o.Id' }})" class="awe-btn">
+                <span class="ico-del"></span>
+            </button>
+        </td>
+    </tr>
+}
+
+

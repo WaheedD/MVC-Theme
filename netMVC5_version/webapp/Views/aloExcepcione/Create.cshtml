@@ -1,0 +1,21 @@
+﻿@model SmartAdminMvc.ViewModels.Input.aloExcepcioneInput
+@using (Html.BeginForm())
+{
+    using (Html.Awe().BeginContext())
+    {
+        @Html.EditorFor(o => o.nombre)
+        @Html.EditorFor(o => o.descripcion)
+        @Html.EditorFor(o => o.desde)
+        @Html.EditorFor(o => o.hasta)
+        @Html.EditorFor(o => o.porcentaje)
+        if (Model.hide_tipo)
+        {
+            @Html.HiddenFor(o => o.tipo)
+        }
+        else
+        {
+            @Html.EditorFor(o => o.tipo)
+        }
+        @Html.EditorFor(o => o.tipoExcep)
+    }
+}

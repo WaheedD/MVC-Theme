@@ -1,0 +1,19 @@
+﻿@model SmartAdminMvc.ViewModels.Input.genActividadeInput
+@using (Html.BeginForm())
+{
+    using (Html.Awe().BeginContext())
+    {
+        @Html.EditorFor(o => o.desc)
+        @Html.EditorFor(o => o.detalle)
+        @Html.EditorFor(o => o.idSede)
+        @Html.EditorFor(o => o.lugar)
+        @Html.EditorFor(o => o.fecha)
+        @Html.EditorFor(o => o.refCosto)
+        @Html.EditorFor(o => o.foto)
+        @Html.EditorFor(o => o.tel)
+        @Html.EditorFor(o => o.mail)
+        @Html.EditorFor(o => o.ventaDesde)
+        @Html.EditorFor(o => o.ventaHasta)
+        @Html.EditorFor(o => o.blogPost)
+    }
+}

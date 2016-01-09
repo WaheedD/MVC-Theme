@@ -1,0 +1,22 @@
+﻿@model SmartAdminMvc.ViewModels.Input.aloReservaInput
+@using (Html.BeginForm())
+{
+    using (Html.Awe().BeginContext())
+    {
+        @Html.EditorFor(o =>o.fecha)
+        @Html.EditorFor(o =>o.fechaEntrada)
+        @Html.EditorFor(o =>o.fechaSalida)
+        @Html.EditorFor(o =>o.codigoReserva)
+        @Html.EditorFor(o =>o.comentarios)
+        @Html.EditorFor(o =>o.DEUCON)
+        @Html.EditorFor(o =>o.DEUPRV)
+        @Html.EditorFor(o =>o.monto)
+        @Html.EditorFor(o =>o.IGV)
+        @Html.EditorFor(o =>o.total)
+        //@Html.EditorFor(o =>o.confirmada)
+        @Html.EditorFor(o =>o.emision)
+        @Html.EditorFor(o =>o.alojamiento)
+        @Html.EditorFor(o =>o.gestor)
+        @Html.EditorFor(o =>o.socio)
+    }
+}

@@ -1,0 +1,14 @@
+﻿@model SmartAdminMvc.ViewModels.Input.aloZonaInput
+@using (Html.BeginForm())
+{
+    using (Html.Awe().BeginContext())
+    {
+        @Html.EditorFor(o => o.Id)
+        @Html.EditorFor(o => o.desc1)
+        @Html.EditorFor(o => o.desc2)
+        @Html.EditorFor(o => o.personas)
+        @Html.EditorFor(o => o.croquis)
+        @Html.EditorFor(o => o.precio)
+        @Html.EditorFor(o => o.tipo)
+    }
+}

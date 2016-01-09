@@ -1,0 +1,45 @@
+﻿@model IEnumerable<SmartAdminMvc.Models.aloAlojamiento>
+@foreach (var o in Model)
+{
+    <tr class="awe-li" id="alojamiento@(o.Id)" data-val="@o.Id">
+        <td>@o.Id</td>
+        <td>@o.caracteristicas</td>
+        <td>@o.personas</td>
+        <td>@o.inhabilitado</td>
+        <td>@o.precioTempAlta</td>
+        <td>@o.precioTempBaja</td>
+        @*<td>@o.lat</td>
+        <td>@o.lon</td>*@
+        <td>
+            @if (o.aloTipos != null)
+            {
+                @Html.DisplayFor(o1 => o.aloTipos.nombre)
+            }
+            else
+            {
+                <text>&nbsp;</text>
+            }
+        </td>
+        <td>
+           @if (!string.IsNullOrWhiteSpace(o.foto))
+           {
+               <img src="@o.foto" />
+           }
+        </td>
+        <td>@o.agrup1</td>
+        <td>@o.agrup2</td>
+        <td>@o.zona_Id</td>
+        <td>
+            <button type="button" onclick="awe.open('editAlojamiento', {params: {id: '@o.Id' }})" class="awe-btn">
+                <span class="ico-edit"></span>
+            </button>
+        </td>
+        <td>
+            <button type="button" onclick="awe.open('deleteAlojamiento', {params: {id: '@o.Id' }})" class="awe-btn">
+                <span class="ico-del"></span>
+            </button>
+        </td>
+    </tr>
+}
+
+

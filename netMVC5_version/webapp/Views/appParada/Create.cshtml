@@ -1,0 +1,13 @@
+﻿@model SmartAdminMvc.ViewModels.Input.appParadaInput
+@using (Html.BeginForm())
+{
+    using (Html.Awe().BeginContext())
+    {
+        @Html.EditorFor(o => o.nombre)
+        @Html.EditorFor(o => o.hora)
+        @Html.EditorFor(o => o.min)
+        @Html.EditorFor(o => o.duracion)
+        @Html.EditorFor(o => o.estacion_Id)
+        @Html.EditorFor(o => o.esRetorno)
+    }
+}

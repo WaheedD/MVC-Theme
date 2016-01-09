@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="AdminContext">
+    <EntitySetMapping Name="aloAlojamientos">
+      <EntityTypeMapping TypeName="Model.aloAlojamiento">
+        <MappingFragment StoreEntitySet="aloAlojamientos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="personas" ColumnName="personas" />
+          <ScalarProperty Name="inhabilitado" ColumnName="inhabilitado" />
+          <ScalarProperty Name="caracteristicas" ColumnName="caracteristicas" />
+          <ScalarProperty Name="precioTempAlta" ColumnName="precioTempAlta" />
+          <ScalarProperty Name="precioTempBaja" ColumnName="precioTempBaja" />
+          <ScalarProperty Name="lat" ColumnName="lat" />
+          <ScalarProperty Name="lon" ColumnName="lon" />
+          <ScalarProperty Name="tipo_Id" ColumnName="tipo_Id" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="agrup1" ColumnName="agrup1" />
+          <ScalarProperty Name="agrup2" ColumnName="agrup2" />
+          <ScalarProperty Name="zona_Id" ColumnName="zona_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aloExcepciones">
+      <EntityTypeMapping TypeName="Model.aloExcepcione">
+        <MappingFragment StoreEntitySet="aloExcepciones">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="desde" ColumnName="desde" />
+          <ScalarProperty Name="hasta" ColumnName="hasta" />
+          <ScalarProperty Name="porcentaje" ColumnName="porcentaje" />
+          <ScalarProperty Name="tipo_Id" ColumnName="tipo_Id" />
+          <ScalarProperty Name="tipoExcep" ColumnName="tipoExcep" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aloReservas">
+      <EntityTypeMapping TypeName="Model.aloReserva">
+        <MappingFragment StoreEntitySet="aloReservas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="fechaEntrada" ColumnName="fechaEntrada" />
+          <ScalarProperty Name="fechaSalida" ColumnName="fechaSalida" />
+          <ScalarProperty Name="codigoReserva" ColumnName="codigoReserva" />
+          <ScalarProperty Name="comentarios" ColumnName="comentarios" />
+          <ScalarProperty Name="DEUCON" ColumnName="DEUCON" />
+          <ScalarProperty Name="DEUPRV" ColumnName="DEUPRV" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="IGV" ColumnName="IGV" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="alojamiento_Id" ColumnName="alojamiento_Id" />
+          <ScalarProperty Name="gestor_Id" ColumnName="gestor_Id" />
+          <ScalarProperty Name="socio_Id" ColumnName="socio_Id" />
+          <ScalarProperty Name="confirmada" ColumnName="confirmada" />
+          <ScalarProperty Name="emision" ColumnName="emision" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aloSorteos">
+      <EntityTypeMapping TypeName="Model.aloSorteo">
+        <MappingFragment StoreEntitySet="aloSorteos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="detalle" ColumnName="detalle" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="fechaPago" ColumnName="fechaPago" />
+          <ScalarProperty Name="estadia_desde" ColumnName="estadia_desde" />
+          <ScalarProperty Name="estadia_hasta" ColumnName="estadia_hasta" />
+          <ScalarProperty Name="inscripcion_desde" ColumnName="inscripcion_desde" />
+          <ScalarProperty Name="inscripcion_hasta" ColumnName="inscripcion_hasta" />
+          <ScalarProperty Name="tipo_Id" ColumnName="tipo_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aloTipos">
+      <EntityTypeMapping TypeName="Model.aloTipos">
+        <MappingFragment StoreEntitySet="aloTipos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="inicioTempAlta" ColumnName="inicioTempAlta" />
+          <ScalarProperty Name="finTempAlta" ColumnName="finTempAlta" />
+          <ScalarProperty Name="clase" ColumnName="clase" />
+          <ScalarProperty Name="croquis" ColumnName="croquis" />
+          <ScalarProperty Name="precioTempAlta" ColumnName="precioTempAlta" />
+          <ScalarProperty Name="precioTempBaja" ColumnName="precioTempBaja" />
+          <ScalarProperty Name="idSede" ColumnName="idSede" />
+          <ScalarProperty Name="restricFDStempAlta" ColumnName="restricFDStempAlta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aloZonas">
+      <EntityTypeMapping TypeName="Model.aloZona">
+        <MappingFragment StoreEntitySet="aloZonas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="desc1" ColumnName="desc1" />
+          <ScalarProperty Name="desc2" ColumnName="desc2" />
+          <ScalarProperty Name="personas" ColumnName="personas" />
+          <ScalarProperty Name="croquis" ColumnName="croquis" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="tipo_Id" ColumnName="tipo_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="autUsuarios">
+      <EntityTypeMapping TypeName="Model.autUsuario">
+        <MappingFragment StoreEntitySet="autUsuarios">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nroSocio" ColumnName="nroSocio" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="SaltedAndHashedPassword" ColumnName="SaltedAndHashedPassword" />
+          <ScalarProperty Name="idDepen" ColumnName="idDepen" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="fechaNac" ColumnName="fechaNac" />
+          <ScalarProperty Name="ultimoLogin" ColumnName="ultimoLogin" />
+          <ScalarProperty Name="preguntaSecreta" ColumnName="preguntaSecreta" />
+          <ScalarProperty Name="MD5respuestaSecreta" ColumnName="MD5respuestaSecreta" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="personalCRL" ColumnName="personalCRL" />
+          <ScalarProperty Name="personalCRLnivelAcceso" ColumnName="personalCRLnivelAcceso" />
+          <ScalarProperty Name="titular" ColumnName="titular" />
+          <ScalarProperty Name="tokenInvitacion" ColumnName="tokenInvitacion" />
+          <ScalarProperty Name="invitadoPor" ColumnName="invitadoPor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="appBuses">
+      <EntityTypeMapping TypeName="Model.appBus">
+        <MappingFragment StoreEntitySet="appBuses">
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="pasajeros" ColumnName="pasajeros" />
+          <ScalarProperty Name="placa" ColumnName="placa" />
+          <ScalarProperty Name="descrip" ColumnName="descrip" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="appChoferes">
+      <EntityTypeMapping TypeName="Model.appChofere">
+        <MappingFragment StoreEntitySet="appChoferes">
+          <ScalarProperty Name="lic" ColumnName="lic" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="appEstaciones">
+      <EntityTypeMapping TypeName="Model.appEstacione">
+        <MappingFragment StoreEntitySet="appEstaciones">
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="lon" ColumnName="lon" />
+          <ScalarProperty Name="lat" ColumnName="lat" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="esSede" ColumnName="esSede" />
+          <ScalarProperty Name="descrip" ColumnName="descrip" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="appParadas">
+      <EntityTypeMapping TypeName="Model.appParada">
+        <MappingFragment StoreEntitySet="appParadas">
+          <ScalarProperty Name="estDuracion" ColumnName="estDuracion" />
+          <ScalarProperty Name="currMin" ColumnName="currMin" />
+          <ScalarProperty Name="currHora" ColumnName="currHora" />
+          <ScalarProperty Name="esRetorno" ColumnName="esRetorno" />
+          <ScalarProperty Name="duracion" ColumnName="duracion" />
+          <ScalarProperty Name="ruta_Id" ColumnName="ruta_Id" />
+          <ScalarProperty Name="estacion_Id" ColumnName="estacion_Id" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="min" ColumnName="min" />
+          <ScalarProperty Name="hora" ColumnName="hora" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="appPromociones">
+      <EntityTypeMapping TypeName="Model.appPromocione">
+        <MappingFragment StoreEntitySet="appPromociones">
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="nroCupones" ColumnName="nroCupones" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="tipoAsociado" ColumnName="tipoAsociado" />
+          <ScalarProperty Name="edadMin" ColumnName="edadMin" />
+          <ScalarProperty Name="edadMax" ColumnName="edadMax" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="hasta" ColumnName="hasta" />
+          <ScalarProperty Name="desde" ColumnName="desde" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="detalle" ColumnName="detalle" />
+          <ScalarProperty Name="desc" ColumnName="desc" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="appRutas">
+      <EntityTypeMapping TypeName="Model.appRuta">
+        <MappingFragment StoreEntitySet="appRutas">
+          <ScalarProperty Name="lastBoard" ColumnName="lastBoard" />
+          <ScalarProperty Name="currChofer_Id" ColumnName="currChofer_Id" />
+          <ScalarProperty Name="currBus_Id" ColumnName="currBus_Id" />
+          <ScalarProperty Name="currLon" ColumnName="currLon" />
+          <ScalarProperty Name="currLat" ColumnName="currLat" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="activa" ColumnName="activa" />
+          <ScalarProperty Name="dias" ColumnName="dias" />
+          <ScalarProperty Name="descrip" ColumnName="descrip" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="genActividades">
+      <EntityTypeMapping TypeName="Model.genActividade">
+        <MappingFragment StoreEntitySet="genActividades">
+          <ScalarProperty Name="blogPost" ColumnName="blogPost" />
+          <ScalarProperty Name="ventaHasta" ColumnName="ventaHasta" />
+          <ScalarProperty Name="ventaDesde" ColumnName="ventaDesde" />
+          <ScalarProperty Name="ventaTickets" ColumnName="ventaTickets" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="refCosto" ColumnName="refCosto" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="lugar" ColumnName="lugar" />
+          <ScalarProperty Name="idSede" ColumnName="idSede" />
+          <ScalarProperty Name="detalle" ColumnName="detalle" />
+          <ScalarProperty Name="desc" ColumnName="desc" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="genTicketsVentas">
+      <EntityTypeMapping TypeName="Model.genTicketsVenta">
+        <MappingFragment StoreEntitySet="genTicketsVentas">
+          <ScalarProperty Name="idPrecio" ColumnName="idPrecio" />
+          <ScalarProperty Name="zona_id" ColumnName="zona_id" />
+          <ScalarProperty Name="socio_Id" ColumnName="socio_Id" />
+          <ScalarProperty Name="pagoOnline_Id" ColumnName="pagoOnline_Id" />
+          <ScalarProperty Name="cargoCuenta" ColumnName="cargoCuenta" />
+          <ScalarProperty Name="confirmada" ColumnName="confirmada" />
+          <ScalarProperty Name="numeracion" ColumnName="numeracion" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="numDoc" ColumnName="numDoc" />
+          <ScalarProperty Name="tipoDoc" ColumnName="tipoDoc" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="concepto" ColumnName="concepto" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="unitario" ColumnName="unitario" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="cantidad_real" ColumnName="cantidad_real" />
+          <ScalarProperty Name="idEntrada" ColumnName="idEntrada" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="genTicketsZonas">
+      <EntityTypeMapping TypeName="Model.genTicketsZona">
+        <MappingFragment StoreEntitySet="genTicketsZonas">
+          <ScalarProperty Name="actividad_id" ColumnName="actividad_id" />
+          <ScalarProperty Name="porcSobreventa" ColumnName="porcSobreventa" />
+          <ScalarProperty Name="croquis" ColumnName="croquis" />
+          <ScalarProperty Name="vendidos" ColumnName="vendidos" />
+          <ScalarProperty Name="cupos" ColumnName="cupos" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="desc" ColumnName="desc" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="genTransaccionesVisanets">
+      <EntityTypeMapping TypeName="Model.genTransaccionesVisanet">
+        <MappingFragment StoreEntitySet="genTransaccionesVisanet">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="resultadoOp" ColumnName="resultadoOp" />
+          <ScalarProperty Name="ticket" ColumnName="ticket" />
+          <ScalarProperty Name="socio_Id" ColumnName="socio_Id" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="digitosCC" ColumnName="digitosCC" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="concepto" ColumnName="concepto" />
+          <ScalarProperty Name="codConcepto" ColumnName="codConcepto" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

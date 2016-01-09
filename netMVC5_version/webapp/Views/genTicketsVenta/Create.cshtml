@@ -1,0 +1,26 @@
+﻿@model SmartAdminMvc.ViewModels.Input.genTicketsVentaInput
+@using (Html.BeginForm())
+{
+    using (Html.Awe().BeginContext())
+    {
+        @Html.EditorFor(o => o.idEntrada)
+        @Html.EditorFor(o => o.cantidad_real)
+        @Html.EditorFor(o => o.cantidad)
+        @Html.EditorFor(o => o.unitario)
+        @Html.EditorFor(o => o.fecha)
+        @Html.EditorFor(o => o.concepto)
+        @Html.EditorFor(o => o.nombre)
+        @Html.EditorFor(o => o.apellido)
+        @Html.EditorFor(o => o.tipoDoc)
+        @Html.EditorFor(o => o.numDoc)
+        @Html.EditorFor(o => o.tel)
+        @Html.EditorFor(o => o.email)
+        @Html.EditorFor(o => o.numeracion)
+        @Html.EditorFor(o => o.confirmada)
+        @Html.EditorFor(o => o.cargoCuenta)
+        @Html.EditorFor(o => o.idPrecio)
+        @Html.EditorFor(o => o.pagoOnline_Id)
+        @Html.EditorFor(o => o.socio_Id)
+        @Html.EditorFor(o => o.zona)
+    }
+}

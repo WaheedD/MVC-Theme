@@ -1,0 +1,91 @@
+﻿@model SmartAdminMvc.ViewModels.Input.aloTipoInput
+@using (Html.BeginForm())
+{
+    using (Html.Awe().BeginContext())
+    {
+        @Html.EditorFor(o => o.nombre)
+        @Html.EditorFor(o => o.inicioTempAlta)
+        @Html.EditorFor(o => o.finTempAlta)
+        @Html.EditorFor(o => o.clase)
+        @Html.EditorFor(o => o.croquis)
+        @Html.EditorFor(o => o.precioTempAlta)
+        @Html.EditorFor(o => o.precioTempBaja)
+        @Html.EditorFor(o => o.idSede)
+        @Html.EditorFor(o => o.restricFDStempAlta)
+    }
+}
+
+@*begin*@
+
+<div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="page-title txt-color-blueDark"><i class="fa fa-comments"></i> Excepciones</h1>
+        </div>
+        </div>
+
+    @Html.InitCrudPopupsForGrid("ExcepcionesGrid_Tipo", "aloExcepcione")
+
+    <div class="bar">
+        <div style="float: right;">
+            @Html.Awe().TextBox("txtSearch").Placeholder("search...").CssClass("searchtxt")
+        </div>
+        <button type="button" onclick="awe.open('createExcepcionesGrid_Tipo', { params: { tipo_Id: '@(Model.Id)' } })" class="awe-btn mbtn">Create</button>
+    </div>
+
+    @(Html.Awe().Grid("ExcepcionesGrid_Tipo")
+            .Mod(o => o.PageInfo().ColumnsSelector())
+                    .Url(Url.Action("GridGetItemsForTipo", "aloExcepcione"))
+            .Parameter("tipo_Id", Model.Id)
+            .Parent("txtSearch", "search")
+            //.Height(350)
+            .Groupable(false)
+            .Columns(
+            new Column { Bind = "Id", Width = 80 },
+                new Column { Bind = "nombre" },
+                new Column { Bind = "descripcion" },
+                new Column { Bind = "desde" },
+                new Column { Bind = "hasta" },
+                new Column { Bind = "porcentaje" },
+                new Column { Bind = "tipoExcep" },
+                    new Column { ClientFormat = GridUtils.EditFormatForGrid("ExcepcionesGrid_Tipo"), Width = 50 },
+                    new Column { ClientFormat = GridUtils.DeleteFormatForGrid("ExcepcionesGrid_Tipo"), Width = 50 }))
+    @*end*@
+
+    @*begin*@
+<div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="page-title txt-color-blueDark"><i class="fa fa-paragraph"></i> Sorteos</h1>
+    </div>
+</div>
+
+    @Html.InitCrudPopupsForGrid("SorteosGrid_Tipo", "aloSorteo")
+
+    <div class="bar">
+        <div style="float: right;">
+            @Html.Awe().TextBox("txtSearch").Placeholder("search...").CssClass("searchtxt")
+        </div>
+        <button type="button" onclick="awe.open('createSorteosGrid_Tipo', { params: { tipo_Id: '@(Model.Id)' } })" class="awe-btn mbtn">Create</button>
+    </div>
+
+    @Html.Hidden("hide_tipo",true)
+    @(Html.Awe().Grid("SorteosGrid_Tipo")
+            .Mod(o => o.PageInfo().ColumnsSelector())
+            .Url(Url.Action("GridGetItemsForTipo", "aloSorteo"))
+            .Parameter("tipo_Id", Model.Id)
+            .Parent("txtSearch", "search")
+            //.Height(350)
+            .Groupable(false)
+            .Columns(
+            new Column { Bind = "Id", Width = 80 },
+                new Column { Bind = "detalle" },
+                new Column { Bind = "fechaEntrada" },
+                new Column { Bind = "fechaPago" },
+                new Column { Bind = "estadia_desde" },
+                new Column { Bind = "estadia_hasta" },
+                new Column { Bind = "inscripcion_desde" },
+                new Column { Bind = "inscripcion_hasta" },
+                    new Column { ClientFormat = GridUtils.EditFormatForGrid("SorteosGrid_Tipo"), Width = 50 },
+                    new Column { ClientFormat = GridUtils.DeleteFormatForGrid("SorteosGrid_Tipo"), Width = 50 }))
+    @*end*@

@@ -1,0 +1,11 @@
+﻿@model SmartAdminMvc.ViewModels.Input.appBusInput
+@using (Html.BeginForm())
+{
+    using (Html.Awe().BeginContext())
+    {
+        @Html.EditorFor(o => o.nombre)
+        @Html.EditorFor(o => o.descrip)
+        @Html.EditorFor(o => o.placa)
+        @Html.EditorFor(o => o.pasajeros)
+    }
+}

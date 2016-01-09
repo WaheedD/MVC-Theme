@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Tickets Venta";
+}
+
+<!-- MAIN CONTENT -->
+<div id="content">
+    <div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark"><i class="fa fa-comments"></i> @ViewBag.Title <span>> @ViewBag.Title List</span></h1>
+        </div>
+    </div>
+
+    @*begin*@
+    @Html.InitCrudPopupsForGrid("genTicketsVentaGrid", "genTicketsVenta")
+
+    <div class="bar">
+        <div style="float: right;">
+            @Html.Awe().TextBox("txtSearch").Placeholder("search...").CssClass("searchtxt")
+        </div>
+        <button type="button" onclick="awe.open('creategenTicketsVentaGrid')" class="awe-btn mbtn">Create</button>
+    </div>
+
+    @(Html.Awe().Grid("genTicketsVentaGrid")
+            .Mod(o => o.PageInfo().ColumnsSelector())
+                        .Url(Url.Action("GridGetItems", "genTicketsVenta"))
+                        
+            .Parent("txtSearch", "search")
+            //.Height(350)
+            .Columns(
+            new Column { Bind = "Id", Width = 80 },
+            new Column { Bind = "cantidad_real" },
+            new Column { Bind = "cantidad" },
+            new Column { Bind = "unitario" },
+            new Column { Bind = "fecha" },
+            new Column { Bind = "concepto" },
+            new Column { Bind = "nombre" },
+            new Column { Bind = "apellido" },
+            new Column { Bind = "tipoDoc" },
+            new Column { Bind = "numDoc" },
+            new Column { Bind = "tel" },
+            new Column { Bind = "email" },
+            new Column { Bind = "numeracion" },
+            new Column { Bind = "confirmada" },
+            new Column { Bind = "cargoCuenta" },
+            new Column { Bind = "pagoOnline_Id" },
+            new Column { Bind = "socio_Id" },
+            new Column { Bind = "zona_id" },
+            new Column { Bind = "idPrecio" },
+                    new Column { ClientFormat = GridUtils.EditFormatForGrid("genTicketsVentaGrid"), Width = 50 },
+                    new Column { ClientFormat = GridUtils.DeleteFormatForGrid("genTicketsVentaGrid"), Width = 50 }))
+</div>
+@*end*@
+
+

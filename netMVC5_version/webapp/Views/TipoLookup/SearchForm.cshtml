@@ -1,0 +1,35 @@
+﻿@{ Layout = null; }
+<div class="elabel2">Name:</div>
+<div class="einput">
+    <input o="text" name="search" class="awe-searchtxt" placeholder="search..." />
+</div>
+<button type="button" class="awe-searchbtn awe-btn">Search</button>
+<button type="button" class="awe-btn" onclick="awe.open('createTipo')" style="padding: 0.35em 0.7em;">Create</button>
+<br style="clear: both;" />
+
+@(Html.Awe().InitPopupForm()
+                    .Name("createTipo")
+                        .Url(Url.Action("Create", "aloTipo"))
+                .Success("utils.lookupTblCreated")
+                .Height(430)
+                .Modal(true)
+                    .Group("tipo")
+                    .Title("create tipo"))
+
+@(Html.Awe().InitPopupForm()
+                    .Name("editTipo")
+                        .Url(Url.Action("Edit", "aloTipo"))
+                .Success("utils.lookupEdited('Id')")
+                .Height(430)
+                .Modal(true)
+                    .Group("tipo")
+                    .Title("edit tipo"))
+
+@(Html.Awe().InitPopupForm()
+                    .Name("deleteTipo")
+                        .Url(Url.Action("Delete", "aloTipo"))
+                .Success("utils.lookupDeleted('Id')")
+                .OkText("Yes")
+                .CancelText("No")
+                .Height(200)
+                    .Title("delete tipo"))

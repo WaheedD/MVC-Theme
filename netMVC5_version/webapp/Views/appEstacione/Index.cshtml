@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Estaciones";
+}
+
+<!-- MAIN CONTENT -->
+<div id="content">
+    <div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark"><i class="fa fa-comments"></i> @ViewBag.Title <span>> @ViewBag.Title List</span></h1>
+        </div>
+    </div>
+
+    @*begin*@
+    @Html.InitCrudPopupsForGrid("appEstacioneGrid", "appEstacione")
+
+    <div class="bar">
+        <div style="float: right;">
+            @Html.Awe().TextBox("txtSearch").Placeholder("search...").CssClass("searchtxt")
+        </div>
+        <button type="button" onclick="awe.open('createappEstacioneGrid')" class="awe-btn mbtn">Create</button>
+    </div>
+
+    @(Html.Awe().Grid("appEstacioneGrid")
+            .Mod(o => o.PageInfo().ColumnsSelector())
+                        .Url(Url.Action("GridGetItems", "appEstacione"))
+            .Parent("txtSearch", "search")
+            //.Height(350)
+            .Columns(
+            new Column { Bind = "Id", Width = 80 },
+                        new Column { Bind = "nombre" },
+                            new Column { Bind = "descrip" },
+                            new Column { Bind = "esSede" },
+                            new Column { Bind = "lat" },
+                            new Column { Bind = "lon" },
+                            new Column { Bind = "foto" },
+                    new Column { ClientFormat = GridUtils.EditFormatForGrid("appEstacioneGrid"), Width = 50 },
+                    new Column { ClientFormat = GridUtils.DeleteFormatForGrid("appEstacioneGrid"), Width = 50 }))
+</div>
+@*end*@
+
+

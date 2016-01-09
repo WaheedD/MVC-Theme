@@ -1,0 +1,10 @@
+﻿@model SmartAdminMvc.ViewModels.Input.appChofereInput
+@using (Html.BeginForm())
+{
+    using (Html.Awe().BeginContext())
+    {
+        @Html.EditorFor(o => o.nombre)
+        @Html.EditorFor(o => o.foto)
+        @Html.EditorFor(o => o.lic)
+    }
+}

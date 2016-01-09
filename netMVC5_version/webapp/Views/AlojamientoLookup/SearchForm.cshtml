@@ -1,0 +1,35 @@
+﻿@{ Layout = null; }
+<div class="elabel2">Name:</div>
+<div class="einput">
+    <input o="text" name="search" class="awe-searchtxt" placeholder="search..." />
+</div>
+<button type="button" class="awe-searchbtn awe-btn">Search</button>
+<button type="button" class="awe-btn" onclick="awe.open('createAlojamiento')" style="padding: 0.35em 0.7em;">Create</button>
+<br style="clear: both;" />
+
+@(Html.Awe().InitPopupForm()
+                    .Name("createAlojamiento")
+                    .Url(Url.Action("Create", "aloAlojamiento"))
+                .Success("utils.lookupTblCreated")
+                .Height(430)
+                .Modal(true)
+                    .Group("alojamiento")
+                    .Title("create alojamiento"))
+
+@(Html.Awe().InitPopupForm()
+                    .Name("editAlojamiento")
+                        .Url(Url.Action("Edit", "aloAlojamiento"))
+                .Success("utils.lookupEdited('Id')")
+                .Height(430)
+                .Modal(true)
+                    .Group("alojamiento")
+                    .Title("edit alojamiento"))
+
+@(Html.Awe().InitPopupForm()
+                    .Name("deleteAlojamiento")
+                        .Url(Url.Action("Delete", "aloAlojamiento"))
+                .Success("utils.lookupDeleted('Id')")
+                .OkText("Yes")
+                .CancelText("No")
+                .Height(200)
+                    .Title("delete alojamiento"))

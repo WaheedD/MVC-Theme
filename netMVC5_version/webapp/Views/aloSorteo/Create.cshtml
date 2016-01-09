@@ -1,0 +1,22 @@
+﻿@model SmartAdminMvc.ViewModels.Input.aloSorteoInput
+    @using (Html.BeginForm())
+    {
+        using (Html.Awe().BeginContext())
+        {
+            @Html.EditorFor(o => o.detalle)
+            @Html.EditorFor(o => o.fecha)
+            @Html.EditorFor(o => o.fechaPago)
+            @Html.EditorFor(o => o.estadia_desde)
+            @Html.EditorFor(o => o.estadia_hasta)
+            @Html.EditorFor(o => o.inscripcion_desde)
+            @Html.EditorFor(o => o.inscripcion_hasta)
+            if (Model.hide_tipo)
+            {
+                @Html.HiddenFor(o => o.tipo)
+            }
+            else
+            {
+                @Html.EditorFor(o => o.tipo)
+            }
+        }
+    }

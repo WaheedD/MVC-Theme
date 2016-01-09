@@ -1,0 +1,634 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="aloAlojamiento">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="personas" Type="Int16" Nullable="false" />
+    <Property Name="inhabilitado" Type="Boolean" Nullable="false" />
+    <Property Name="caracteristicas" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="precioTempAlta" Type="Double" Nullable="false" />
+    <Property Name="precioTempBaja" Type="Double" Nullable="false" />
+    <Property Name="lat" Type="Double" Nullable="false" />
+    <Property Name="lon" Type="Double" Nullable="false" />
+    <Property Name="tipo_Id" Type="Int32" />
+    <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="agrup1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="agrup2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="zona_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="aloTipos" Relationship="Self.FK_dbo_aloAlojamientos_dbo_aloTipos_tipo_Id" FromRole="aloAlojamientos" ToRole="aloTipos" />
+    <NavigationProperty Name="aloZona" Relationship="Self.FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id" FromRole="aloAlojamientos" ToRole="aloZonas" />
+    <NavigationProperty Name="aloReservas" Relationship="Self.FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id" FromRole="aloAlojamientos" ToRole="aloReservas" />
+  </EntityType>
+  <EntityType Name="aloExcepcione">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="desde" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="hasta" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="porcentaje" Type="Int16" Nullable="false" />
+    <Property Name="tipo_Id" Type="Int32" />
+    <Property Name="tipoExcep" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="aloTipos" Relationship="Self.FK_dbo_aloExcepciones_dbo_aloTipos_tipo_Id" FromRole="aloExcepciones" ToRole="aloTipos" />
+  </EntityType>
+  <EntityType Name="aloReserva">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fechaEntrada" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fechaSalida" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="codigoReserva" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="comentarios" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DEUCON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DEUPRV" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="monto" Type="Double" Nullable="false" />
+    <Property Name="IGV" Type="Double" Nullable="false" />
+    <Property Name="total" Type="Double" Nullable="false" />
+    <Property Name="alojamiento_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="gestor_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="socio_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="confirmada" Type="Boolean" Nullable="false" />
+    <Property Name="emision" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="aloAlojamiento" Relationship="Self.FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id" FromRole="aloReservas" ToRole="aloAlojamientos" />
+    <NavigationProperty Name="autUsuario" Relationship="Self.FK_dbo_aloReservas_dbo_autUsuarios_gestor_Id" FromRole="aloReservas" ToRole="autUsuarios" />
+    <NavigationProperty Name="autUsuario1" Relationship="Self.FK_dbo_aloReservas_dbo_autUsuarios_socio_Id" FromRole="aloReservas" ToRole="autUsuarios" />
+  </EntityType>
+  <EntityType Name="aloSorteo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="detalle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="fechaPago" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="estadia_desde" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="estadia_hasta" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="inscripcion_desde" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="inscripcion_hasta" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="tipo_Id" Type="Int32" />
+    <NavigationProperty Name="aloTipos" Relationship="Self.FK_dbo_aloSorteos_dbo_aloTipos_tipo_Id" FromRole="aloSorteos" ToRole="aloTipos" />
+  </EntityType>
+  <EntityType Name="aloTipos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="inicioTempAlta" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="finTempAlta" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="clase" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="croquis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="precioTempAlta" Type="Double" Nullable="false" />
+    <Property Name="precioTempBaja" Type="Double" Nullable="false" />
+    <Property Name="idSede" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="restricFDStempAlta" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="aloAlojamientos" Relationship="Self.FK_dbo_aloAlojamientos_dbo_aloTipos_tipo_Id" FromRole="aloTipos" ToRole="aloAlojamientos" />
+    <NavigationProperty Name="aloExcepciones" Relationship="Self.FK_dbo_aloExcepciones_dbo_aloTipos_tipo_Id" FromRole="aloTipos" ToRole="aloExcepciones" />
+    <NavigationProperty Name="aloSorteos" Relationship="Self.FK_dbo_aloSorteos_dbo_aloTipos_tipo_Id" FromRole="aloTipos" ToRole="aloSorteos" />
+    <NavigationProperty Name="aloZonas" Relationship="Self.FK_dbo_aloZonas_dbo_aloTipos_tipo_Id" FromRole="aloTipos" ToRole="aloZonas" />
+  </EntityType>
+  <EntityType Name="aloZona">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="desc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="desc2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="personas" Type="Int32" Nullable="false" />
+    <Property Name="croquis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="precio" Type="Double" Nullable="false" />
+    <Property Name="tipo_Id" Type="Int32" />
+    <NavigationProperty Name="aloAlojamientos" Relationship="Self.FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id" FromRole="aloZonas" ToRole="aloAlojamientos" />
+    <NavigationProperty Name="aloTipos" Relationship="Self.FK_dbo_aloZonas_dbo_aloTipos_tipo_Id" FromRole="aloZonas" ToRole="aloTipos" />
+  </EntityType>
+  <EntityType Name="autUsuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nroSocio" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Salt" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="SaltedAndHashedPassword" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="idDepen" Type="Int32" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="apellido" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fechaNac" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ultimoLogin" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="preguntaSecreta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MD5respuestaSecreta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Version" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="CreatedAt" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdatedAt" Type="DateTimeOffset" Precision="7" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="sexo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="personalCRL" Type="Boolean" Nullable="false" />
+    <Property Name="personalCRLnivelAcceso" Type="Int32" Nullable="false" />
+    <Property Name="titular" Type="Boolean" Nullable="false" />
+    <Property Name="tokenInvitacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="invitadoPor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="aloReservas" Relationship="Self.FK_dbo_aloReservas_dbo_autUsuarios_gestor_Id" FromRole="autUsuarios" ToRole="aloReservas" />
+    <NavigationProperty Name="aloReservas1" Relationship="Self.FK_dbo_aloReservas_dbo_autUsuarios_socio_Id" FromRole="autUsuarios" ToRole="aloReservas" />
+    <NavigationProperty Name="genTicketsVentas" Relationship="Model.FK_dbo_genTicketsVentas_dbo_autUsuarios_socio_Id" FromRole="autUsuario" ToRole="genTicketsVenta" />
+    <NavigationProperty Name="genTransaccionesVisanets" Relationship="Model.FK_dbo_genTransaccionesVisanet_dbo_appUsuarios_socio_Id" FromRole="autUsuario" ToRole="genTransaccionesVisanet" />
+  </EntityType>
+  <Association Name="FK_dbo_aloAlojamientos_dbo_aloTipos_tipo_Id">
+    <End Role="aloTipos" Type="Self.aloTipos" Multiplicity="0..1" />
+    <End Role="aloAlojamientos" Type="Self.aloAlojamiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aloTipos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aloAlojamientos">
+        <PropertyRef Name="tipo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id">
+    <End Role="aloZonas" Type="Self.aloZona" Multiplicity="0..1" />
+    <End Role="aloAlojamientos" Type="Self.aloAlojamiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aloZonas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aloAlojamientos">
+        <PropertyRef Name="zona_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id">
+    <End Role="aloAlojamientos" Type="Self.aloAlojamiento" Multiplicity="0..1" />
+    <End Role="aloReservas" Type="Self.aloReserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aloAlojamientos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aloReservas">
+        <PropertyRef Name="alojamiento_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_aloExcepciones_dbo_aloTipos_tipo_Id">
+    <End Role="aloTipos" Type="Self.aloTipos" Multiplicity="0..1" />
+    <End Role="aloExcepciones" Type="Self.aloExcepcione" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aloTipos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aloExcepciones">
+        <PropertyRef Name="tipo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_aloReservas_dbo_autUsuarios_gestor_Id">
+    <End Role="autUsuarios" Type="Self.autUsuario" Multiplicity="0..1" />
+    <End Role="aloReservas" Type="Self.aloReserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="autUsuarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aloReservas">
+        <PropertyRef Name="gestor_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_aloReservas_dbo_autUsuarios_socio_Id">
+    <End Role="autUsuarios" Type="Self.autUsuario" Multiplicity="0..1" />
+    <End Role="aloReservas" Type="Self.aloReserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="autUsuarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aloReservas">
+        <PropertyRef Name="socio_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_aloSorteos_dbo_aloTipos_tipo_Id">
+    <End Role="aloTipos" Type="Self.aloTipos" Multiplicity="0..1" />
+    <End Role="aloSorteos" Type="Self.aloSorteo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aloTipos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aloSorteos">
+        <PropertyRef Name="tipo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_aloZonas_dbo_aloTipos_tipo_Id">
+    <End Role="aloTipos" Type="Self.aloTipos" Multiplicity="0..1" />
+    <End Role="aloZonas" Type="Self.aloZona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aloTipos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aloZonas">
+        <PropertyRef Name="tipo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AdminContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="aloAlojamientos" EntityType="Self.aloAlojamiento" />
+    <EntitySet Name="aloExcepciones" EntityType="Self.aloExcepcione" />
+    <EntitySet Name="aloReservas" EntityType="Self.aloReserva" />
+    <EntitySet Name="aloSorteos" EntityType="Self.aloSorteo" />
+    <EntitySet Name="aloTipos" EntityType="Self.aloTipos" />
+    <EntitySet Name="aloZonas" EntityType="Self.aloZona" />
+    <EntitySet Name="autUsuarios" EntityType="Self.autUsuario" />
+    <AssociationSet Name="FK_dbo_aloAlojamientos_dbo_aloTipos_tipo_Id" Association="Self.FK_dbo_aloAlojamientos_dbo_aloTipos_tipo_Id">
+      <End Role="aloTipos" EntitySet="aloTipos" />
+      <End Role="aloAlojamientos" EntitySet="aloAlojamientos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id" Association="Self.FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id">
+      <End Role="aloZonas" EntitySet="aloZonas" />
+      <End Role="aloAlojamientos" EntitySet="aloAlojamientos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id" Association="Self.FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id">
+      <End Role="aloAlojamientos" EntitySet="aloAlojamientos" />
+      <End Role="aloReservas" EntitySet="aloReservas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_aloExcepciones_dbo_aloTipos_tipo_Id" Association="Self.FK_dbo_aloExcepciones_dbo_aloTipos_tipo_Id">
+      <End Role="aloTipos" EntitySet="aloTipos" />
+      <End Role="aloExcepciones" EntitySet="aloExcepciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_aloReservas_dbo_autUsuarios_gestor_Id" Association="Self.FK_dbo_aloReservas_dbo_autUsuarios_gestor_Id">
+      <End Role="autUsuarios" EntitySet="autUsuarios" />
+      <End Role="aloReservas" EntitySet="aloReservas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_aloReservas_dbo_autUsuarios_socio_Id" Association="Self.FK_dbo_aloReservas_dbo_autUsuarios_socio_Id">
+      <End Role="autUsuarios" EntitySet="autUsuarios" />
+      <End Role="aloReservas" EntitySet="aloReservas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_aloSorteos_dbo_aloTipos_tipo_Id" Association="Self.FK_dbo_aloSorteos_dbo_aloTipos_tipo_Id">
+      <End Role="aloTipos" EntitySet="aloTipos" />
+      <End Role="aloSorteos" EntitySet="aloSorteos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_aloZonas_dbo_aloTipos_tipo_Id" Association="Self.FK_dbo_aloZonas_dbo_aloTipos_tipo_Id">
+      <End Role="aloTipos" EntitySet="aloTipos" />
+      <End Role="aloZonas" EntitySet="aloZonas" />
+    </AssociationSet>
+    <EntitySet Name="appBuses" EntityType="Model.appBus" />
+    <EntitySet Name="appChoferes" EntityType="Model.appChofere" />
+    <EntitySet Name="appEstaciones" EntityType="Model.appEstacione" />
+    <EntitySet Name="appParadas" EntityType="Model.appParada" />
+    <EntitySet Name="appPromociones" EntityType="Model.appPromocione" />
+    <EntitySet Name="appRutas" EntityType="Model.appRuta" />
+    <AssociationSet Name="FK_dbo_rutas_dbo_buses_currBus_Id" Association="Model.FK_dbo_rutas_dbo_buses_currBus_Id">
+      <End Role="appBus" EntitySet="appBuses" />
+      <End Role="appRuta" EntitySet="appRutas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_rutas_dbo_chofers_currChofer_Id" Association="Model.FK_dbo_rutas_dbo_chofers_currChofer_Id">
+      <End Role="appChofere" EntitySet="appChoferes" />
+      <End Role="appRuta" EntitySet="appRutas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_rutaParadas_dbo_paradas_parada_Id" Association="Model.FK_dbo_rutaParadas_dbo_paradas_parada_Id">
+      <End Role="appEstacione" EntitySet="appEstaciones" />
+      <End Role="appParada" EntitySet="appParadas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_rutaParadas_dbo_rutas_ruta_Id" Association="Model.FK_dbo_rutaParadas_dbo_rutas_ruta_Id">
+      <End Role="appRuta" EntitySet="appRutas" />
+      <End Role="appParada" EntitySet="appParadas" />
+    </AssociationSet>
+    <EntitySet Name="genActividades" EntityType="Model.genActividade" />
+    <EntitySet Name="genTicketsVentas" EntityType="Model.genTicketsVenta" />
+    <AssociationSet Name="FK_dbo_genTicketsVentas_dbo_autUsuarios_socio_Id" Association="Model.FK_dbo_genTicketsVentas_dbo_autUsuarios_socio_Id">
+      <End Role="autUsuario" EntitySet="autUsuarios" />
+      <End Role="genTicketsVenta" EntitySet="genTicketsVentas" />
+    </AssociationSet>
+    <EntitySet Name="genTicketsZonas" EntityType="Model.genTicketsZona" />
+    <EntitySet Name="genTransaccionesVisanets" EntityType="Model.genTransaccionesVisanet" />
+    <AssociationSet Name="FK_dbo_genTransaccionesVisanet_dbo_appUsuarios_socio_Id" Association="Model.FK_dbo_genTransaccionesVisanet_dbo_appUsuarios_socio_Id">
+      <End Role="autUsuario" EntitySet="autUsuarios" />
+      <End Role="genTransaccionesVisanet" EntitySet="genTransaccionesVisanets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_genTicketsZonas_dbo_genActividades_actividad_id" Association="Model.FK_dbo_genTicketsZonas_dbo_genActividades_actividad_id">
+      <End Role="genActividade" EntitySet="genActividades" />
+      <End Role="genTicketsZona" EntitySet="genTicketsZonas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_genTicketsVentas_dbo_genTicketsZonas_zona_id" Association="Model.FK_dbo_genTicketsVentas_dbo_genTicketsZonas_zona_id">
+      <End Role="genTicketsZona" EntitySet="genTicketsZonas" />
+      <End Role="genTicketsVenta" EntitySet="genTicketsVentas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_genTicketsVentas_dbo_genTransaccionesVisanet_pagoOnline_Id" Association="Model.FK_dbo_genTicketsVentas_dbo_genTransaccionesVisanet_pagoOnline_Id">
+      <End Role="genTransaccionesVisanet" EntitySet="genTransaccionesVisanets" />
+      <End Role="genTicketsVenta" EntitySet="genTicketsVentas" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="appBus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="descrip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="placa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="pasajeros" Type="Double" Nullable="false" />
+    <Property Name="Version" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="CreatedAt" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdatedAt" Type="DateTimeOffset" Precision="7" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="appRutas" Relationship="Model.FK_dbo_rutas_dbo_buses_currBus_Id" FromRole="appBus" ToRole="appRuta" />
+  </EntityType>
+  <EntityType Name="appChofere">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Version" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="CreatedAt" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdatedAt" Type="DateTimeOffset" Precision="7" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="lic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="appRutas" Relationship="Model.FK_dbo_rutas_dbo_chofers_currChofer_Id" FromRole="appChofere" ToRole="appRuta" />
+  </EntityType>
+  <EntityType Name="appEstacione">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="descrip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="esSede" Type="Boolean" Nullable="false" />
+    <Property Name="Version" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="CreatedAt" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdatedAt" Type="DateTimeOffset" Precision="7" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="lat" Type="Double" Nullable="false" />
+    <Property Name="lon" Type="Double" Nullable="false" />
+    <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="appParadas" Relationship="Model.FK_dbo_rutaParadas_dbo_paradas_parada_Id" FromRole="appEstacione" ToRole="appParada" />
+  </EntityType>
+  <EntityType Name="appParada">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="hora" Type="Int32" Nullable="false" />
+    <Property Name="min" Type="Int32" Nullable="false" />
+    <Property Name="Version" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="CreatedAt" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdatedAt" Type="DateTimeOffset" Precision="7" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="estacion_Id" Type="Int32" />
+    <Property Name="ruta_Id" Type="Int32" />
+    <Property Name="duracion" Type="Int32" Nullable="false" />
+    <Property Name="esRetorno" Type="Boolean" Nullable="false" />
+    <Property Name="currHora" Type="Int32" Nullable="false" />
+    <Property Name="currMin" Type="Int32" Nullable="false" />
+    <Property Name="estDuracion" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="appEstacione" Relationship="Model.FK_dbo_rutaParadas_dbo_paradas_parada_Id" FromRole="appParada" ToRole="appEstacione" />
+    <NavigationProperty Name="appRuta" Relationship="Model.FK_dbo_rutaParadas_dbo_rutas_ruta_Id" FromRole="appParada" ToRole="appRuta" />
+  </EntityType>
+  <EntityType Name="appPromocione">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="detalle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="desde" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="hasta" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="sexo" Type="Int32" Nullable="false" />
+    <Property Name="edadMax" Type="Int32" Nullable="false" />
+    <Property Name="edadMin" Type="Int32" Nullable="false" />
+    <Property Name="tipoAsociado" Type="Int32" Nullable="false" />
+    <Property Name="Version" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="CreatedAt" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdatedAt" Type="DateTimeOffset" Precision="7" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="nroCupones" Type="Int32" Nullable="false" />
+    <Property Name="marca" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="tel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="appRuta">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="descrip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="dias" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="activa" Type="Boolean" Nullable="false" />
+    <Property Name="Version" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="CreatedAt" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdatedAt" Type="DateTimeOffset" Precision="7" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="currLat" Type="Double" Nullable="false" />
+    <Property Name="currLon" Type="Double" Nullable="false" />
+    <Property Name="currBus_Id" Type="Int32" />
+    <Property Name="currChofer_Id" Type="Int32" />
+    <Property Name="lastBoard" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="appBus" Relationship="Model.FK_dbo_rutas_dbo_buses_currBus_Id" FromRole="appRuta" ToRole="appBus" />
+    <NavigationProperty Name="appChofere" Relationship="Model.FK_dbo_rutas_dbo_chofers_currChofer_Id" FromRole="appRuta" ToRole="appChofere" />
+    <NavigationProperty Name="appParadas" Relationship="Model.FK_dbo_rutaParadas_dbo_rutas_ruta_Id" FromRole="appRuta" ToRole="appParada" />
+  </EntityType>
+  <Association Name="FK_dbo_rutas_dbo_buses_currBus_Id">
+    <End Type="Model.appBus" Role="appBus" Multiplicity="0..1" />
+    <End Type="Model.appRuta" Role="appRuta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="appBus">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="appRuta">
+        <PropertyRef Name="currBus_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_rutas_dbo_chofers_currChofer_Id">
+    <End Type="Model.appChofere" Role="appChofere" Multiplicity="0..1" />
+    <End Type="Model.appRuta" Role="appRuta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="appChofere">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="appRuta">
+        <PropertyRef Name="currChofer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_rutaParadas_dbo_paradas_parada_Id">
+    <End Type="Model.appEstacione" Role="appEstacione" Multiplicity="0..1" />
+    <End Type="Model.appParada" Role="appParada" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="appEstacione">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="appParada">
+        <PropertyRef Name="estacion_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_rutaParadas_dbo_rutas_ruta_Id">
+    <End Type="Model.appRuta" Role="appRuta" Multiplicity="0..1" />
+    <End Type="Model.appParada" Role="appParada" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="appRuta">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="appParada">
+        <PropertyRef Name="ruta_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="genActividade">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="desc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="detalle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="idSede" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="lugar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="refCosto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="tel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="mail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ventaTickets" Type="Boolean" Nullable="false" />
+    <Property Name="ventaDesde" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ventaHasta" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="blogPost" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="genTicketsZonas" Relationship="Model.FK_dbo_genTicketsZonas_dbo_genActividades_actividad_id" FromRole="genActividade" ToRole="genTicketsZona" />
+  </EntityType>
+  <EntityType Name="genTicketsVenta">
+    <Key>
+      <PropertyRef Name="idEntrada" />
+    </Key>
+    <Property Name="idEntrada" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="cantidad_real" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" Nullable="false" />
+    <Property Name="unitario" Type="Double" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="concepto" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="apellido" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="tipoDoc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="numDoc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="tel" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="numeracion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="confirmada" Type="Boolean" Nullable="false" />
+    <Property Name="cargoCuenta" Type="Boolean" Nullable="false" />
+    <Property Name="pagoOnline_Id" Type="Int32" />
+    <Property Name="socio_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="zona_id" Type="Int32" />
+    <Property Name="idPrecio" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="autUsuario" Relationship="Model.FK_dbo_genTicketsVentas_dbo_autUsuarios_socio_Id" FromRole="genTicketsVenta" ToRole="autUsuario" />
+    <NavigationProperty Name="genTicketsZona" Relationship="Model.FK_dbo_genTicketsVentas_dbo_genTicketsZonas_zona_id" FromRole="genTicketsVenta" ToRole="genTicketsZona" />
+    <NavigationProperty Name="genTransaccionesVisanet" Relationship="Model.FK_dbo_genTicketsVentas_dbo_genTransaccionesVisanet_pagoOnline_Id" FromRole="genTicketsVenta" ToRole="genTransaccionesVisanet" />
+  </EntityType>
+  <Association Name="FK_dbo_genTicketsVentas_dbo_autUsuarios_socio_Id">
+    <End Type="Model.autUsuario" Role="autUsuario" Multiplicity="0..1" />
+    <End Type="Model.genTicketsVenta" Role="genTicketsVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="autUsuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="genTicketsVenta">
+        <PropertyRef Name="socio_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="genTicketsZona">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="desc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="precio" Type="Double" Nullable="false" />
+    <Property Name="cupos" Type="Int32" Nullable="false" />
+    <Property Name="vendidos" Type="Int32" Nullable="false" />
+    <Property Name="croquis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="porcSobreventa" Type="Int32" Nullable="false" />
+    <Property Name="actividad_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="genActividade" Relationship="Model.FK_dbo_genTicketsZonas_dbo_genActividades_actividad_id" FromRole="genTicketsZona" ToRole="genActividade" />
+    <NavigationProperty Name="genTicketsVentas" Relationship="Model.FK_dbo_genTicketsVentas_dbo_genTicketsZonas_zona_id" FromRole="genTicketsZona" ToRole="genTicketsVenta" />
+  </EntityType>
+  <EntityType Name="genTransaccionesVisanet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="monto" Type="Double" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="codConcepto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="concepto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="digitosCC" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Version" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="CreatedAt" Type="DateTimeOffset" Nullable="false" Precision="7" />
+    <Property Name="UpdatedAt" Type="DateTimeOffset" Precision="7" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="socio_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ticket" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="resultadoOp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="estado" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="autUsuario" Relationship="Model.FK_dbo_genTransaccionesVisanet_dbo_appUsuarios_socio_Id" FromRole="genTransaccionesVisanet" ToRole="autUsuario" />
+    <NavigationProperty Name="genTicketsVentas" Relationship="Model.FK_dbo_genTicketsVentas_dbo_genTransaccionesVisanet_pagoOnline_Id" FromRole="genTransaccionesVisanet" ToRole="genTicketsVenta" />
+  </EntityType>
+  <Association Name="FK_dbo_genTransaccionesVisanet_dbo_appUsuarios_socio_Id">
+    <End Type="Model.autUsuario" Role="autUsuario" Multiplicity="0..1" />
+    <End Type="Model.genTransaccionesVisanet" Role="genTransaccionesVisanet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="autUsuario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="genTransaccionesVisanet">
+        <PropertyRef Name="socio_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_genTicketsZonas_dbo_genActividades_actividad_id">
+    <End Type="Model.genActividade" Role="genActividade" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Model.genTicketsZona" Role="genTicketsZona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="genActividade">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="genTicketsZona">
+        <PropertyRef Name="actividad_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_genTicketsVentas_dbo_genTicketsZonas_zona_id">
+    <End Type="Model.genTicketsZona" Role="genTicketsZona" Multiplicity="0..1" />
+    <End Type="Model.genTicketsVenta" Role="genTicketsVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="genTicketsZona">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="genTicketsVenta">
+        <PropertyRef Name="zona_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_genTicketsVentas_dbo_genTransaccionesVisanet_pagoOnline_Id">
+    <End Type="Model.genTransaccionesVisanet" Role="genTransaccionesVisanet" Multiplicity="0..1" />
+    <End Type="Model.genTicketsVenta" Role="genTicketsVenta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="genTransaccionesVisanet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="genTicketsVenta">
+        <PropertyRef Name="pagoOnline_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

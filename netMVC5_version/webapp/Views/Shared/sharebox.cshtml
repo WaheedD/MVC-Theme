@@ -1,0 +1,5 @@
+﻿<div class="sharebox" style="padding-right:10px;padding-top: 6px;">
+    @(Html.Awe().AjaxRadioList("ddlDownloads")
+          .DataFunc("utils.getItems(downloadLinks)")
+          .MenuDropdown(o => o.Caption("Downloads")))
+</div>

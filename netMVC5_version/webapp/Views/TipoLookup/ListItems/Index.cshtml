@@ -1,0 +1,29 @@
+﻿@model IEnumerable<SmartAdminMvc.Models.aloTipos>
+@foreach (var o in Model)
+{
+    <tr class="awe-li" id="tipo@(o.Id)" data-val="@o.Id">
+        <td>@o.nombre</td>
+        <td>@o.inicioTempAlta</td>
+        <td>@o.finTempAlta</td>
+        <td>@o.clase</td>
+        <td>@o.croquis</td>
+        <td>@o.precioTempAlta</td>
+        <td>@o.precioTempBaja</td>
+        <td>@o.idSede</td>
+        <td>@o.restricFDStempAlta</td>
+
+
+        <td>
+            <button type="button" onclick="awe.open('editTipo', {params: {id: @o.Id }})" class="awe-btn">
+                <span class="ico-edit"></span>
+            </button>
+        </td>
+        <td>
+            <button type="button" onclick="awe.open('deleteTipo', {params: {id: @o.Id }})" class="awe-btn">
+                <span class="ico-del"></span>
+            </button>
+        </td>
+    </tr>
+}
+
+

@@ -1,0 +1,21 @@
+﻿@model SmartAdminMvc.ViewModels.Input.appPromocioneInput
+@using (Html.BeginForm())
+{
+    using (Html.Awe().BeginContext())
+    {
+        @Html.EditorFor(o => o.desc)
+        @Html.EditorFor(o => o.detalle)
+        @Html.EditorFor(o => o.foto)
+        @Html.EditorFor(o => o.desde)
+        @Html.EditorFor(o => o.hasta)
+        @Html.EditorFor(o => o.sexo)
+        @Html.EditorFor(o => o.edadMax)
+        @Html.EditorFor(o => o.edadMin)
+        @Html.EditorFor(o => o.tipoAsociado)
+        @Html.EditorFor(o => o.nroCupones)
+        @Html.EditorFor(o => o.marca)
+        @Html.EditorFor(o => o.email)
+        @Html.EditorFor(o => o.tel)
+        @Html.EditorFor(o => o.direccion)
+    }
+}

@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Alojamientos";
+}
+
+<!-- MAIN CONTENT -->
+<div id="content">
+    <div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
+            <h1 class="page-title txt-color-blueDark"><i class="fa fa-file-text-o"></i> @ViewBag.Title <span>> @ViewBag.Title List</span></h1>
+        </div>
+        </div>
+
+@*begin*@
+@Html.InitCrudPopupsForGrid("AlojamientoGrid", "aloAlojamiento",createPopupWidth:1200)
+
+
+<div class="bar">
+    <div style="float: right;">
+        @Html.Awe().TextBox("txtSearch").Placeholder("search...").CssClass("searchtxt")
+    </div>
+    <button type="button" onclick="awe.open('createAlojamientoGrid')" class="awe-btn mbtn">Create</button>
+</div>
+
+@(Html.Awe().Grid("AlojamientoGrid")
+            .Mod(o => o.PageInfo().ColumnsSelector())
+                .Url(Url.Action("GridGetItems", "aloAlojamiento"))
+            .Parent("txtSearch", "search")
+        //.Height(350)
+            .Columns(
+            new Column { Bind = "Id", Width = 80 },
+                            new Column { Bind = "caracteristicas" },
+
+             new Column { Bind = "personas" },
+                        new Column { Bind = "inhabilitado" },
+                        new Column { Bind = "precioTempAlta" },
+                        new Column { Bind = "precioTempBaja", Width = 150 },
+                        new Column { Bind = "lat" },
+                        new Column { Bind = "lon" },
+                        new Column { Bind = "tipo" },
+                        new Column { Bind = "foto" },
+                        new Column { Bind = "agrup1" },
+                        new Column { Bind = "agrup2" },
+                        new Column { Bind = "zona" },
+
+                new Column { ClientFormat = GridUtils.EditFormatForGrid("AlojamientoGrid"), Width = 50 },
+                new Column { ClientFormat = GridUtils.DeleteFormatForGrid("AlojamientoGrid"), Width = 50 }))
+</div>
+@*end*@
