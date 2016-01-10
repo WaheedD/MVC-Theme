@@ -35,7 +35,7 @@
     </div>
 
     @(Html.Awe().Grid("ExcepcionesGrid_Tipo")
-            .Mod(o => o.PageInfo().ColumnsSelector())
+            .Mod(o => o.PageInfo().ColumnsSelector().ColumnsAutohide()).ColumnsPersistence(Persistence.Local)
                     .Url(Url.Action("GridGetItems", "aloExcepcione"))
             .Parameter("tipo_Id", Model.Id)
                     .Parent("txtSearchExcepcione", "search")
@@ -72,7 +72,7 @@
 
     @Html.Hidden("hide_tipo",true)
     @(Html.Awe().Grid("SorteosGrid_Tipo")
-            .Mod(o => o.PageInfo().ColumnsSelector())
+            .Mod(o => o.PageInfo().ColumnsSelector().ColumnsAutohide()).ColumnsPersistence(Persistence.Local)
             .Url(Url.Action("GridGetItems", "aloSorteo"))
             .Parameter("tipo_Id", Model.Id)
                     .Parent("txtSearchSorteo", "search")

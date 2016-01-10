@@ -21,7 +21,7 @@
     </div>
 
     @(Html.Awe().Grid("genTicketsVentaGrid")
-            .Mod(o => o.PageInfo().ColumnsSelector())
+            .Mod(o => o.PageInfo().ColumnsSelector().ColumnsAutohide()).ColumnsPersistence(Persistence.Local)
                         .Url(Url.Action("GridGetItems", "genTicketsVenta"))
                         
             .Parent("txtSearch", "search")

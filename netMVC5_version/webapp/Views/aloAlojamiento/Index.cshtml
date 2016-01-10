@@ -22,7 +22,7 @@
 </div>
 
 @(Html.Awe().Grid("AlojamientoGrid")
-            .Mod(o => o.PageInfo().ColumnsSelector())
+            .Mod(o => o.PageInfo().ColumnsSelector().ColumnsAutohide()).ColumnsPersistence(Persistence.Local)
                 .Url(Url.Action("GridGetItems", "aloAlojamiento"))
             .Parent("txtSearch", "search")
         //.Height(350)

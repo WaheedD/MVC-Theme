@@ -21,7 +21,7 @@
     </div>
 
     @(Html.Awe().Grid("aloReservasGrid")
-            .Mod(o => o.PageInfo().ColumnsSelector())
+            .Mod(o => o.PageInfo().ColumnsSelector().ColumnsAutohide()).ColumnsPersistence(Persistence.Local)
             .Url(Url.Action("GridGetItems", "aloReserva"))
             .Parent("txtSearch", "search")
             //.Height(350)

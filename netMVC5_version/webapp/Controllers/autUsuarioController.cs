@@ -19,7 +19,7 @@ namespace SmartAdminMvc.Controllers
 
         public ActionResult getPersonal()
         {
-            return Json(UnitOfWork.AutUsuarioRepository.Get(o=>o.personalCRL).ToList().Select(o => new KeyContent(o.Id, o.nombre+ " ("+o.email+")")));
+            return Json(UnitOfWork.AutUsuarioRepository.Get(o => o.personalCRL).ToList().Select(o => new KeyContent(o.Id, o.nombre + " (" + o.email + ")")));
         }
     }
 }

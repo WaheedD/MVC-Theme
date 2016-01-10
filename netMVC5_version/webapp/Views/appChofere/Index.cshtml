@@ -21,7 +21,7 @@
     </div>
 
     @(Html.Awe().Grid("appChofereGrid")
-            .Mod(o => o.PageInfo().ColumnsSelector())
+            .Mod(o => o.PageInfo().ColumnsSelector().ColumnsAutohide()).ColumnsPersistence(Persistence.Local)
                         .Url(Url.Action("GridGetItems", "appChofere"))
             .Parent("txtSearch", "search")
             //.Height(350)
