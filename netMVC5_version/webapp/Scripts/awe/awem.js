@@ -925,7 +925,7 @@
         var $dropmenu = $('<div class="omenu" tabindex="-1"></div>').addClass(opt.menuClass).data('owner', $odropdown);
         if (o.rtl) $dropmenu.css('direction', 'rtl');
 
-        var $searchcont = $('<div class="osrccont"><input type="text" class="osearch awe-txt" placeholder="search..." size="1"/></div>');
+        var $searchcont = $('<div class="osrccont"><input type="text" class="osearch awe-txt" placeholder="Buscar..." size="1"/></div>');
         var $searchtxt = $searchcont.find('.osearch');
 
         if (isMobile())

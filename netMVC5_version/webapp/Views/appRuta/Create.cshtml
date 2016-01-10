@@ -64,7 +64,6 @@
     </div>
 </div>
 <!-- end row -->
-
 @*begin*@
 <div class="row">&nbsp;</div>
 <div class="row">
@@ -87,17 +86,17 @@
                 .Url(Url.Action("GridGetItemsForRuta", "appParada"))
             .Parameter("ruta_Id", Model.Id)
             .Parent("txtSearch", "search")
-        //.Height(350)
+            //.Height(350)
             .Groupable(false)
             .Columns(
             new Column { Bind = "Id", Width = 80 },
-            new Column { Bind = "nombre"},
-                    new Column { Bind = "hora"},
-                    new Column { Bind = "min"},
-                    new Column { Bind = "estacion"},
-                    new Column { Bind = "ruta"},
-                    new Column { Bind = "duracion"},
-                    new Column { Bind = "esRetorno"},
+            new Column { Bind = "nombre" },
+                    new Column { Bind = "hora" },
+                    new Column { Bind = "min" },
+                    new Column { Bind = "estacion" },
+                    new Column { Bind = "ruta" },
+                    new Column { Bind = "duracion" },
+                    new Column { Bind = "esRetorno" },
                     new Column { ClientFormat = GridUtils.EditFormatForGrid("appParadaGrid_Ruta"), Width = 50 },
                     new Column { ClientFormat = GridUtils.DeleteFormatForGrid("appParadaGrid_Ruta"), Width = 50 }))
 @*end*@
