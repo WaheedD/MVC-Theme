@@ -17,10 +17,6 @@ namespace SmartAdminMvc.Models
         public appRuta()
         {
             this.appParadas = new HashSet<appParada>();
-            CreatedAt = DateTimeOffset.Now;
-            lastBoard = DateTime.Today;
-            activa = false;
-            Deleted = false;
         }
     
         public int Id { get; set; }

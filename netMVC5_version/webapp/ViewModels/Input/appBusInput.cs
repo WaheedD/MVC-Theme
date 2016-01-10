@@ -9,10 +9,11 @@ namespace SmartAdminMvc.ViewModels.Input
 {
     public class appBusInput
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string nombre { get; set; }
         public string descrip { get; set; }
         public string placa { get; set; }
+        [Required]
         public double pasajeros { get; set; }
     }
 }

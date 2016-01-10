@@ -268,6 +268,6 @@ C:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC
 C:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\bin\System.Web.WebPages.xml
 C:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\bin\System.Web.WebPages.Deployment.xml
 C:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\bin\System.Web.WebPages.Razor.xml
-C:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\obj\Debug\SmartAdminMvc.csprojResolveAssemblyReference.cache
 C:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\obj\Debug\SmartAdminMvc.dll
 C:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\obj\Debug\SmartAdminMvc.pdb
+C:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\obj\Debug\SmartAdminMvc.csprojResolveAssemblyReference.cache

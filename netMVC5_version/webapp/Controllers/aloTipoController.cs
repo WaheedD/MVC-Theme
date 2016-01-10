@@ -55,11 +55,11 @@ namespace SmartAdminMvc.Controllers
 
         public ActionResult Create()
         {
-            var entity = new aloTipos { inicioTempAlta = DateTime.Today, finTempAlta =DateTime.Today};
+            var entity = new aloTipos { inicioTempAlta = DateTime.Today, finTempAlta = DateTime.Today };
             UnitOfWork.AloTipoRepository.Insert(entity);
             UnitOfWork.Save();
 
-            return PartialView(new aloTipoInput { Id = entity.Id, inicioTempAlta = entity.inicioTempAlta, finTempAlta = entity.finTempAlta });
+            return PartialView(new aloTipoInput { Id = entity.Id });
         }
 
         [HttpPost]

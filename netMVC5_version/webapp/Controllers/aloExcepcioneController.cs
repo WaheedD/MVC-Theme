@@ -28,7 +28,7 @@ namespace SmartAdminMvc.Controllers
                 };
         }
 
-        public ActionResult GridGetItems(GridParams g, string search)
+        public ActionResult GridGetItems(GridParams g, string search, int tipo_Id=0)
         {
             search = (search ?? "").ToLower();
             var items = UnitOfWork.AloExcepcioneRepository.Get();
@@ -38,28 +38,17 @@ namespace SmartAdminMvc.Controllers
                 items = items.Where(o => o.nombre.ToLower().Contains(search));
             }
 
-            return Json(new GridModelBuilder<aloExcepcione>(items, g)
-                {
-                    Key = "Id", // needed for api select, update, tree, nesting, EF
-                    GetItem = () => UnitOfWork.AloExcepcioneRepository.GetById(int.Parse(g.Key)), // called by the grid.api.update ( edit popupform success js func )
-                    Map = MapToGridModel
-                }.Build());
-        }
-        public ActionResult GridGetItemsForTipo(GridParams g, int tipo_Id)
-        {
-            var items = UnitOfWork.AloExcepcioneRepository.Get();
-
             if (tipo_Id > 0)
             {
                 items = items.Where(o => o.tipo_Id == tipo_Id);
             }
 
             return Json(new GridModelBuilder<aloExcepcione>(items, g)
-            {
-                Key = "Id", // needed for api select, update, tree, nesting, EF
-                GetItem = () => UnitOfWork.AloExcepcioneRepository.GetById(int.Parse(g.Key)), // called by the grid.api.update ( edit popupform success js func )
-                Map = MapToGridModel
-            }.Build());
+                {
+                    Key = "Id", // needed for api select, update, tree, nesting, EF
+                    GetItem = () => UnitOfWork.AloExcepcioneRepository.GetById(int.Parse(g.Key)), // called by the grid.api.update ( edit popupform success js func )
+                    Map = MapToGridModel
+                }.Build());
         }
 
         public ActionResult Index()

@@ -46,7 +46,7 @@ namespace SmartAdminMvc.Controllers
 
             if (!string.IsNullOrWhiteSpace(search))
             {
-                items = items.Where(o => o.nombre.ToLower().Contains(search));
+                items = items.Where(o => o.concepto.ToLower().Contains(search));
             }
 
             return Json(new GridModelBuilder<genTicketsVenta>(items, g)

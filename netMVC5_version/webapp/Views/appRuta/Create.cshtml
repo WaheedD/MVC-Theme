@@ -7,6 +7,7 @@
         {
             using (Html.Awe().BeginContext())
             {
+                @Html.HiddenFor(o => o.Id)
                 @Html.EditorFor(o => o.nombre)
                 @Html.EditorFor(o => o.descrip)
                 @Html.EditorFor(o => o.dias)

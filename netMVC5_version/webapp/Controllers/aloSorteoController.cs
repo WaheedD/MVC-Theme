@@ -29,7 +29,7 @@ namespace SmartAdminMvc.Controllers
                 };
         }
 
-        public ActionResult GridGetItems(GridParams g, string search)
+        public ActionResult GridGetItems(GridParams g, string search, int tipo_Id=0)
         {
             search = (search ?? "").ToLower();
             var items = UnitOfWork.AloSorteoRepository.Get();
@@ -37,6 +37,10 @@ namespace SmartAdminMvc.Controllers
             if (!string.IsNullOrWhiteSpace(search))
             {
                 items = items.Where(o => o.detalle.ToLower().Contains(search));
+            }
+            if (tipo_Id > 0)
+            {
+                items = items.Where(o => o.tipo_Id == tipo_Id);
             }
 
             return Json(new GridModelBuilder<aloSorteo>(items, g)
@@ -46,22 +50,7 @@ namespace SmartAdminMvc.Controllers
                     Map = MapToGridModel
                 }.Build());
         }
-        public ActionResult GridGetItemsForTipo(GridParams g, int tipo_Id)
-        {
-            var items = UnitOfWork.AloSorteoRepository.Get();
-
-            if (tipo_Id > 0)
-            {
-                items = items.Where(o => o.tipo_Id == tipo_Id);
-            }
-
-            return Json(new GridModelBuilder<aloSorteo>(items, g)
-            {
-                Key = "Id", // needed for api select, update, tree, nesting, EF
-                GetItem = () => UnitOfWork.AloSorteoRepository.GetById(int.Parse(g.Key)), // called by the grid.api.update ( edit popupform success js func )
-                Map = MapToGridModel
-            }.Build());
-        }
+        
         public ActionResult Index()
         {
             return View();

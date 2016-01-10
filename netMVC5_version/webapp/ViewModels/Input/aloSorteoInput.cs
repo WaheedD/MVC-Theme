@@ -22,11 +22,17 @@ namespace SmartAdminMvc.ViewModels.Input
 
         public int? Id { get; set; }
         public string detalle { get; set; }
+        [Required]
         public DateTime fecha { get; set; }
+        [Required]
         public DateTime fechaPago { get; set; }
+        [Required]
         public DateTime estadia_desde { get; set; }
+        [Required]
         public DateTime estadia_hasta { get; set; }
+        [Required]
         public DateTime inscripcion_desde { get; set; }
+        [Required]
         public DateTime inscripcion_hasta { get; set; }
         [Required]
         [UIHint("Lookup")]

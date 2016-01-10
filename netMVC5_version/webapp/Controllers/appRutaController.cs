@@ -57,11 +57,11 @@ namespace SmartAdminMvc.Controllers
 
         public ActionResult Create()
         {
-            var entity = new appRuta { };
+            var entity = new appRuta { lastBoard = DateTime.Today };
             UnitOfWork.AppRutaRepository.Insert(entity);
             UnitOfWork.Save();
 
-            return PartialView(new appRutaInput { Id = entity.Id, activa = entity.activa, lastBoard=DateTime.Today });
+            return PartialView(new appRutaInput { Id = entity.Id });
         }
 
         [HttpPost]
@@ -72,7 +72,7 @@ namespace SmartAdminMvc.Controllers
             
             entity.nombre = input.nombre;
             entity.descrip = input.descrip;
-            entity.dias = string.Join("-", input.dias);
+            entity.dias = input.dias == null ? "" : string.Join("-", input.dias);
             entity.activa = input.activa;
             entity.CreatedAt = DateTimeOffset.Now;
             entity.Deleted = false;
@@ -117,7 +117,7 @@ namespace SmartAdminMvc.Controllers
 
             entity.nombre = input.nombre;
             entity.descrip = input.descrip;
-            entity.dias = string.Join("-", input.dias);
+            entity.dias = input.dias == null ? "" : string.Join("-", input.dias);
             entity.activa = input.activa;
             entity.UpdatedAt = DateTimeOffset.Now;
             entity.currLat = input.currLat;
