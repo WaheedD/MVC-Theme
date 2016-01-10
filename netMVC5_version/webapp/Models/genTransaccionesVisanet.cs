@@ -14,9 +14,10 @@ namespace SmartAdminMvc.Models
     
     public partial class genTransaccionesVisanet
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public genTransaccionesVisanet()
         {
-            this.genTicketsVentas = new HashSet<genTicketsVenta>();
+            this.genTicketsVentas = new HashSet<genTicketsVentas>();
         }
     
         public int Id { get; set; }
@@ -35,8 +36,11 @@ namespace SmartAdminMvc.Models
         public string ticket { get; set; }
         public string resultadoOp { get; set; }
         public string estado { get; set; }
+        public string param1 { get; set; }
+        public string param2 { get; set; }
     
-        public virtual autUsuario autUsuario { get; set; }
-        public virtual ICollection<genTicketsVenta> genTicketsVentas { get; set; }
+        public virtual autUsuarios autUsuarios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<genTicketsVentas> genTicketsVentas { get; set; }
     }
 }

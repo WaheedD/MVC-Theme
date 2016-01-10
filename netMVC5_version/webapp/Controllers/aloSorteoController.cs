@@ -12,7 +12,7 @@ namespace SmartAdminMvc.Controllers
     /*begin*/
     public class aloSorteoController : AuthorizedBaseController
     {
-        private static object MapToGridModel(aloSorteo o)
+        private static object MapToGridModel(aloSorteos o)
         {
             return
                 new
@@ -39,7 +39,7 @@ namespace SmartAdminMvc.Controllers
                 items = items.Where(o => o.detalle.ToLower().Contains(search));
             }
 
-            return Json(new GridModelBuilder<aloSorteo>(items, g)
+            return Json(new GridModelBuilder<aloSorteos>(items, g)
                 {
                     Key = "Id", // needed for api select, update, tree, nesting, EF
                     GetItem = () => UnitOfWork.AloSorteoRepository.GetById(int.Parse(g.Key)), // called by the grid.api.update ( edit popupform success js func )
@@ -55,7 +55,7 @@ namespace SmartAdminMvc.Controllers
                 items = items.Where(o => o.tipo_Id == tipo_Id);
             }
 
-            return Json(new GridModelBuilder<aloSorteo>(items, g)
+            return Json(new GridModelBuilder<aloSorteos>(items, g)
             {
                 Key = "Id", // needed for api select, update, tree, nesting, EF
                 GetItem = () => UnitOfWork.AloSorteoRepository.GetById(int.Parse(g.Key)), // called by the grid.api.update ( edit popupform success js func )
@@ -81,7 +81,7 @@ namespace SmartAdminMvc.Controllers
         {
             if (!ModelState.IsValid) return PartialView(input);
 
-            var entity = new aloSorteo
+            var entity = new aloSorteos
                 {
                     detalle = input.detalle,
                     fecha = input.fecha,

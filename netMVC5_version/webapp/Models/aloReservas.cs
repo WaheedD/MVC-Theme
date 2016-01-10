@@ -12,8 +12,14 @@ namespace SmartAdminMvc.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class aloReserva
+    public partial class aloReservas
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public aloReservas()
+        {
+            this.aloSorteoInscrip = new HashSet<aloSorteoInscrip>();
+        }
+    
         public int Id { get; set; }
         public System.DateTime fecha { get; set; }
         public System.DateTime fechaEntrada { get; set; }
@@ -25,14 +31,16 @@ namespace SmartAdminMvc.Models
         public double monto { get; set; }
         public double IGV { get; set; }
         public double total { get; set; }
+        public bool confirmada { get; set; }
         public string alojamiento_Id { get; set; }
         public string gestor_Id { get; set; }
         public string socio_Id { get; set; }
-        public bool confirmada { get; set; }
         public string emision { get; set; }
     
-        public virtual aloAlojamiento aloAlojamiento { get; set; }
-        public virtual autUsuario autUsuario { get; set; }
-        public virtual autUsuario autUsuario1 { get; set; }
+        public virtual aloAlojamientos aloAlojamientos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<aloSorteoInscrip> aloSorteoInscrip { get; set; }
+        public virtual autUsuarios autUsuarios { get; set; }
+        public virtual autUsuarios autUsuarios1 { get; set; }
     }
 }

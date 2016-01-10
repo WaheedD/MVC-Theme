@@ -19,13 +19,9 @@ namespace SmartAdminMvc.Controllers
                 {
                     o.Id,
                     o.nombre,
-                    o.inicioTempAlta,
-                    o.finTempAlta,
                     o.clase,
                     o.croquis,
-                    o.precioTempAlta,
-                    o.precioTempBaja,
-                    o.idSede,
+                    o.idSede_idSede,
                     o.restricFDStempAlta,
                 };
         }
@@ -55,11 +51,11 @@ namespace SmartAdminMvc.Controllers
 
         public ActionResult Create()
         {
-            var entity = new aloTipos { inicioTempAlta = DateTime.Today, finTempAlta =DateTime.Today};
+            var entity = new aloTipos {  };
             UnitOfWork.AloTipoRepository.Insert(entity);
             UnitOfWork.Save();
 
-            return PartialView(new aloTipoInput { Id = entity.Id, inicioTempAlta = entity.inicioTempAlta, finTempAlta = entity.finTempAlta });
+            return PartialView(new aloTipoInput { Id = entity.Id });
         }
 
         [HttpPost]
@@ -69,13 +65,10 @@ namespace SmartAdminMvc.Controllers
             var entity = UnitOfWork.AloTipoRepository.GetById(input.Id);
 
             entity.nombre = input.nombre;
-            entity.inicioTempAlta = input.inicioTempAlta;
-            entity.finTempAlta = input.finTempAlta;
+            entity.restricFDStempAlta = input.restricFDStempAlta;
             entity.clase = input.clase;
             entity.croquis = input.croquis;
-            entity.precioTempAlta = input.precioTempAlta;
-            entity.precioTempBaja = input.precioTempBaja;
-            entity.idSede = input.idSede;
+            entity.idSede_idSede = input.idSede;
             entity.restricFDStempAlta = input.restricFDStempAlta;
 
             UnitOfWork.AloTipoRepository.Update(entity);
@@ -92,13 +85,9 @@ namespace SmartAdminMvc.Controllers
             {
                 Id = entity.Id,
                 nombre = entity.nombre,
-                inicioTempAlta = entity.inicioTempAlta,
-                finTempAlta = entity.finTempAlta,
                 clase = entity.clase,
                 croquis = entity.croquis,
-                precioTempAlta = entity.precioTempAlta,
-                precioTempBaja = entity.precioTempBaja,
-                idSede = entity.idSede,
+                idSede = entity.idSede_idSede,
                 restricFDStempAlta = entity.restricFDStempAlta,
 
             };
@@ -113,13 +102,9 @@ namespace SmartAdminMvc.Controllers
             var entity = UnitOfWork.AloTipoRepository.GetById(input.Id);
 
             entity.nombre = input.nombre;
-            entity.inicioTempAlta = input.inicioTempAlta;
-            entity.finTempAlta = input.finTempAlta;
             entity.clase = input.clase;
             entity.croquis = input.croquis;
-            entity.precioTempAlta = input.precioTempAlta;
-            entity.precioTempBaja = input.precioTempBaja;
-            entity.idSede = input.idSede;
+            entity.idSede_idSede = input.idSede;
             entity.restricFDStempAlta = input.restricFDStempAlta;
 
             UnitOfWork.AloTipoRepository.Update(entity);

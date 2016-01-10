@@ -11,14 +11,9 @@ namespace SmartAdminMvc.ViewModels.Input
     {
         public aloTipoInput()
         {
-            this.inicioTempAlta = DateTime.Today;
-            this.finTempAlta = DateTime.Today;
-            this.restricFDStempAlta = false;
         }
         public int? Id { get; set; }
         public string nombre { get; set; }
-        public DateTime inicioTempAlta { get; set; }
-        public DateTime finTempAlta { get; set; }
         public string clase { get; set; }
         public string croquis { get; set; }
         public double precioTempAlta { get; set; }

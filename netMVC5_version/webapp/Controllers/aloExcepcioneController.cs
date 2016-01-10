@@ -12,7 +12,7 @@ namespace SmartAdminMvc.Controllers
     /*begin*/
     public class aloExcepcioneController : AuthorizedBaseController
     {
-        private static object MapToGridModel(aloExcepcione o)
+        private static object MapToGridModel(aloExcepciones o)
         {
             return
                 new
@@ -23,7 +23,7 @@ namespace SmartAdminMvc.Controllers
                     o.desde,
                     o.hasta,
                     o.porcentaje,
-                    tipo = o.aloTipos != null ? o.aloTipos.nombre : "", //.tipo_Id,
+                    tipo = o.tipo != null ? o.tipo.nombre : "", //.tipo_Id,
                     o.tipoExcep,
                 };
         }
@@ -38,7 +38,7 @@ namespace SmartAdminMvc.Controllers
                 items = items.Where(o => o.nombre.ToLower().Contains(search));
             }
 
-            return Json(new GridModelBuilder<aloExcepcione>(items, g)
+            return Json(new GridModelBuilder<aloExcepciones>(items, g)
                 {
                     Key = "Id", // needed for api select, update, tree, nesting, EF
                     GetItem = () => UnitOfWork.AloExcepcioneRepository.GetById(int.Parse(g.Key)), // called by the grid.api.update ( edit popupform success js func )
@@ -51,10 +51,10 @@ namespace SmartAdminMvc.Controllers
 
             if (tipo_Id > 0)
             {
-                items = items.Where(o => o.tipo_Id == tipo_Id);
+                items = items.Where(o => o.tipo.Id == tipo_Id);
             }
 
-            return Json(new GridModelBuilder<aloExcepcione>(items, g)
+            return Json(new GridModelBuilder<aloExcepciones>(items, g)
             {
                 Key = "Id", // needed for api select, update, tree, nesting, EF
                 GetItem = () => UnitOfWork.AloExcepcioneRepository.GetById(int.Parse(g.Key)), // called by the grid.api.update ( edit popupform success js func )
@@ -81,14 +81,14 @@ namespace SmartAdminMvc.Controllers
         {
             if (!ModelState.IsValid) return PartialView(input);
 
-            var entity = new aloExcepcione
+            var entity = new aloExcepciones
             {
                 nombre = input.nombre,
                 descripcion = input.descripcion,
                 desde = input.desde,
                 hasta = input.hasta,
                 porcentaje = input.porcentaje,
-                tipo_Id = input.tipo,
+                tipo =UnitOfWork.AloTipoRepository.GetById( input.tipo),
                 tipoExcep = input.tipoExcep,
             };
 
@@ -110,7 +110,7 @@ namespace SmartAdminMvc.Controllers
                 desde = entity.desde,
                 hasta = entity.hasta,
                 porcentaje = entity.porcentaje,
-                tipo = entity.tipo_Id,
+                tipo = entity.tipo.Id,
                 hide_tipo = hide_tipo,
                 tipoExcep = entity.tipoExcep,
             };
@@ -129,7 +129,7 @@ namespace SmartAdminMvc.Controllers
             entity.desde = input.desde;
             entity.hasta = input.hasta;
             entity.porcentaje = input.porcentaje;
-            entity.tipo_Id = input.tipo;
+            entity.tipo =UnitOfWork.AloTipoRepository.GetById( input.tipo);
             entity.tipoExcep = input.tipoExcep;
 
             UnitOfWork.AloExcepcioneRepository.Update(entity);

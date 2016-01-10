@@ -12,7 +12,7 @@ namespace SmartAdminMvc.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class aloExcepcione
+    public partial class aloExcepciones
     {
         public int Id { get; set; }
         public string nombre { get; set; }
@@ -20,9 +20,7 @@ namespace SmartAdminMvc.Models
         public System.DateTime desde { get; set; }
         public System.DateTime hasta { get; set; }
         public short porcentaje { get; set; }
-        public Nullable<int> tipo_Id { get; set; }
         public string tipoExcep { get; set; }
-    
-        public virtual aloTipos aloTipos { get; set; }
+        public virtual aloTipos tipo{ get; set; }
     }
 }

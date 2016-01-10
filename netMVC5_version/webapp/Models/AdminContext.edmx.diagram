@@ -4,41 +4,43 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="db969c458a484c7d84e6b661195957d9" Name="Diagram1" ZoomLevel="62">
-        <EntityTypeShape EntityType="Model.aloAlojamiento" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.aloExcepcione" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.aloReserva" Width="1.5" PointX="7.5" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.aloSorteo" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.aloTipos" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.aloZona" Width="1.5" PointX="3" PointY="16.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.autUsuario" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
-        <AssociationConnector Association="Model.FK_dbo_aloAlojamientos_dbo_aloTipos_tipo_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_dbo_aloExcepciones_dbo_aloTipos_tipo_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_dbo_aloReservas_dbo_autUsuarios_gestor_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_dbo_aloReservas_dbo_autUsuarios_socio_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_dbo_aloSorteos_dbo_aloTipos_tipo_Id" ManuallyRouted="false" />
-        <AssociationConnector Association="Model.FK_dbo_aloZonas_dbo_aloTipos_tipo_Id" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Model.appBus" Width="1.5" PointX="7.75" PointY="1.75" />
-        <EntityTypeShape EntityType="Model.appChofere" Width="1.5" PointX="7.75" PointY="16.75" />
-        <EntityTypeShape EntityType="Model.appEstacione" Width="1.5" PointX="10" PointY="6.5" />
-        <EntityTypeShape EntityType="Model.appParada" Width="1.5" PointX="12.25" PointY="1" />
-        <EntityTypeShape EntityType="Model.appPromocione" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Model.appRuta" Width="1.5" PointX="10" PointY="1" />
-        <AssociationConnector Association="Model.FK_dbo_rutas_dbo_buses_currBus_Id" />
-        <AssociationConnector Association="Model.FK_dbo_rutas_dbo_chofers_currChofer_Id" />
-        <AssociationConnector Association="Model.FK_dbo_rutaParadas_dbo_paradas_parada_Id" />
-        <AssociationConnector Association="Model.FK_dbo_rutaParadas_dbo_rutas_ruta_Id" />
-        <EntityTypeShape EntityType="Model.genActividade" Width="1.5" PointX="10.375" PointY="10.75" />
-        <EntityTypeShape EntityType="Model.genTicketsVenta" Width="1.5" PointX="7.5" PointY="21" />
-        <AssociationConnector Association="Model.FK_dbo_genTicketsVentas_dbo_autUsuarios_socio_Id" />
-        <EntityTypeShape EntityType="Model.genTicketsZona" Width="1.5" PointX="5.25" PointY="22.125" />
-        <EntityTypeShape EntityType="Model.genTransaccionesVisanet" Width="1.5" PointX="7.5" PointY="27.25" />
-        <AssociationConnector Association="Model.FK_dbo_genTransaccionesVisanet_dbo_appUsuarios_socio_Id" />
-        <AssociationConnector Association="Model.FK_dbo_genTicketsZonas_dbo_genActividades_actividad_id" />
-        <AssociationConnector Association="Model.FK_dbo_genTicketsVentas_dbo_genTicketsZonas_zona_id" />
-        <AssociationConnector Association="Model.FK_dbo_genTicketsVentas_dbo_genTransaccionesVisanet_pagoOnline_Id" />
+      <Diagram DiagramId="8fbaa6bee8074edf92a2fdf23b9caa26" Name="Diagram1">
+        <EntityTypeShape EntityType="SmartAdminMvc.aloAlojamientos" Width="1.5" PointX="0.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartAdminMvc.aloExcepciones" Width="1.5" PointX="7.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartAdminMvc.aloReservas" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartAdminMvc.aloSorteoInscrip" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartAdminMvc.aloSorteos" Width="1.5" PointX="3" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartAdminMvc.aloTipos" Width="1.5" PointX="1.5" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartAdminMvc.aloZonas" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartAdminMvc.appBuses" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartAdminMvc.appChoferes" Width="1.5" PointX="3" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartAdminMvc.appEstaciones" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartAdminMvc.appParadas" Width="1.5" PointX="8" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartAdminMvc.appPromociones" Width="1.5" PointX="9.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartAdminMvc.appPromocionesSocio" Width="1.5" PointX="10.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartAdminMvc.appRutas" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartAdminMvc.autUsuarios" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartAdminMvc.genActividades" Width="1.5" PointX="11.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartAdminMvc.genTicketsVentas" Width="1.5" PointX="5.25" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartAdminMvc.genTicketsZonas" Width="1.5" PointX="3" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SmartAdminMvc.genTransaccionesVisanet" Width="1.5" PointX="3" PointY="24" IsExpanded="true" />
+        <AssociationConnector Association="SmartAdminMvc.FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartAdminMvc.FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartAdminMvc.FK_aloSorteoInscrip_reserva" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartAdminMvc.FK_dbo_aloReservas_dbo_autUsuarios_gestor_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartAdminMvc.FK_dbo_aloReservas_dbo_autUsuarios_socio_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartAdminMvc.FK_aloSorteoInscrip_sorteo" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartAdminMvc.FK_aloSorteoInscrip_usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartAdminMvc.FK_dbo_aloSorteos_dbo_aloTipos_tipo_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartAdminMvc.FK_aloZonas_Tipos" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartAdminMvc.FK_dbo_rutas_dbo_buses_currBus_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartAdminMvc.FK_appChoferes_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartAdminMvc.FK_dbo_rutas_dbo_chofers_currChofer_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartAdminMvc.FK_dbo_rutaParadas_dbo_estacions_estacion_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartAdminMvc.FK_dbo_genTicketsVentas_dbo_autUsuarios_socio_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartAdminMvc.FK_dbo_genTransaccionesVisanet_dbo_appUsuarios_socio_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartAdminMvc.FK_dbo_genTicketsVentas_dbo_genTicketsZonas_zona_id" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartAdminMvc.FK_dbo_genTicketsVentas_dbo_genTransaccionesVisanet_pagoOnline_Id" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

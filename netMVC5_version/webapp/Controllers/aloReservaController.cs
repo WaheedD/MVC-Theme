@@ -12,7 +12,7 @@ namespace SmartAdminMvc.Controllers
     /*begin*/
     public class aloReservaController : AuthorizedBaseController
     {
-        private static object MapToGridModel(aloReserva o)
+        private static object MapToGridModel(aloReservas o)
         {
             return
                 new
@@ -46,7 +46,7 @@ namespace SmartAdminMvc.Controllers
                 items = items.Where(o => o.codigoReserva.ToLower().Contains(search));
             }
 
-            return Json(new GridModelBuilder<aloReserva>(items, g)
+            return Json(new GridModelBuilder<aloReservas>(items, g)
                 {
                     Key = "Id", // needed for api select, update, tree, nesting, EF
                     GetItem = () => UnitOfWork.AloReservaRepository.GetById(g.Key), // called by the grid.api.update ( edit popupform success js func )
@@ -69,7 +69,7 @@ namespace SmartAdminMvc.Controllers
         {
             if (!ModelState.IsValid) return PartialView(input);
 
-            var entity = new aloReserva
+            var entity = new aloReservas
                 {
                     fecha = input.fecha,
                     fechaEntrada = input.fechaEntrada,

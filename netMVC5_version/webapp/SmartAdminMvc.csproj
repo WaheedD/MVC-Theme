@@ -21,6 +21,7 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -92,6 +93,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\libs\Omu.ValueInjecter.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.IdentityModel.Tokens.Jwt">
       <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.4.0.2.206221351\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
@@ -438,23 +440,23 @@
     <Content Include="Content\themes\wui\pm.png" />
     <Content Include="Content\themes\wui\pm3.png" />
     <Content Include="Global.asax" />
-    <Content Include="packages.config" />
-    <EntityDeploy Include="Models\AdminContext.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AdminContext.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <Content Include="Models\AdminContext.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AdminContext.edmx</DependentUpon>
       <LastGenOutput>AdminContext.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\AdminContext.edmx.diagram">
-      <DependentUpon>AdminContext.edmx</DependentUpon>
-    </Content>
     <Content Include="Models\AdminContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AdminContext.edmx</DependentUpon>
       <LastGenOutput>AdminContext.cs</LastGenOutput>
+    </Content>
+    <Content Include="packages.config" />
+    <EntityDeploy Include="Models\AdminContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AdminContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\AdminContext.edmx.diagram">
+      <DependentUpon>AdminContext.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\SmartAdmin - Release.pubxml" />
     <None Include="Properties\PublishProfiles\SmartAdmin - Debug.pubxml" />
@@ -1074,52 +1076,58 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AdminContext.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\aloAlojamiento.cs">
+    <Compile Include="Models\aloAlojamientos.cs">
       <DependentUpon>AdminContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\aloExcepcione.cs">
+    <Compile Include="Models\aloExcepciones.cs">
       <DependentUpon>AdminContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\aloReserva.cs">
+    <Compile Include="Models\aloReservas.cs">
       <DependentUpon>AdminContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\aloSorteo.cs">
+    <Compile Include="Models\aloSorteoInscrip.cs">
+      <DependentUpon>AdminContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\aloSorteos.cs">
       <DependentUpon>AdminContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aloTipos.cs">
       <DependentUpon>AdminContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\aloZona.cs">
+    <Compile Include="Models\aloZonas.cs">
       <DependentUpon>AdminContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\appBus.cs">
+    <Compile Include="Models\appBuses.cs">
       <DependentUpon>AdminContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\appChofere.cs">
+    <Compile Include="Models\appChoferes.cs">
       <DependentUpon>AdminContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\appEstacione.cs">
+    <Compile Include="Models\appEstaciones.cs">
       <DependentUpon>AdminContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\appParada.cs">
+    <Compile Include="Models\appParadas.cs">
       <DependentUpon>AdminContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\appPromocione.cs">
+    <Compile Include="Models\appPromociones.cs">
       <DependentUpon>AdminContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\appRuta.cs">
+    <Compile Include="Models\appPromocionesSocio.cs">
       <DependentUpon>AdminContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\autUsuario.cs">
+    <Compile Include="Models\appRutas.cs">
       <DependentUpon>AdminContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\genActividade.cs">
+    <Compile Include="Models\autUsuarios.cs">
       <DependentUpon>AdminContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\genTicketsVenta.cs">
+    <Compile Include="Models\genActividades.cs">
       <DependentUpon>AdminContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\genTicketsZona.cs">
+    <Compile Include="Models\genTicketsVentas.cs">
+      <DependentUpon>AdminContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\genTicketsZonas.cs">
       <DependentUpon>AdminContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\genTransaccionesVisanet.cs">

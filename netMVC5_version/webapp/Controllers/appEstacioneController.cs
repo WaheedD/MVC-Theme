@@ -13,7 +13,7 @@ namespace SmartAdminMvc.Controllers
     /*begin*/
     public class appEstacioneController : AuthorizedBaseController
     {
-        private static object MapToGridModel(appEstacione o)
+        private static object MapToGridModel(appEstaciones o)
         {
             return
                 new
@@ -39,7 +39,7 @@ namespace SmartAdminMvc.Controllers
                 items = items.Where(o => o.nombre.ToLower().Contains(search));
             }
 
-            return Json(new GridModelBuilder<appEstacione>(items, g)
+            return Json(new GridModelBuilder<appEstaciones>(items, g)
                 {
                     Key = "Id", // needed for api select, update, tree, nesting, EF
                     GetItem = () => UnitOfWork.AppEstacioneRepository.GetById(int.Parse(g.Key)), // called by the grid.api.update ( edit popupform success js func )
@@ -62,13 +62,11 @@ namespace SmartAdminMvc.Controllers
         {
             if (!ModelState.IsValid) return PartialView(input);
 
-            var entity = new appEstacione
+            var entity = new appEstaciones
             {
                 nombre = input.nombre,
                 descrip = input.descrip,
                 esSede = input.esSede,
-                CreatedAt = DateTimeOffset.Now,
-                Deleted = false,
                 lat = input.lat,
                 lon = input.lon,
                 foto = input.foto,
@@ -107,7 +105,6 @@ namespace SmartAdminMvc.Controllers
             entity.nombre = input.nombre;
             entity.descrip = input.descrip;
             entity.esSede = input.esSede;
-            entity.UpdatedAt = DateTimeOffset.Now;
             entity.lat = input.lat;
             entity.lon = input.lon;
             entity.foto = input.foto;

@@ -13,5 +13,6 @@ namespace SmartAdminMvc.ViewModels.Input
         public string nombre { get; set; }
         public string foto { get; set; }
         public string lic { get; set; }
+        public string idUsuario { get; set; }
     }
 }

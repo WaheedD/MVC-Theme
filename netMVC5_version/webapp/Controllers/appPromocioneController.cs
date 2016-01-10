@@ -13,7 +13,7 @@ namespace SmartAdminMvc.Controllers
     /*begin*/
     public class appPromocioneController : AuthorizedBaseController
     {
-        private static object MapToGridModel(appPromocione o)
+        private static object MapToGridModel(appPromociones o)
         {
             return
                 new
@@ -47,7 +47,7 @@ namespace SmartAdminMvc.Controllers
                 items = items.Where(o => o.desc.ToLower().Contains(search));
             }
 
-            return Json(new GridModelBuilder<appPromocione>(items, g)
+            return Json(new GridModelBuilder<appPromociones>(items, g)
                 {
                     Key = "Id", // needed for api select, update, tree, nesting, EF
                     GetItem = () => UnitOfWork.AppPromocioneRepository.GetById(int.Parse(g.Key)), // called by the grid.api.update ( edit popupform success js func )
@@ -70,7 +70,7 @@ namespace SmartAdminMvc.Controllers
         {
             if (!ModelState.IsValid) return PartialView(input);
 
-            var entity = new appPromocione
+            var entity = new appPromociones
             {
                 desc = input.desc,
                 detalle = input.detalle,

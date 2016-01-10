@@ -11,69 +11,69 @@ namespace SmartAdminMvc.Repositories
 {
     public class UnitOfWork : IDisposable
     {
-        private AdminContext context = new AdminContext();
+        private Entities context = new Entities();
 
-        private GenericRepository<aloAlojamiento> alojamientoRepository;
-        private GenericRepository<aloExcepcione> aloExcepcioneRepository;
-        private GenericRepository<aloReserva> aloReservaRepository;
-        private GenericRepository<aloSorteo> aloSorteoRepository;
+        private GenericRepository<aloAlojamientos> alojamientoRepository;
+        private GenericRepository<aloExcepciones> aloExcepcioneRepository;
+        private GenericRepository<aloReservas> aloReservaRepository;
+        private GenericRepository<aloSorteos> aloSorteoRepository;
         private GenericRepository<aloTipos> aloTipoRepository;
-        private GenericRepository<aloZona> aloZonaRepository;
-        private GenericRepository<appBus> appBusRepository;
-        private GenericRepository<appChofere> appChofereRepository;
-        private GenericRepository<appEstacione> appEstacioneRepository;
-        private GenericRepository<appPromocione> appPromocioneRepository;
-        private GenericRepository<appRuta> appRutaRepository;
-        private GenericRepository<appParada> appParadaRepository;
-        private GenericRepository<autUsuario> autUsuarioRepository;
-        private GenericRepository<genActividade> genActividadeRepository;
-        private GenericRepository<genTicketsVenta> genTicketsVentaRepository;
-        private GenericRepository<genTicketsZona> genTicketsZonaRepository;
+        private GenericRepository<aloZonas> aloZonaRepository;
+        private GenericRepository<appBuses> appBusRepository;
+        private GenericRepository<appChoferes> appChofereRepository;
+        private GenericRepository<appEstaciones> appEstacioneRepository;
+        private GenericRepository<appPromociones> appPromocioneRepository;
+        private GenericRepository<appRutas> appRutaRepository;
+        private GenericRepository<appParadas> appParadaRepository;
+        private GenericRepository<autUsuarios> autUsuarioRepository;
+        private GenericRepository<genActividades> genActividadeRepository;
+        private GenericRepository<genTicketsVentas> genTicketsVentaRepository;
+        private GenericRepository<genTicketsZonas> genTicketsZonaRepository;
         private GenericRepository<genTransaccionesVisanet> genTransaccionesVisanetRepository;
 
-        public GenericRepository<aloAlojamiento> AlojamientoRepository
+        public GenericRepository<aloAlojamientos> AlojamientoRepository
         {
             get
             {
                 if (alojamientoRepository == null)
                 {
-                    alojamientoRepository = new GenericRepository<aloAlojamiento>(context);
+                    alojamientoRepository = new GenericRepository<aloAlojamientos>(context);
                 }
                 return alojamientoRepository;
             }
 
         }
-        public GenericRepository<aloExcepcione> AloExcepcioneRepository
+        public GenericRepository<aloExcepciones> AloExcepcioneRepository
         {
             get
             {
                 if (aloExcepcioneRepository == null)
                 {
-                    aloExcepcioneRepository = new GenericRepository<aloExcepcione>(context);
+                    aloExcepcioneRepository = new GenericRepository<aloExcepciones>(context);
                 }
                 return aloExcepcioneRepository;
             }
 
         }
-        public GenericRepository<aloReserva> AloReservaRepository
+        public GenericRepository<aloReservas> AloReservaRepository
         {
             get
             {
                 if (aloReservaRepository == null)
                 {
-                    aloReservaRepository = new GenericRepository<aloReserva>(context);
+                    aloReservaRepository = new GenericRepository<aloReservas>(context);
                 }
                 return aloReservaRepository;
             }
 
         }
-        public GenericRepository<aloSorteo> AloSorteoRepository
+        public GenericRepository<aloSorteos> AloSorteoRepository
         {
             get
             {
                 if (aloSorteoRepository == null)
                 {
-                    aloSorteoRepository = new GenericRepository<aloSorteo>(context);
+                    aloSorteoRepository = new GenericRepository<aloSorteos>(context);
                 }
                 return aloSorteoRepository;
             }
@@ -89,120 +89,120 @@ namespace SmartAdminMvc.Repositories
                 return aloTipoRepository;
             }
         }
-        public GenericRepository<aloZona> AloZonaRepository
+        public GenericRepository<aloZonas> AloZonaRepository
         {
             get
             {
                 if (aloZonaRepository == null)
                 {
-                    aloZonaRepository = new GenericRepository<aloZona>(context);
+                    aloZonaRepository = new GenericRepository<aloZonas>(context);
                 }
                 return aloZonaRepository;
             }
         }
-        public GenericRepository<autUsuario> AutUsuarioRepository
+        public GenericRepository<autUsuarios> AutUsuarioRepository
         {
             get
             {
                 if (autUsuarioRepository == null)
                 {
-                    autUsuarioRepository = new GenericRepository<autUsuario>(context);
+                    autUsuarioRepository = new GenericRepository<autUsuarios>(context);
                 }
                 return autUsuarioRepository;
             }
         }
 
-        public GenericRepository<appBus> AppBusRepository
+        public GenericRepository<appBuses> AppBusRepository
         {
             get
             {
                 if (appBusRepository == null)
                 {
-                    appBusRepository = new GenericRepository<appBus>(context);
+                    appBusRepository = new GenericRepository<appBuses>(context);
                 }
                 return appBusRepository;
             }
         }
 
-        public GenericRepository<appChofere> AppChofereRepository
+        public GenericRepository<appChoferes> AppChofereRepository
         {
             get
             {
                 if (appChofereRepository == null)
                 {
-                    appChofereRepository = new GenericRepository<appChofere>(context);
+                    appChofereRepository = new GenericRepository<appChoferes>(context);
                 }
                 return appChofereRepository;
             }
         }
 
-        public GenericRepository<appEstacione> AppEstacioneRepository
+        public GenericRepository<appEstaciones> AppEstacioneRepository
         {
             get
             {
                 if (appEstacioneRepository == null)
                 {
-                    appEstacioneRepository = new GenericRepository<appEstacione>(context);
+                    appEstacioneRepository = new GenericRepository<appEstaciones>(context);
                 }
                 return appEstacioneRepository;
             }
         }
         
-        public GenericRepository<appPromocione> AppPromocioneRepository
+        public GenericRepository<appPromociones> AppPromocioneRepository
         {
             get
             {
                 if (appPromocioneRepository == null)
                 {
-                    appPromocioneRepository = new GenericRepository<appPromocione>(context);
+                    appPromocioneRepository = new GenericRepository<appPromociones>(context);
                 }
                 return appPromocioneRepository;
             }
         }
         
-        public GenericRepository<appRuta> AppRutaRepository
+        public GenericRepository<appRutas> AppRutaRepository
         {
             get
             {
                 if (appRutaRepository == null)
                 {
-                    appRutaRepository = new GenericRepository<appRuta>(context);
+                    appRutaRepository = new GenericRepository<appRutas>(context);
                 }
                 return appRutaRepository;
             }
         }
         
-        public GenericRepository<appParada> AppParadaRepository
+        public GenericRepository<appParadas> AppParadaRepository
         {
             get
             {
                 if (appParadaRepository == null)
                 {
-                    appParadaRepository = new GenericRepository<appParada>(context);
+                    appParadaRepository = new GenericRepository<appParadas>(context);
                 }
                 return appParadaRepository;
             }
         }
         
-        public GenericRepository<genActividade> GenActividadeRepository
+        public GenericRepository<genActividades> GenActividadeRepository
         {
             get
             {
                 if (genActividadeRepository == null)
                 {
-                    genActividadeRepository = new GenericRepository<genActividade>(context);
+                    genActividadeRepository = new GenericRepository<genActividades>(context);
                 }
                 return genActividadeRepository;
             }
         }
 
-        public GenericRepository<genTicketsZona> GenTicketsZonaRepository
+        public GenericRepository<genTicketsZonas> GenTicketsZonaRepository
         {
             get
             {
                 if (genTicketsZonaRepository == null)
                 {
-                    genTicketsZonaRepository = new GenericRepository<genTicketsZona>(context);
+                    genTicketsZonaRepository = new GenericRepository<genTicketsZonas>(context);
                 }
                 return genTicketsZonaRepository;
             }
@@ -220,13 +220,13 @@ namespace SmartAdminMvc.Repositories
             }
         }
 
-        public GenericRepository<genTicketsVenta> GenTicketsVentaRepository
+        public GenericRepository<genTicketsVentas> GenTicketsVentaRepository
         {
             get
             {
                 if (genTicketsVentaRepository == null)
                 {
-                    genTicketsVentaRepository = new GenericRepository<genTicketsVenta>(context);
+                    genTicketsVentaRepository = new GenericRepository<genTicketsVentas>(context);
                 }
                 return genTicketsVentaRepository;
             }

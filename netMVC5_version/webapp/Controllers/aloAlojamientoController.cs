@@ -13,7 +13,7 @@ namespace SmartAdminMvc.Controllers
     /*begin*/
     public class aloAlojamientoController : AuthorizedBaseController
     {
-        private static object MapToGridModel(aloAlojamiento o)
+        private static object MapToGridModel(aloAlojamientos o)
         {
             return
                 new
@@ -26,7 +26,7 @@ namespace SmartAdminMvc.Controllers
                     o.precioTempBaja,
                     o.lat,
                     o.lon,
-                    tipo = o.aloTipos != null ? o.aloTipos.nombre : "",
+                    tipo = o.tipo != null ? o.tipo.nombre : "",
                     foto = Helper.ImgHtml(o.foto),
                     o.agrup1,
                     o.agrup2,
@@ -44,7 +44,7 @@ namespace SmartAdminMvc.Controllers
                 items = items.Where(o => o.caracteristicas.ToLower().Contains(search));
             }
 
-            return Json(new GridModelBuilder<aloAlojamiento>(items, g)
+            return Json(new GridModelBuilder<aloAlojamientos>(items, g)
                 {
                     Key = "Id", // needed for api select, update, tree, nesting, EF
                     GetItem = () => UnitOfWork.AlojamientoRepository.GetById(g.Key), // called by the grid.api.update ( edit popupform success js func )
@@ -67,7 +67,7 @@ namespace SmartAdminMvc.Controllers
         {
             if (!ModelState.IsValid) return PartialView(input);
 
-            var entity = new aloAlojamiento
+            var entity = new aloAlojamientos
             {
                 Id = input.Id,
                 personas = input.personas,

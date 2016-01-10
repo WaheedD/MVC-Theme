@@ -12,17 +12,8 @@ namespace SmartAdminMvc.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class appRuta
+    public partial class appRutas
     {
-        public appRuta()
-        {
-            this.appParadas = new HashSet<appParada>();
-            CreatedAt = DateTimeOffset.Now;
-            lastBoard = DateTime.Today;
-            activa = false;
-            Deleted = false;
-        }
-    
         public int Id { get; set; }
         public string nombre { get; set; }
         public string descrip { get; set; }
@@ -34,12 +25,11 @@ namespace SmartAdminMvc.Models
         public bool Deleted { get; set; }
         public double currLat { get; set; }
         public double currLon { get; set; }
+        public System.DateTime lastBoard { get; set; }
         public Nullable<int> currBus_Id { get; set; }
         public Nullable<int> currChofer_Id { get; set; }
-        public System.DateTime lastBoard { get; set; }
     
-        public virtual appBus appBus { get; set; }
-        public virtual appChofere appChofere { get; set; }
-        public virtual ICollection<appParada> appParadas { get; set; }
+        public virtual appBuses appBuses { get; set; }
+        public virtual appChoferes appChoferes { get; set; }
     }
 }

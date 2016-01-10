@@ -12,11 +12,12 @@ namespace SmartAdminMvc.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class aloZona
+    public partial class aloZonas
     {
-        public aloZona()
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public aloZonas()
         {
-            this.aloAlojamientos = new HashSet<aloAlojamiento>();
+            this.aloAlojamientos = new HashSet<aloAlojamientos>();
         }
     
         public string Id { get; set; }
@@ -24,10 +25,13 @@ namespace SmartAdminMvc.Models
         public string desc2 { get; set; }
         public int personas { get; set; }
         public string croquis { get; set; }
-        public double precio { get; set; }
+        public string foto { get; set; }
+        public Nullable<double> precioTempAlta { get; set; }
+        public Nullable<double> precioTempBaja { get; set; }
         public Nullable<int> tipo_Id { get; set; }
     
-        public virtual ICollection<aloAlojamiento> aloAlojamientos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<aloAlojamientos> aloAlojamientos { get; set; }
         public virtual aloTipos aloTipos { get; set; }
     }
 }

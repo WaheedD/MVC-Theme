@@ -13,7 +13,7 @@ namespace SmartAdminMvc.Controllers
     /*begin*/
     public class genActividadeController : AuthorizedBaseController
     {
-        private static object MapToGridModel(genActividade o)
+        private static object MapToGridModel(genActividades o)
         {
             return
                 new
@@ -44,7 +44,7 @@ namespace SmartAdminMvc.Controllers
                 items = items.Where(o => o.desc.ToLower().Contains(search));
             }
 
-            return Json(new GridModelBuilder<genActividade>(items, g)
+            return Json(new GridModelBuilder<genActividades>(items, g)
                 {
                     Key = "id", // needed for api select, update, tree, nesting, EF
                     GetItem = () => UnitOfWork.GenActividadeRepository.GetById(int.Parse(g.Key)), // called by the grid.api.update ( edit popupform success js func )
@@ -67,7 +67,7 @@ namespace SmartAdminMvc.Controllers
         {
             if (!ModelState.IsValid) return PartialView(input);
 
-            var entity = new genActividade
+            var entity = new genActividades
             {
                 desc = input.desc,
                 detalle = input.detalle,

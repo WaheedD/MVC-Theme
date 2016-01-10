@@ -12,25 +12,25 @@ namespace SmartAdminMvc.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class appEstacione
+    public partial class appBuses
     {
-        public appEstacione()
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public appBuses()
         {
-            this.appParadas = new HashSet<appParada>();
+            this.appRutas = new HashSet<appRutas>();
         }
     
         public int Id { get; set; }
         public string nombre { get; set; }
         public string descrip { get; set; }
-        public bool esSede { get; set; }
+        public string placa { get; set; }
+        public double pasajeros { get; set; }
         public byte[] Version { get; set; }
         public System.DateTimeOffset CreatedAt { get; set; }
         public Nullable<System.DateTimeOffset> UpdatedAt { get; set; }
         public bool Deleted { get; set; }
-        public double lat { get; set; }
-        public double lon { get; set; }
-        public string foto { get; set; }
     
-        public virtual ICollection<appParada> appParadas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<appRutas> appRutas { get; set; }
     }
 }

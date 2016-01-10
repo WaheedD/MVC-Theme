@@ -13,7 +13,7 @@ namespace SmartAdminMvc.Controllers
     /*begin*/
     public class appParadaController : AuthorizedBaseController
     {
-        private static object MapToGridModel(appParada o)
+        private static object MapToGridModel(appParadas o)
         {
             return
                 new
@@ -22,7 +22,7 @@ namespace SmartAdminMvc.Controllers
                     o.nombre,
                     hora = o.hora == 999 ? "Destino final" : o.hora.ToString(),
                     min = o.hora == 999 ? 0 : o.min,
-                    estacion = o.appEstacione != null ? o.appEstacione.nombre : "",
+                    estacion = o.appEstaciones != null ? o.appEstaciones.nombre : "",
                     duracion = o.hora == 999 ? 0 : o.duracion,
                     o.esRetorno,
                 };
@@ -38,7 +38,7 @@ namespace SmartAdminMvc.Controllers
                 items = items.Where(o => o.nombre.ToLower().Contains(search));
             }
 
-            return Json(new GridModelBuilder<appParada>(items, g)
+            return Json(new GridModelBuilder<appParadas>(items, g)
                 {
                     Key = "Id", // needed for api select, update, tree, nesting, EF
                     GetItem = () => UnitOfWork.AppParadaRepository.GetById(int.Parse(g.Key)), // called by the grid.api.update ( edit popupform success js func )
@@ -54,7 +54,7 @@ namespace SmartAdminMvc.Controllers
                 items = items.Where(o => o.ruta_Id == ruta_Id);
             }
 
-            return Json(new GridModelBuilder<appParada>(items, g)
+            return Json(new GridModelBuilder<appParadas>(items, g)
             {
                 Key = "Id", // needed for api select, update, tree, nesting, EF
                 GetItem = () => UnitOfWork.AppParadaRepository.GetById(int.Parse(g.Key)), // called by the grid.api.update ( edit popupform success js func )
@@ -81,13 +81,11 @@ namespace SmartAdminMvc.Controllers
         {
             if (!ModelState.IsValid) return PartialView(input);
 
-            var entity = new appParada
+            var entity = new appParadas
             {
                 nombre = input.nombre,
                 hora = input.hora,
                 min = input.hora == 999 ? 0 : input.min,
-                CreatedAt = DateTimeOffset.Now,
-                Deleted = false,
                 estacion_Id = input.estacion_Id,
                 ruta_Id = input.ruta_Id,
                 duracion = input.hora == 999 ? 0 : input.duracion,
@@ -113,7 +111,7 @@ namespace SmartAdminMvc.Controllers
                 nombre = entity.nombre,
                 hora = entity.hora,
                 min = entity.min,
-                estacion_Id = entity.estacion_Id,
+                estacion_Id = entity.appEstaciones.Id,
                 duracion = entity.duracion,
                 esRetorno = entity.esRetorno,
             };
@@ -130,7 +128,6 @@ namespace SmartAdminMvc.Controllers
             entity.nombre = input.nombre;
             entity.hora = input.hora;
             entity.min = input.hora == 999 ? 0 : input.min;
-            entity.UpdatedAt = DateTimeOffset.Now;
             entity.estacion_Id = input.estacion_Id;
             entity.ruta_Id = input.ruta_Id;
             entity.duracion = input.hora == 999 ? 0 : input.duracion;

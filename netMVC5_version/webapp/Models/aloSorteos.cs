@@ -12,26 +12,26 @@ namespace SmartAdminMvc.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class aloTipos
+    public partial class aloSorteos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public aloTipos()
+        public aloSorteos()
         {
-            this.aloSorteos = new HashSet<aloSorteos>();
-            this.aloZonas = new HashSet<aloZonas>();
+            this.aloSorteoInscrip = new HashSet<aloSorteoInscrip>();
         }
     
         public int Id { get; set; }
-        public string nombre { get; set; }
-        public string clase { get; set; }
-        public string croquis { get; set; }
-        public string foto { get; set; }
-        public bool restricFDStempAlta { get; set; }
-        public string idSede_idSede { get; set; }
+        public string detalle { get; set; }
+        public System.DateTime fecha { get; set; }
+        public System.DateTime fechaPago { get; set; }
+        public System.DateTime estadia_desde { get; set; }
+        public System.DateTime estadia_hasta { get; set; }
+        public System.DateTime inscripcion_desde { get; set; }
+        public System.DateTime inscripcion_hasta { get; set; }
+        public Nullable<int> tipo_Id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<aloSorteos> aloSorteos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<aloZonas> aloZonas { get; set; }
+        public virtual ICollection<aloSorteoInscrip> aloSorteoInscrip { get; set; }
+        public virtual aloTipos aloTipos { get; set; }
     }
 }

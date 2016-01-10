@@ -14,7 +14,8 @@ namespace SmartAdminMvc.ViewModels.Input
         public string desc2 { get; set; }
         public int personas { get; set; }
         public string croquis { get; set; }
-        public double precio { get; set; }
+        public double precioAlta { get; set; }
+        public double precioBaja { get; set; }
         [UIHint("Lookup")]
         [Lookup(Fullscreen = true, CustomSearch = true, TableLayout = true)]
         public int? tipo { get; set; }
