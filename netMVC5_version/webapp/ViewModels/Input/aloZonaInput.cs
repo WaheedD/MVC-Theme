@@ -9,9 +9,11 @@ namespace SmartAdminMvc.ViewModels.Input
 {
     public class aloZonaInput
     {
+        [Required]
         public string Id { get; set; }
         public string desc1 { get; set; }
         public string desc2 { get; set; }
+        [Required]
         public int personas { get; set; }
         public string croquis { get; set; }
         public double precioAlta { get; set; }

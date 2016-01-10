@@ -9,11 +9,14 @@ namespace SmartAdminMvc.ViewModels.Input
 {
     public class appEstacioneInput
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string nombre { get; set; }
         public string descrip { get; set; }
+        [Required]
         public bool esSede { get; set; }
+        [Required]
         public double lat { get; set; }
+        [Required]
         public double lon { get; set; }
         public string foto { get; set; }
     }

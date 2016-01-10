@@ -14,31 +14,35 @@ namespace SmartAdminMvc.ViewModels.Input
             this.fecha = DateTime.Today;
             this.fechaEntrada = DateTime.Today;
             this.fechaSalida = DateTime.Today;
-            this.confirmada = false;
         }
         public int? Id { get; set; }
+        [Required]
         public DateTime fecha { get; set; }
+        [Required]
         public DateTime fechaEntrada { get; set; }
+        [Required]
         public DateTime fechaSalida { get; set; }
         public string codigoReserva { get; set; }
         public string comentarios { get; set; }
         public string DEUCON { get; set; }
         public string DEUPRV { get; set; }
+        [Required]
         public double monto { get; set; }
+        [Required]
         public double IGV { get; set; }
+        [Required]
         public double total { get; set; }
         [Required]
         [UIHint("Lookup")]
         [Lookup(Fullscreen = true, CustomSearch = true, TableLayout = true)]
         public string alojamiento { get; set; }
-        [Required]
-        [UIHint("Lookup")]
-        [Lookup(Fullscreen = true, CustomSearch = true, TableLayout = true)]
+        [UIHint("AjaxDropdown")]
+        [AweUrl(Action = "GetItems", Controller = "autUsuario")]
         public string gestor { get; set; }
-        [Required]
-        [UIHint("Lookup")]
-        [Lookup(Fullscreen = true, CustomSearch = true, TableLayout = true)]
+        [UIHint("AjaxDropdown")]
+        [AweUrl(Action = "GetItems", Controller = "autUsuario")]
         public string socio { get; set; }
+        [Required]
         public bool confirmada { get; set; }
         public string emision { get; set; }
     }

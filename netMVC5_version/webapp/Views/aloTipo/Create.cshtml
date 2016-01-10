@@ -3,6 +3,7 @@
 {
     using (Html.Awe().BeginContext())
     {
+        @Html.HiddenFor(o => o.Id)
         @Html.EditorFor(o => o.nombre)
         @Html.EditorFor(o => o.inicioTempAlta)
         @Html.EditorFor(o => o.finTempAlta)
@@ -28,16 +29,16 @@
 
     <div class="bar">
         <div style="float: right;">
-            @Html.Awe().TextBox("txtSearch").Placeholder("search...").CssClass("searchtxt")
+            @Html.Awe().TextBox("txtSearchExcepcione").Placeholder("search...").CssClass("searchtxt")
         </div>
         <button type="button" onclick="awe.open('createExcepcionesGrid_Tipo', { params: { tipo_Id: '@(Model.Id)' } })" class="awe-btn mbtn">Create</button>
     </div>
 
     @(Html.Awe().Grid("ExcepcionesGrid_Tipo")
             .Mod(o => o.PageInfo().ColumnsSelector())
-                    .Url(Url.Action("GridGetItemsForTipo", "aloExcepcione"))
+                    .Url(Url.Action("GridGetItems", "aloExcepcione"))
             .Parameter("tipo_Id", Model.Id)
-            .Parent("txtSearch", "search")
+                    .Parent("txtSearchExcepcione", "search")
             //.Height(350)
             .Groupable(false)
             .Columns(
@@ -64,7 +65,7 @@
 
     <div class="bar">
         <div style="float: right;">
-            @Html.Awe().TextBox("txtSearch").Placeholder("search...").CssClass("searchtxt")
+            @Html.Awe().TextBox("txtSearchSorteo").Placeholder("search...").CssClass("searchtxt")
         </div>
         <button type="button" onclick="awe.open('createSorteosGrid_Tipo', { params: { tipo_Id: '@(Model.Id)' } })" class="awe-btn mbtn">Create</button>
     </div>
@@ -72,9 +73,9 @@
     @Html.Hidden("hide_tipo",true)
     @(Html.Awe().Grid("SorteosGrid_Tipo")
             .Mod(o => o.PageInfo().ColumnsSelector())
-            .Url(Url.Action("GridGetItemsForTipo", "aloSorteo"))
+            .Url(Url.Action("GridGetItems", "aloSorteo"))
             .Parameter("tipo_Id", Model.Id)
-            .Parent("txtSearch", "search")
+                    .Parent("txtSearchSorteo", "search")
             //.Height(350)
             .Groupable(false)
             .Columns(

@@ -14,6 +14,15 @@ namespace SmartAdminMvc.Models
     
     public partial class appRutas
     {
+        public appRuta()
+        {
+            this.appParadas = new HashSet<appParada>();
+            CreatedAt = DateTimeOffset.Now;
+            lastBoard = DateTime.Today;
+            activa = false;
+            Deleted = false;
+        }
+    
         public int Id { get; set; }
         public string nombre { get; set; }
         public string descrip { get; set; }

@@ -19,8 +19,11 @@ namespace SmartAdminMvc.ViewModels.Input
         public int? Id { get; set; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
+        [Required]
         public DateTime desde { get; set; }
+        [Required]
         public DateTime hasta { get; set; }
+        [Required]
         public short porcentaje { get; set; }
         [Required]
         [UIHint("Lookup")]
