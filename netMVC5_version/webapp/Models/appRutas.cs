@@ -14,9 +14,9 @@ namespace SmartAdminMvc.Models
     
     public partial class appRutas
     {
-        public appRuta()
+        public appRutas()
         {
-            this.appParadas = new HashSet<appParada>();
+            this.appParadas = new HashSet<appParadas>();
             CreatedAt = DateTimeOffset.Now;
             lastBoard = DateTime.Today;
             activa = false;
@@ -40,5 +40,6 @@ namespace SmartAdminMvc.Models
     
         public virtual appBuses appBuses { get; set; }
         public virtual appChoferes appChoferes { get; set; }
+        public virtual ICollection<appParadas> appParadas { get; set; }
     }
 }
