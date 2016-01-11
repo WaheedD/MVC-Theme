@@ -268,6 +268,53 @@ C:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC
 C:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\bin\System.Web.WebPages.xml
 C:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\bin\System.Web.WebPages.Deployment.xml
 C:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\bin\System.Web.WebPages.Razor.xml
+C:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\obj\Debug\SmartAdminMvc.csprojResolveAssemblyReference.cache
 C:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\obj\Debug\SmartAdminMvc.dll
 C:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\obj\Debug\SmartAdminMvc.pdb
-C:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\obj\Debug\SmartAdminMvc.csprojResolveAssemblyReference.cache
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\SmartAdminMvc.dll.config
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\SmartAdminMvc.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\SmartAdminMvc.pdb
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\SmartAdminMvc.dll.CodeAnalysisLog.xml
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\SmartAdminMvc.dll.lastcodeanalysissucceeded
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\Antlr3.Runtime.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\EntityFramework.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\EntityFramework.SqlServer.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\ICSharpCode.SharpZipLib.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\Microsoft.AspNet.Identity.Core.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\Microsoft.Web.Infrastructure.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\Newtonsoft.Json.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\NPOI.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\NPOI.OOXML.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\NPOI.OpenXml4Net.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\NPOI.OpenXmlFormats.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\System.IdentityModel.Tokens.Jwt.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\System.Web.Helpers.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\System.Web.Mvc.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\System.Web.Optimization.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\System.Web.Razor.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\System.Web.WebPages.Deployment.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\System.Web.WebPages.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\System.Web.WebPages.Razor.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\WebGrease.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\Antlr3.Runtime.pdb
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\EntityFramework.xml
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\EntityFramework.SqlServer.xml
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\Microsoft.AspNet.Identity.Core.xml
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\Newtonsoft.Json.xml
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\NPOI.xml
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\NPOI.OOXML.xml
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\NPOI.OpenXml4Net.xml
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\System.IdentityModel.Tokens.Jwt.pdb
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\System.IdentityModel.Tokens.Jwt.xml
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\System.Web.Helpers.xml
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\System.Web.Mvc.xml
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\System.Web.Optimization.xml
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\System.Web.Razor.xml
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\System.Web.WebPages.xml
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\System.Web.WebPages.Deployment.xml
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\bin\System.Web.WebPages.Razor.xml
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\obj\Debug\SmartAdminMvc.dll
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\obj\Debug\SmartAdminMvc.pdb
+E:\DOCS\DEV\CRL\Admin\GIT2\netMVC5_version\webapp\obj\Debug\SmartAdminMvc.csprojResolveAssemblyReference.cache

@@ -13,7 +13,7 @@ namespace SmartAdminMvc.Controllers
     /*begin*/
     public class appChofereController : AuthorizedBaseController
     {
-        private static object MapToGridModel(appChofere o)
+        private static object MapToGridModel(appChoferes o)
         {
             return
                 new
@@ -21,7 +21,7 @@ namespace SmartAdminMvc.Controllers
                     o.Id,
                     o.nombre,
                     foto = Helper.ImgHtml(o.foto),
-                    o.lic,
+                    o.lic
                 };
 
         }
@@ -36,7 +36,7 @@ namespace SmartAdminMvc.Controllers
                 items = items.Where(o => o.nombre.ToLower().Contains(search));
             }
 
-            return Json(new GridModelBuilder<appChofere>(items, g)
+            return Json(new GridModelBuilder<appChoferes>(items, g)
                 {
                     Key = "Id", // needed for api select, update, tree, nesting, EF
                     GetItem = () => UnitOfWork.AppChofereRepository.GetById(int.Parse(g.Key)), // called by the grid.api.update ( edit popupform success js func )
@@ -58,13 +58,12 @@ namespace SmartAdminMvc.Controllers
         {
             if (!ModelState.IsValid) return PartialView(input);
 
-            var entity = new appChofere
+            var entity = new appChoferes
             {
                 nombre = input.nombre,
                 foto = input.foto,
-                CreatedAt =DateTimeOffset.Now,
-                Deleted = false,
                 lic = input.lic,
+                usuario_Id=input.idUsuario
             };
 
             UnitOfWork.AppChofereRepository.Insert(entity);
@@ -82,7 +81,7 @@ namespace SmartAdminMvc.Controllers
                 Id = entity.Id,
                 nombre = entity.nombre,
                 foto = entity.foto,
-                lic = entity.lic,
+                lic = entity.lic
             };
 
             return PartialView("Create", input);
@@ -96,7 +95,6 @@ namespace SmartAdminMvc.Controllers
 
             entity.nombre = input.nombre;
             entity.foto = input.foto;
-            entity.UpdatedAt = DateTimeOffset.Now;
             entity.lic = input.lic;
 
             UnitOfWork.AppChofereRepository.Update(entity);

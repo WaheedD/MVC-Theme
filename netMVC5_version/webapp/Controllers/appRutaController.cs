@@ -13,7 +13,7 @@ namespace SmartAdminMvc.Controllers
     /*begin*/
     public class appRutaController : AuthorizedBaseController
     {
-        private static object MapToGridModel(appRuta o)
+        private static object MapToGridModel(appRutas o)
         {
             return
                 new
@@ -25,8 +25,8 @@ namespace SmartAdminMvc.Controllers
                     o.activa,
                     o.currLat,
                     o.currLon,
-                    currBus = o.appBus != null ? o.appBus.nombre : "",
-                    currChofer = o.appChofere != null ? o.appChofere.nombre : "",
+                    currBus = o.appBuses != null ? o.appBuses.nombre : "",
+                    currChofer = o.appChoferes != null ? o.appChoferes.nombre : "",
                     o.lastBoard,
                 };
 
@@ -42,7 +42,7 @@ namespace SmartAdminMvc.Controllers
                 items = items.Where(o => o.nombre.ToLower().Contains(search));
             }
 
-            return Json(new GridModelBuilder<appRuta>(items, g)
+            return Json(new GridModelBuilder<appRutas>(items, g)
                 {
                     Key = "Id", // needed for api select, update, tree, nesting, EF
                     GetItem = () => UnitOfWork.AppRutaRepository.GetById(int.Parse(g.Key)), // called by the grid.api.update ( edit popupform success js func )
@@ -57,7 +57,7 @@ namespace SmartAdminMvc.Controllers
 
         public ActionResult Create()
         {
-            var entity = new appRuta { lastBoard = DateTime.Today };
+            var entity = new appRutas { };
             UnitOfWork.AppRutaRepository.Insert(entity);
             UnitOfWork.Save();
 
@@ -74,12 +74,10 @@ namespace SmartAdminMvc.Controllers
             entity.descrip = input.descrip;
             entity.dias = input.dias == null ? "" : string.Join("-", input.dias);
             entity.activa = input.activa;
-            entity.CreatedAt = DateTimeOffset.Now;
-            entity.Deleted = false;
             entity.currLat = input.currLat;
             entity.currLon = input.currLon;
-            entity.currBus_Id = input.currBus_Id;
-            entity.currChofer_Id = input.currChofer_Id;
+            entity.appBuses = UnitOfWork.AppBusRepository.GetById( input.currBus_Id);
+            entity.appChoferes = UnitOfWork.AppChofereRepository.GetById(input.currChofer_Id);
             entity.lastBoard = input.lastBoard;
 
             UnitOfWork.AppRutaRepository.Update(entity);
@@ -119,7 +117,6 @@ namespace SmartAdminMvc.Controllers
             entity.descrip = input.descrip;
             entity.dias = input.dias == null ? "" : string.Join("-", input.dias);
             entity.activa = input.activa;
-            entity.UpdatedAt = DateTimeOffset.Now;
             entity.currLat = input.currLat;
             entity.currLon = input.currLon;
             entity.currBus_Id = input.currBus_Id;

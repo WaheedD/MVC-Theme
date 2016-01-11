@@ -22,10 +22,10 @@
 </div>
 
 @(Html.Awe().Grid("AlojamientoGrid")
-            .Mod(o => o.PageInfo().ColumnsSelector())
+            .Mod(o => o.PageInfo().ColumnsSelector().ColumnsAutohide()).ColumnsPersistence(Persistence.Local)
                 .Url(Url.Action("GridGetItems", "aloAlojamiento"))
             .Parent("txtSearch", "search")
-        //.Height(350)
+            //.Height(350)
             .Columns(
             new Column { Bind = "Id", Width = 80 },
                             new Column { Bind = "caracteristicas" },
@@ -33,13 +33,11 @@
              new Column { Bind = "personas" },
                         new Column { Bind = "inhabilitado" },
                         new Column { Bind = "precioTempAlta" },
-                        new Column { Bind = "precioTempBaja", Width = 150 },
-                        new Column { Bind = "lat" },
-                        new Column { Bind = "lon" },
+                        new Column { Bind = "precioTempBaja" },
                         new Column { Bind = "tipo" },
                         new Column { Bind = "foto" },
-                        new Column { Bind = "agrup1" },
-                        new Column { Bind = "agrup2" },
+                        new Column { Bind = "agrup1", Hidden=true },
+                        new Column { Bind = "agrup2", Hidden = true },
                         new Column { Bind = "zona" },
 
                 new Column { ClientFormat = GridUtils.EditFormatForGrid("AlojamientoGrid"), Width = 50 },

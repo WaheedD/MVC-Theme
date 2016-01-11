@@ -12,11 +12,12 @@ namespace SmartAdminMvc.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class genTicketsZona
+    public partial class genTicketsZonas
     {
-        public genTicketsZona()
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public genTicketsZonas()
         {
-            this.genTicketsVentas = new HashSet<genTicketsVenta>();
+            this.genTicketsVentas = new HashSet<genTicketsVentas>();
         }
     
         public int id { get; set; }
@@ -25,10 +26,10 @@ namespace SmartAdminMvc.Models
         public int cupos { get; set; }
         public int vendidos { get; set; }
         public string croquis { get; set; }
-        public int porcSobreventa { get; set; }
         public int actividad_id { get; set; }
+        public int porcSobreventa { get; set; }
     
-        public virtual genActividade genActividade { get; set; }
-        public virtual ICollection<genTicketsVenta> genTicketsVentas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<genTicketsVentas> genTicketsVentas { get; set; }
     }
 }

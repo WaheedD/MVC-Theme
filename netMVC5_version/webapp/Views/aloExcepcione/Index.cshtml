@@ -21,7 +21,7 @@
     </div>
 
     @(Html.Awe().Grid("ExcepcionesGrid")
-            .Mod(o => o.PageInfo().ColumnsSelector())
+            .Mod(o => o.PageInfo().ColumnsSelector().ColumnsAutohide()).ColumnsPersistence(Persistence.Local)
                         .Url(Url.Action("GridGetItems", "aloExcepcione"))
             .Parent("txtSearch", "search")
             //.Height(350)
@@ -31,7 +31,6 @@
                 new Column { Bind = "descripcion" },
                 new Column { Bind = "desde" },
                 new Column { Bind = "hasta" },
-                new Column { Bind = "porcentaje" },
                 new Column { Bind = "tipo" },
                 new Column { Bind = "tipoExcep" },
                     new Column { ClientFormat = GridUtils.EditFormatForGrid("ExcepcionesGrid"), Width = 50 },

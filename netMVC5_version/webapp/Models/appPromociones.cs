@@ -12,30 +12,26 @@ namespace SmartAdminMvc.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class appRuta
+    public partial class appPromociones
     {
-        public appRuta()
-        {
-            this.appParadas = new HashSet<appParada>();
-        }
-    
         public int Id { get; set; }
-        public string nombre { get; set; }
-        public string descrip { get; set; }
-        public string dias { get; set; }
-        public bool activa { get; set; }
+        public string desc { get; set; }
+        public string detalle { get; set; }
+        public string marca { get; set; }
+        public int nroCupones { get; set; }
+        public string foto { get; set; }
+        public string email { get; set; }
+        public string tel { get; set; }
+        public string direccion { get; set; }
+        public System.DateTime desde { get; set; }
+        public System.DateTime hasta { get; set; }
+        public int sexo { get; set; }
+        public int edadMax { get; set; }
+        public int edadMin { get; set; }
+        public int tipoAsociado { get; set; }
         public byte[] Version { get; set; }
         public System.DateTimeOffset CreatedAt { get; set; }
         public Nullable<System.DateTimeOffset> UpdatedAt { get; set; }
         public bool Deleted { get; set; }
-        public double currLat { get; set; }
-        public double currLon { get; set; }
-        public Nullable<int> currBus_Id { get; set; }
-        public Nullable<int> currChofer_Id { get; set; }
-        public System.DateTime lastBoard { get; set; }
-    
-        public virtual appBus appBus { get; set; }
-        public virtual appChofere appChofere { get; set; }
-        public virtual ICollection<appParada> appParadas { get; set; }
     }
 }

@@ -21,7 +21,7 @@
     </div>
 
     @(Html.Awe().Grid("genActividadeGrid")
-            .Mod(o => o.PageInfo().ColumnsSelector())
+            .Mod(o => o.PageInfo().ColumnsSelector().ColumnsAutohide()).ColumnsPersistence(Persistence.Local)
                         .Url(Url.Action("GridGetItems", "genActividade"))
             .Parent("txtSearch", "search")
             //.Height(350)

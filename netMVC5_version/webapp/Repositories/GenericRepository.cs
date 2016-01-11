@@ -13,10 +13,10 @@ namespace SmartAdminMvc.Repositories
 {
     public class GenericRepository<TEntity> where TEntity : class
     {
-        internal AdminContext context;
+        internal Entities context;
         internal DbSet<TEntity> dbSet;
 
-        public GenericRepository(AdminContext context)
+        public GenericRepository(Entities context)
         {
             this.context = context;
             this.dbSet = context.Set<TEntity>();
@@ -63,7 +63,7 @@ namespace SmartAdminMvc.Repositories
         public virtual void Update(TEntity entity)
         {
             dbSet.Attach(entity);
-            context.Entry(entity).State = EntityState.Modified;
+            context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
         }
 
         public virtual void Delete(object id)
@@ -74,7 +74,7 @@ namespace SmartAdminMvc.Repositories
 
         public virtual void Delete(TEntity entity)
         {
-            if (context.Entry(entity).State == EntityState.Detached)
+            if (context.Entry(entity).State == System.Data.Entity.EntityState.Detached)
             {
                 dbSet.Attach(entity);
             }

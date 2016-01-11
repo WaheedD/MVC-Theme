@@ -12,7 +12,7 @@
          <Members>
           <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-10 23:00:42Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-11 17:27:01Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalWarning" Path="c:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\Models" File="aloAlojamiento.cs" Line="17">'aloAlojamiento.aloAlojamiento()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;aloAlojamiento..ctor()&#xD;&#xA;aloAlojamiento.set_aloReservas(ICollection&lt;aloReserva&gt;):Void</Issue>
             </Message>
            </Messages>
@@ -23,7 +23,7 @@
          <Members>
           <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-10 23:00:42Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-11 17:27:01Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalWarning" Path="c:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\Models" File="aloTipos.cs" Line="17">'aloTipos.aloTipos()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;aloTipos..ctor()&#xD;&#xA;aloTipos.set_aloAlojamientos(ICollection&lt;aloAlojamiento&gt;):Void</Issue>
              <Issue Certainty="95" Level="CriticalWarning" Path="c:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\Models" File="aloTipos.cs" Line="17">'aloTipos.aloTipos()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;aloTipos..ctor()&#xD;&#xA;aloTipos.set_aloExcepciones(ICollection&lt;aloExcepcione&gt;):Void</Issue>
              <Issue Certainty="95" Level="CriticalWarning" Path="c:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\Models" File="aloTipos.cs" Line="17">'aloTipos.aloTipos()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;aloTipos..ctor()&#xD;&#xA;aloTipos.set_aloSorteos(ICollection&lt;aloSorteo&gt;):Void</Issue>
@@ -37,7 +37,7 @@
          <Members>
           <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-10 23:00:42Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-11 17:27:01Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalWarning" Path="c:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\Models" File="aloZona.cs" Line="17">'aloZona.aloZona()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;aloZona..ctor()&#xD;&#xA;aloZona.set_aloAlojamientos(ICollection&lt;aloAlojamiento&gt;):Void</Issue>
             </Message>
            </Messages>
@@ -48,7 +48,7 @@
          <Members>
           <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-10 23:00:42Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-11 17:27:01Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalWarning" Path="c:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\Models" File="appBus.cs" Line="17">'appBus.appBus()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;appBus..ctor()&#xD;&#xA;appBus.set_appRutas(ICollection&lt;appRuta&gt;):Void</Issue>
             </Message>
            </Messages>
@@ -59,7 +59,7 @@
          <Members>
           <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-10 23:00:42Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-11 17:27:01Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalWarning" Path="c:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\Models" File="appChofere.cs" Line="17">'appChofere.appChofere()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;appChofere..ctor()&#xD;&#xA;appChofere.set_appRutas(ICollection&lt;appRuta&gt;):Void</Issue>
             </Message>
            </Messages>
@@ -70,7 +70,7 @@
          <Members>
           <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-10 23:00:42Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-11 17:27:01Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalWarning" Path="c:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\Models" File="appEstacione.cs" Line="17">'appEstacione.appEstacione()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;appEstacione..ctor()&#xD;&#xA;appEstacione.set_appParadas(ICollection&lt;appParada&gt;):Void</Issue>
             </Message>
            </Messages>
@@ -81,7 +81,7 @@
          <Members>
           <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-10 23:00:42Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-11 17:27:01Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalWarning" Path="c:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\Models" File="appRuta.cs" Line="17">'appRuta.appRuta()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;appRuta..ctor()&#xD;&#xA;appRuta.set_appParadas(ICollection&lt;appParada&gt;):Void</Issue>
             </Message>
            </Messages>
@@ -92,7 +92,7 @@
          <Members>
           <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-10 23:00:42Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-11 17:27:01Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalWarning" Path="c:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\Models" File="autUsuario.cs" Line="17">'autUsuario.autUsuario()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;autUsuario..ctor()&#xD;&#xA;autUsuario.set_aloReservas(ICollection&lt;aloReserva&gt;):Void</Issue>
              <Issue Certainty="95" Level="CriticalWarning" Path="c:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\Models" File="autUsuario.cs" Line="17">'autUsuario.autUsuario()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;autUsuario..ctor()&#xD;&#xA;autUsuario.set_aloReservas1(ICollection&lt;aloReserva&gt;):Void</Issue>
              <Issue Certainty="95" Level="CriticalWarning" Path="c:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\Models" File="autUsuario.cs" Line="17">'autUsuario.autUsuario()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;autUsuario..ctor()&#xD;&#xA;autUsuario.set_genTicketsVentas(ICollection&lt;genTicketsVenta&gt;):Void</Issue>
@@ -106,7 +106,7 @@
          <Members>
           <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-10 23:00:42Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-11 17:27:01Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalWarning" Path="c:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\Models" File="genActividade.cs" Line="17">'genActividade.genActividade()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;genActividade..ctor()&#xD;&#xA;genActividade.set_genTicketsZonas(ICollection&lt;genTicketsZona&gt;):Void</Issue>
             </Message>
            </Messages>
@@ -117,7 +117,7 @@
          <Members>
           <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-10 23:00:42Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-11 17:27:01Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalWarning" Path="c:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\Models" File="genTicketsZona.cs" Line="17">'genTicketsZona.genTicketsZona()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;genTicketsZona..ctor()&#xD;&#xA;genTicketsZona.set_genTicketsVentas(ICollection&lt;genTicketsVenta&gt;):Void</Issue>
             </Message>
            </Messages>
@@ -128,7 +128,7 @@
          <Members>
           <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-10 23:00:42Z" FixCategory="NonBreaking">
+            <Message TypeName="DoNotCallOverridableMethodsInConstructors" Category="Microsoft.Usage" CheckId="CA2214" Status="Active" Created="2016-01-11 17:27:01Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="CriticalWarning" Path="c:\WaheedData-Desktop\D - Working\Clients\Jandieg Barcla\MVC Theme - Working\MVC-Theme\netMVC5_version\webapp\Models" File="genTransaccionesVisanet.cs" Line="17">'genTransaccionesVisanet.genTransaccionesVisanet()' contains a call chain that results in a call to a virtual method defined by the class. Review the following call stack for unintended consequences: &#xD;&#xA;&#xD;&#xA;genTransaccionesVisanet..ctor()&#xD;&#xA;genTransaccionesVisanet.set_genTicketsVentas(ICollection&lt;genTicketsVenta&gt;):Void</Issue>
             </Message>
            </Messages>

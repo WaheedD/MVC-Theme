@@ -9,7 +9,7 @@ namespace SmartAdminMvc.Helpers
     {
         public static string ImgHtml(string v)
         {
-            return string.IsNullOrWhiteSpace(v) ? "" : "<img src='" + v + "' />";
+            return string.IsNullOrWhiteSpace(v) ? "" : @"<img src='\uploads\images\" + v + "'style='height:120px;width:120px;' />";
         }
     }
 }

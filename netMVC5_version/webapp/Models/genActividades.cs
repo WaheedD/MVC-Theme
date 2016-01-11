@@ -12,18 +12,21 @@ namespace SmartAdminMvc.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class aloSorteo
+    public partial class genActividades
     {
-        public int Id { get; set; }
+        public int id { get; set; }
+        public string desc { get; set; }
         public string detalle { get; set; }
+        public string idSede { get; set; }
+        public string lugar { get; set; }
         public System.DateTime fecha { get; set; }
-        public System.DateTime fechaPago { get; set; }
-        public System.DateTime estadia_desde { get; set; }
-        public System.DateTime estadia_hasta { get; set; }
-        public System.DateTime inscripcion_desde { get; set; }
-        public System.DateTime inscripcion_hasta { get; set; }
-        public Nullable<int> tipo_Id { get; set; }
-    
-        public virtual aloTipos aloTipos { get; set; }
+        public string foto { get; set; }
+        public string tel { get; set; }
+        public string mail { get; set; }
+        public bool ventaTickets { get; set; }
+        public string blogPost { get; set; }
+        public string refCosto { get; set; }
+        public System.DateTime ventaDesde { get; set; }
+        public System.DateTime ventaHasta { get; set; }
     }
 }

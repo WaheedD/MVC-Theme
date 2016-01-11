@@ -12,26 +12,16 @@ namespace SmartAdminMvc.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class appPromocione
+    public partial class appPromocionesSocio
     {
-        public int Id { get; set; }
-        public string desc { get; set; }
-        public string detalle { get; set; }
-        public string foto { get; set; }
-        public System.DateTime desde { get; set; }
-        public System.DateTime hasta { get; set; }
-        public int sexo { get; set; }
-        public int edadMax { get; set; }
-        public int edadMin { get; set; }
-        public int tipoAsociado { get; set; }
+        public string Id { get; set; }
+        public int cuponesUsados { get; set; }
+        public Nullable<System.DateTime> ultimoUso { get; set; }
         public byte[] Version { get; set; }
         public System.DateTimeOffset CreatedAt { get; set; }
         public Nullable<System.DateTimeOffset> UpdatedAt { get; set; }
         public bool Deleted { get; set; }
-        public int nroCupones { get; set; }
-        public string marca { get; set; }
-        public string email { get; set; }
-        public string tel { get; set; }
-        public string direccion { get; set; }
+        public Nullable<int> idPromo_Id { get; set; }
+        public string socio_Id { get; set; }
     }
 }

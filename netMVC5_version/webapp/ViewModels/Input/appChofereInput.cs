@@ -11,7 +11,9 @@ namespace SmartAdminMvc.ViewModels.Input
     {
         public int? Id { get; set; }
         public string nombre { get; set; }
+        [UIHint("FileUpload")]
         public string foto { get; set; }
         public string lic { get; set; }
+        public string idUsuario { get; set; }
     }
 }

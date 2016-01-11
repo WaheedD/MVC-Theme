@@ -12,25 +12,34 @@ namespace SmartAdminMvc.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class appEstacione
+    public partial class appRutas
     {
-        public appEstacione()
+        public appRutas()
         {
-            this.appParadas = new HashSet<appParada>();
+            this.appParadas = new HashSet<appParadas>();
+            CreatedAt = DateTimeOffset.Now;
+            lastBoard = DateTime.Today;
+            activa = false;
+            Deleted = false;
         }
     
         public int Id { get; set; }
         public string nombre { get; set; }
         public string descrip { get; set; }
-        public bool esSede { get; set; }
+        public string dias { get; set; }
+        public bool activa { get; set; }
         public byte[] Version { get; set; }
         public System.DateTimeOffset CreatedAt { get; set; }
         public Nullable<System.DateTimeOffset> UpdatedAt { get; set; }
         public bool Deleted { get; set; }
-        public double lat { get; set; }
-        public double lon { get; set; }
-        public string foto { get; set; }
+        public double currLat { get; set; }
+        public double currLon { get; set; }
+        public System.DateTime lastBoard { get; set; }
+        public Nullable<int> currBus_Id { get; set; }
+        public Nullable<int> currChofer_Id { get; set; }
     
-        public virtual ICollection<appParada> appParadas { get; set; }
+        public virtual appBuses appBuses { get; set; }
+        public virtual appChoferes appChoferes { get; set; }
+        public virtual ICollection<appParadas> appParadas { get; set; }
     }
 }

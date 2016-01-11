@@ -6,5 +6,7 @@
         @Html.EditorFor(o => o.nombre)
         @Html.EditorFor(o => o.foto)
         @Html.EditorFor(o => o.lic)
+        @Html.Awe().AjaxDropdownFor(o => o.idUsuario).Url(Url.Action("getPersonal", "autUsuario"))
     }
 }
+

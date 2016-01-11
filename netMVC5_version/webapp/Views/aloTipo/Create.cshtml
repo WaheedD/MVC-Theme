@@ -5,12 +5,8 @@
     {
         @Html.HiddenFor(o => o.Id)
         @Html.EditorFor(o => o.nombre)
-        @Html.EditorFor(o => o.inicioTempAlta)
-        @Html.EditorFor(o => o.finTempAlta)
         @Html.EditorFor(o => o.clase)
         @Html.EditorFor(o => o.croquis)
-        @Html.EditorFor(o => o.precioTempAlta)
-        @Html.EditorFor(o => o.precioTempBaja)
         @Html.EditorFor(o => o.idSede)
         @Html.EditorFor(o => o.restricFDStempAlta)
     }
@@ -35,7 +31,7 @@
     </div>
 
     @(Html.Awe().Grid("ExcepcionesGrid_Tipo")
-            .Mod(o => o.PageInfo().ColumnsSelector())
+            .Mod(o => o.PageInfo().ColumnsSelector().ColumnsAutohide()).ColumnsPersistence(Persistence.Local)
                     .Url(Url.Action("GridGetItems", "aloExcepcione"))
             .Parameter("tipo_Id", Model.Id)
                     .Parent("txtSearchExcepcione", "search")
@@ -72,7 +68,7 @@
 
     @Html.Hidden("hide_tipo",true)
     @(Html.Awe().Grid("SorteosGrid_Tipo")
-            .Mod(o => o.PageInfo().ColumnsSelector())
+            .Mod(o => o.PageInfo().ColumnsSelector().ColumnsAutohide()).ColumnsPersistence(Persistence.Local)
             .Url(Url.Action("GridGetItems", "aloSorteo"))
             .Parameter("tipo_Id", Model.Id)
                     .Parent("txtSearchSorteo", "search")

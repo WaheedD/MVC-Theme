@@ -12,7 +12,7 @@ namespace SmartAdminMvc.Controllers
     /*begin*/
     public class genTicketsVentaController : AuthorizedBaseController
     {
-        private static object MapToGridModel(genTicketsVenta o)
+        private static object MapToGridModel(genTicketsVentas o)
         {
             return
                 new
@@ -49,7 +49,7 @@ namespace SmartAdminMvc.Controllers
                 items = items.Where(o => o.concepto.ToLower().Contains(search));
             }
 
-            return Json(new GridModelBuilder<genTicketsVenta>(items, g)
+            return Json(new GridModelBuilder<genTicketsVentas>(items, g)
                 {
                     Key = "idEntrada", // needed for api select, update, tree, nesting, EF
                     GetItem = () => UnitOfWork.GenTicketsVentaRepository.GetById(g.Key), // called by the grid.api.update ( edit popupform success js func )
@@ -72,7 +72,7 @@ namespace SmartAdminMvc.Controllers
         {
             if (!ModelState.IsValid) return PartialView(input);
 
-            var entity = new genTicketsVenta
+            var entity = new genTicketsVentas
             {
                 idEntrada = input.idEntrada,
                 cantidad_real = input.cantidad_real,

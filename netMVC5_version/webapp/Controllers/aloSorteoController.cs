@@ -12,7 +12,7 @@ namespace SmartAdminMvc.Controllers
     /*begin*/
     public class aloSorteoController : AuthorizedBaseController
     {
-        private static object MapToGridModel(aloSorteo o)
+        private static object MapToGridModel(aloSorteos o)
         {
             return
                 new
@@ -29,7 +29,7 @@ namespace SmartAdminMvc.Controllers
                 };
         }
 
-        public ActionResult GridGetItems(GridParams g, string search, int tipo_Id=0)
+        public ActionResult GridGetItems(GridParams g, string search)
         {
             search = (search ?? "").ToLower();
             var items = UnitOfWork.AloSorteoRepository.Get();
@@ -38,19 +38,30 @@ namespace SmartAdminMvc.Controllers
             {
                 items = items.Where(o => o.detalle.ToLower().Contains(search));
             }
-            if (tipo_Id > 0)
-            {
-                items = items.Where(o => o.tipo_Id == tipo_Id);
-            }
 
-            return Json(new GridModelBuilder<aloSorteo>(items, g)
+            return Json(new GridModelBuilder<aloSorteos>(items, g)
                 {
                     Key = "Id", // needed for api select, update, tree, nesting, EF
                     GetItem = () => UnitOfWork.AloSorteoRepository.GetById(int.Parse(g.Key)), // called by the grid.api.update ( edit popupform success js func )
                     Map = MapToGridModel
                 }.Build());
         }
-        
+        public ActionResult GridGetItemsForTipo(GridParams g, int tipo_Id)
+        {
+            var items = UnitOfWork.AloSorteoRepository.Get();
+
+            if (tipo_Id > 0)
+            {
+                items = items.Where(o => o.tipo_Id == tipo_Id);
+            }
+
+            return Json(new GridModelBuilder<aloSorteos>(items, g)
+            {
+                Key = "Id", // needed for api select, update, tree, nesting, EF
+                GetItem = () => UnitOfWork.AloSorteoRepository.GetById(int.Parse(g.Key)), // called by the grid.api.update ( edit popupform success js func )
+                Map = MapToGridModel
+            }.Build());
+        }
         public ActionResult Index()
         {
             return View();
@@ -70,7 +81,7 @@ namespace SmartAdminMvc.Controllers
         {
             if (!ModelState.IsValid) return PartialView(input);
 
-            var entity = new aloSorteo
+            var entity = new aloSorteos
                 {
                     detalle = input.detalle,
                     fecha = input.fecha,

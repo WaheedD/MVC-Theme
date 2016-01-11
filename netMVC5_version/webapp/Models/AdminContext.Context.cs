@@ -13,9 +13,9 @@ namespace SmartAdminMvc.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AdminContext : DbContext
+    public partial class Entities : DbContext
     {
-        public AdminContext()
+        public Entities()
             : base("name=AdminContext")
         {
         }
@@ -25,22 +25,24 @@ namespace SmartAdminMvc.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<aloAlojamiento> aloAlojamientos { get; set; }
-        public virtual DbSet<aloExcepcione> aloExcepciones { get; set; }
-        public virtual DbSet<aloReserva> aloReservas { get; set; }
-        public virtual DbSet<aloSorteo> aloSorteos { get; set; }
+        public virtual DbSet<aloAlojamientos> aloAlojamientos { get; set; }
+        public virtual DbSet<aloExcepciones> aloExcepciones { get; set; }
+        public virtual DbSet<aloReservas> aloReservas { get; set; }
+        public virtual DbSet<aloSorteoInscrip> aloSorteoInscrip { get; set; }
+        public virtual DbSet<aloSorteos> aloSorteos { get; set; }
         public virtual DbSet<aloTipos> aloTipos { get; set; }
-        public virtual DbSet<aloZona> aloZonas { get; set; }
-        public virtual DbSet<autUsuario> autUsuarios { get; set; }
-        public virtual DbSet<appBus> appBuses { get; set; }
-        public virtual DbSet<appChofere> appChoferes { get; set; }
-        public virtual DbSet<appEstacione> appEstaciones { get; set; }
-        public virtual DbSet<appParada> appParadas { get; set; }
-        public virtual DbSet<appPromocione> appPromociones { get; set; }
-        public virtual DbSet<appRuta> appRutas { get; set; }
-        public virtual DbSet<genActividade> genActividades { get; set; }
-        public virtual DbSet<genTicketsVenta> genTicketsVentas { get; set; }
-        public virtual DbSet<genTicketsZona> genTicketsZonas { get; set; }
-        public virtual DbSet<genTransaccionesVisanet> genTransaccionesVisanets { get; set; }
+        public virtual DbSet<aloZonas> aloZonas { get; set; }
+        public virtual DbSet<appBuses> appBuses { get; set; }
+        public virtual DbSet<appChoferes> appChoferes { get; set; }
+        public virtual DbSet<appEstaciones> appEstaciones { get; set; }
+        public virtual DbSet<appParadas> appParadas { get; set; }
+        public virtual DbSet<appPromociones> appPromociones { get; set; }
+        public virtual DbSet<appPromocionesSocio> appPromocionesSocio { get; set; }
+        public virtual DbSet<appRutas> appRutas { get; set; }
+        public virtual DbSet<autUsuarios> autUsuarios { get; set; }
+        public virtual DbSet<genActividades> genActividades { get; set; }
+        public virtual DbSet<genTicketsVentas> genTicketsVentas { get; set; }
+        public virtual DbSet<genTicketsZonas> genTicketsZonas { get; set; }
+        public virtual DbSet<genTransaccionesVisanet> genTransaccionesVisanet { get; set; }
     }
 }

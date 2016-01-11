@@ -12,7 +12,7 @@ namespace SmartAdminMvc.Controllers
     /*begin*/
     public class aloZonaController : AuthorizedBaseController
     {
-        private static object MapToGridModel(aloZona o)
+        private static object MapToGridModel(aloZonas o)
         {
             return
                 new
@@ -22,7 +22,8 @@ namespace SmartAdminMvc.Controllers
                     o.desc2,
                     o.personas,
                     o.croquis,
-                    o.precio,
+                    o.precioTempAlta,
+                    o.precioTempBaja,
                     tipo = o.aloTipos != null ? o.aloTipos.nombre : "", //.tipo_Id,
                 };
         }
@@ -37,7 +38,7 @@ namespace SmartAdminMvc.Controllers
                 items = items.Where(o => o.desc1.ToLower().Contains(search));
             }
 
-            return Json(new GridModelBuilder<aloZona>(items, g)
+            return Json(new GridModelBuilder<aloZonas>(items, g)
                 {
                     Key = "Id", // needed for api select, update, tree, nesting, EF
                     GetItem = () => UnitOfWork.AloZonaRepository.GetById(g.Key), // called by the grid.api.update ( edit popupform success js func )
@@ -60,14 +61,15 @@ namespace SmartAdminMvc.Controllers
         {
             if (!ModelState.IsValid) return PartialView(input);
 
-            var entity = new aloZona
+            var entity = new aloZonas
             {
                 Id = input.Id,
                 desc1 = input.desc1,
                 desc2 = input.desc2,
                 personas = input.personas,
                 croquis = input.croquis,
-                precio = input.precio,
+                precioTempAlta = input.precioAlta,
+                precioTempBaja= input.precioBaja,
                 tipo_Id = input.tipo,
             };
 
@@ -88,7 +90,8 @@ namespace SmartAdminMvc.Controllers
                 desc2 = entity.desc2,
                 personas = entity.personas,
                 croquis = entity.croquis,
-                precio = entity.precio,
+                precioAlta = entity.precioTempAlta??0,
+                precioBaja = entity.precioTempBaja??0,
                 tipo = entity.tipo_Id,
             };
 
@@ -105,7 +108,8 @@ namespace SmartAdminMvc.Controllers
             entity.desc2 = input.desc2;
             entity.personas = input.personas;
             entity.croquis = input.croquis;
-            entity.precio = input.precio;
+            entity.precioTempAlta = input.precioAlta;
+            entity.precioTempBaja = input.precioBaja;
             entity.tipo_Id = input.tipo;
 
             UnitOfWork.AloZonaRepository.Update(entity);

@@ -12,7 +12,7 @@ namespace SmartAdminMvc.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class genTicketsVenta
+    public partial class genTicketsVentas
     {
         public string idEntrada { get; set; }
         public int cantidad_real { get; set; }
@@ -34,8 +34,8 @@ namespace SmartAdminMvc.Models
         public Nullable<int> zona_id { get; set; }
         public int idPrecio { get; set; }
     
-        public virtual autUsuario autUsuario { get; set; }
-        public virtual genTicketsZona genTicketsZona { get; set; }
+        public virtual autUsuarios autUsuarios { get; set; }
+        public virtual genTicketsZonas genTicketsZonas { get; set; }
         public virtual genTransaccionesVisanet genTransaccionesVisanet { get; set; }
     }
 }

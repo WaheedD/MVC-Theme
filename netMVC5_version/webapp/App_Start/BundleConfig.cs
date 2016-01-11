@@ -80,7 +80,10 @@ namespace SmartAdminMvc
                 "~/Scripts/awe/AwesomeMvc.js",
                 "~/Scripts/awe/awem.js",
                 "~/Scripts/awe/utils.js",
-                "~/Scripts/awe/Site.js")
+                "~/Scripts/awe/Site.js",
+                "~/Scripts/bootstrap/jquery.ui.widget.js",
+                "~/Scripts/bootstrap/jquery.fileupload.js",
+                "~/Scripts/FileUpload.js")
                 );
 
             BundleTable.EnableOptimizations = true;

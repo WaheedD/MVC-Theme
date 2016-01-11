@@ -21,7 +21,7 @@
     </div>
 
     @(Html.Awe().Grid("appPromocioneGrid")
-            .Mod(o => o.PageInfo().ColumnsSelector())
+            .Mod(o => o.PageInfo().ColumnsSelector().ColumnsAutohide()).ColumnsPersistence(Persistence.Local)
                         .Url(Url.Action("GridGetItems", "appPromocione"))
             .Parent("txtSearch", "search")
             //.Height(350)

@@ -21,7 +21,7 @@
     </div>
 
     @(Html.Awe().Grid("aloTipoGrid")
-            .Mod(o => o.PageInfo().ColumnsSelector())
+            .Mod(o => o.PageInfo().ColumnsSelector().ColumnsAutohide()).ColumnsPersistence(Persistence.Local)
             .Url(Url.Action("GridGetItems", "aloTipo"))
             .Parent("txtSearch", "search")
             //.Height(350)
@@ -32,8 +32,6 @@
             new Column { Bind = "finTempAlta" },
             new Column { Bind = "clase" },
             new Column { Bind = "croquis" },
-            new Column { Bind = "precioTempAlta" },
-            new Column { Bind = "precioTempBaja",Width=150 },
             new Column { Bind = "idSede" },
                     new Column { Bind = "restricFDStempAlta", Width = 170 },
             new Column { ClientFormat = GridUtils.EditFormatForGrid("aloTipoGrid"), Width = 50 },

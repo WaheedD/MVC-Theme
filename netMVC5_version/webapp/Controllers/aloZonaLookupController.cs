@@ -38,7 +38,7 @@ namespace SmartAdminMvc.Controllers.Awesome.Lookup
 
         public ActionResult GetItem(string v)
         {
-            var o = string.IsNullOrWhiteSpace(v) || v == "0" ? new aloZona() : UnitOfWork.AloZonaRepository.GetById(v);
+            var o = string.IsNullOrWhiteSpace(v) || v == "0" ? new aloZonas() : UnitOfWork.AloZonaRepository.GetById(v);
 
             return Json(new KeyContent(o.Id, o.Id));
         }

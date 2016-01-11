@@ -12,7 +12,7 @@ namespace SmartAdminMvc.Controllers
     /*begin*/
     public class appBusController : AuthorizedBaseController
     {
-        private static object MapToGridModel(appBus o)
+        private static object MapToGridModel(appBuses o)
         {
             return
                 new
@@ -21,7 +21,7 @@ namespace SmartAdminMvc.Controllers
                     o.nombre,
                     o.descrip,
                     o.placa,
-                    o.pasajeros,
+                    o.pasajeros
                 };
         }
 
@@ -35,7 +35,7 @@ namespace SmartAdminMvc.Controllers
                 items = items.Where(o => o.nombre.ToLower().Contains(search));
             }
 
-            return Json(new GridModelBuilder<appBus>(items, g)
+            return Json(new GridModelBuilder<appBuses>(items, g)
                 {
                     Key = "Id", // needed for api select, update, tree, nesting, EF
                     GetItem = () => UnitOfWork.AppBusRepository.GetById(int.Parse(g.Key)), // called by the grid.api.update ( edit popupform success js func )
@@ -58,14 +58,12 @@ namespace SmartAdminMvc.Controllers
         {
             if (!ModelState.IsValid) return PartialView(input);
 
-            var entity = new appBus
+            var entity = new appBuses
             {
                 nombre = input.nombre,
                 descrip = input.descrip,
                 placa = input.placa,
-                pasajeros = input.pasajeros,
-                CreatedAt = DateTimeOffset.Now,
-                Deleted = false,
+                pasajeros = input.pasajeros
             };
 
             UnitOfWork.AppBusRepository.Insert(entity);
@@ -84,7 +82,7 @@ namespace SmartAdminMvc.Controllers
                 nombre = entity.nombre,
                 descrip = entity.descrip,
                 placa = entity.placa,
-                pasajeros = entity.pasajeros,
+                pasajeros = entity.pasajeros
             };
 
             return PartialView("Create", input);
@@ -100,7 +98,6 @@ namespace SmartAdminMvc.Controllers
             entity.descrip = input.descrip;
             entity.placa = input.placa;
             entity.pasajeros = input.pasajeros;
-            entity.UpdatedAt = DateTimeOffset.Now;
 
             UnitOfWork.AppBusRepository.Update(entity);
             UnitOfWork.Save();

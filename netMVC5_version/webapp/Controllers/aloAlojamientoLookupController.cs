@@ -36,7 +36,7 @@ namespace SmartAdminMvc.Controllers.Awesome.Lookup
 
         public ActionResult GetItem(string v)
         {
-            var o = string.IsNullOrWhiteSpace(v) || v == "0" ? new aloAlojamiento() : UnitOfWork.AlojamientoRepository.GetById(v);
+            var o = string.IsNullOrWhiteSpace(v) || v == "0" ? new aloAlojamientos() : UnitOfWork.AlojamientoRepository.GetById(v);
 
             return Json(new KeyContent(o.Id, o.Id));
         }
