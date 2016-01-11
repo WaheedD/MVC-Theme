@@ -42,14 +42,14 @@ namespace SmartAdminMvc.ViewModels.Input
         public bool confirmada { get; set; }
         [Required]
         public bool cargoCuenta { get; set; }
-        [UIHint("AjaxDropdown")]
-        [AweUrl(Action = "GetItems", Controller = "genTransaccionesVisanet")]
+        [UIHint("Lookup")]
+        [Lookup(Controller = "genTransaccionesVisanet")]
         public int? pagoOnline_Id { get; set; }
-        [UIHint("AjaxDropdown")]
-        [AweUrl(Action = "GetItems", Controller = "autUsuario")]
+        [UIHint("Lookup")]
+        [Lookup(Controller = "autUsuario")]
         public string socio_Id { get; set; }
-        [UIHint("AjaxDropdown")]
-        [AweUrl(Action = "GetItems", Controller = "genTicketsZona")]
+        [UIHint("Lookup")]
+        [Lookup(Controller = "genTicketsZona")]
         public string zona { get; set; }
         [Required]
         public int idPrecio { get; set; }

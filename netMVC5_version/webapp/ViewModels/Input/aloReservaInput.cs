@@ -36,11 +36,11 @@ namespace SmartAdminMvc.ViewModels.Input
         [UIHint("Lookup")]
         [Lookup(Fullscreen = true, CustomSearch = true, TableLayout = true)]
         public string alojamiento { get; set; }
-        [UIHint("AjaxDropdown")]
-        [AweUrl(Action = "GetItems", Controller = "autUsuario")]
+        [UIHint("Lookup")]
+        [Lookup(Controller = "autUsuario")]
         public string gestor { get; set; }
-        [UIHint("AjaxDropdown")]
-        [AweUrl(Action = "GetItems", Controller = "autUsuario")]
+        [UIHint("Lookup")]
+        [Lookup(Controller = "autUsuario")]
         public string socio { get; set; }
         [Required]
         public bool confirmada { get; set; }
