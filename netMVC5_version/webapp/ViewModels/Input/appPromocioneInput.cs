@@ -17,6 +17,7 @@ namespace SmartAdminMvc.ViewModels.Input
         public int? Id { get; set; }
         public string desc { get; set; }
         public string detalle { get; set; }
+        [UIHint("FileUpload")]
         public string foto { get; set; }
         [Required]
         public DateTime desde { get; set; }

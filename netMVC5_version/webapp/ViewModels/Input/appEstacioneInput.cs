@@ -18,6 +18,7 @@ namespace SmartAdminMvc.ViewModels.Input
         public double lat { get; set; }
         [Required]
         public double lon { get; set; }
+        [UIHint("FileUpload")]
         public string foto { get; set; }
     }
 }

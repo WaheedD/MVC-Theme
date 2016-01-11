@@ -27,6 +27,7 @@ namespace SmartAdminMvc.ViewModels.Input
         [UIHint("Lookup")]
         [Lookup( Fullscreen = true, CustomSearch = true, TableLayout = true)]
         public int tipo { get; set; }
+        [UIHint("FileUpload")]
         public string foto { get; set; }
         public string agrup1 { get; set; }
         public string agrup2 { get; set; }
