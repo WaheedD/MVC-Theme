@@ -104,7 +104,7 @@ namespace SmartAdminMvc.Controllers
                 precioTempBaja = entity.precioTempBaja,
                 lat = entity.lat,
                 lon = entity.lon,
-                tipo = entity.tipo_Id,
+                tipo = entity.tipo.Id,
                 foto = entity.foto,
                 agrup1 = entity.agrup1,
                 agrup2 = entity.agrup2,

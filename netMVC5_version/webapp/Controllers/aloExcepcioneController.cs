@@ -147,7 +147,7 @@ namespace SmartAdminMvc.Controllers
             {
                 Id = id.ToString(),
                 GridId = gridId,
-                Message = string.Format("Are you sure you want to delete excepcione <b>{0}</b> ?", entity.Id)
+                Message = string.Format("Are you sure you want to delete excepciones <b>{0}</b> ?", entity.Id)
             });
         }
 
