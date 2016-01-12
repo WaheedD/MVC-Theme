@@ -27,6 +27,18 @@ namespace SmartAdminMvc.Controllers
             }
         }
 
+        public usuarioAPI usuarioAPI
+        {
+            get
+            {
+                return (Session["usuarioAPI"] as usuarioAPI);
+            }
+            set
+            {
+                Session["usuarioAPI"] = value;
+            }
+        }
+
         public override bool IsAuthenticated
         {
             get

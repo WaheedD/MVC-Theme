@@ -68,6 +68,7 @@ namespace SmartAdminMvc.Controllers
                 var auth = AUTH(viewModel.jwt_token);
                 if (auth != null)
                 {
+                    this.usuarioAPI = auth;
                     if (viewModel.RememberMe)
                     {
                         SetRememberMeCookie(viewModel.UserName, viewModel.Password);
@@ -108,9 +109,16 @@ namespace SmartAdminMvc.Controllers
             JsonRequestBehavior.AllowGet);
         }
 
+        private void EnsureLoggedOut()
+        {
+            // If the request is (still) marked as authenticated we send the user to the logout action
+            if (IsAuthenticated)
+                Logout();
+        }
+
         // POST: /account/Logout
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
         public ActionResult Logout()
         {
             SetIsAuthenticated(false);
