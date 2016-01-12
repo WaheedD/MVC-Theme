@@ -22,7 +22,7 @@ namespace SmartAdminMvc.Controllers
     {
         // GET: /account/login
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl = "/")
+        public ActionResult Login(string returnUrl = "/admin")
         {
             if (IsAuthenticated)
             {
@@ -36,7 +36,7 @@ namespace SmartAdminMvc.Controllers
         [HttpPost]
         [AllowAnonymous]
         //[ValidateAntiForgeryToken]
-        public ActionResult Login(AccountLoginModel viewModel, string returnUrl = "/", FormCollection f = null)
+        public ActionResult Login(AccountLoginModel viewModel, string returnUrl = "/admin", FormCollection f = null)
         {
             // fcamarena / 12345
             // Ensure we have a valid viewModel to work with
@@ -122,7 +122,7 @@ namespace SmartAdminMvc.Controllers
             return RedirectToLocal();
         }
 
-        private ActionResult RedirectToLocal(string returnUrl = "")
+        private ActionResult RedirectToLocal(string returnUrl = "/admin")
         {
             // If the return url starts with a slash "/" we assume it belongs to our site
             // so we will redirect to this "action"

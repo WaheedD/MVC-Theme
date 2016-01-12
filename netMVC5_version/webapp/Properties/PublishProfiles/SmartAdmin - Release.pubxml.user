@@ -417,7 +417,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/11/2016 22:19:45</publishTime>
     </File>
     <File Include="bin/SmartAdminMvc.dll">
-      <publishTime>01/12/2016 02:01:11</publishTime>
+      <publishTime>01/12/2016 12:16:15</publishTime>
     </File>
     <File Include="bin/System.IdentityModel.Tokens.Jwt.dll">
       <publishTime>01/11/2016 22:19:42</publishTime>
@@ -2700,7 +2700,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/11/2016 22:19:51</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>01/11/2016 22:19:51</publishTime>
+      <publishTime>01/12/2016 12:00:06</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
       <publishTime>01/11/2016 22:19:51</publishTime>
@@ -2709,7 +2709,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/11/2016 22:19:51</publishTime>
     </File>
     <File Include="Views/Account/_LoginText.cshtml">
-      <publishTime>01/11/2016 22:19:51</publishTime>
+      <publishTime>01/12/2016 12:17:53</publishTime>
     </File>
     <File Include="Views/Account/_SocialMedia.cshtml">
       <publishTime>01/11/2016 22:19:51</publishTime>
@@ -3060,13 +3060,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/11/2016 22:19:51</publishTime>
     </File>
     <File Include="Views/Shared/_Footer.cshtml">
-      <publishTime>01/11/2016 22:19:51</publishTime>
+      <publishTime>01/12/2016 12:21:29</publishTime>
     </File>
     <File Include="Views/Shared/_Header.cshtml">
       <publishTime>01/11/2016 22:19:51</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>01/12/2016 02:11:15</publishTime>
+      <publishTime>01/12/2016 10:49:38</publishTime>
     </File>
     <File Include="Views/Shared/_Ribbon.cshtml">
       <publishTime>01/11/2016 22:19:51</publishTime>
@@ -3117,7 +3117,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/11/2016 22:19:51</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/12/2016 02:12:24</publishTime>
+      <publishTime>01/12/2016 12:31:01</publishTime>
     </File>
   </ItemGroup>
 </Project>
