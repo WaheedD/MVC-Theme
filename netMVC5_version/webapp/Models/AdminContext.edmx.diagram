@@ -41,6 +41,8 @@
         <AssociationConnector Association="SmartAdminMvc.FK_dbo_genTransaccionesVisanet_dbo_appUsuarios_socio_Id" ManuallyRouted="false" />
         <AssociationConnector Association="SmartAdminMvc.FK_dbo_genTicketsVentas_dbo_genTicketsZonas_zona_id" ManuallyRouted="false" />
         <AssociationConnector Association="SmartAdminMvc.FK_dbo_genTicketsVentas_dbo_genTransaccionesVisanet_pagoOnline_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SmartAdminMvc.FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id" />
+        <AssociationConnector Association="SmartAdminMvc.FK_aloExcepciones_Tipo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

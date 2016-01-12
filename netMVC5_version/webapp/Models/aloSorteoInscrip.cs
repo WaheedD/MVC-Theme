@@ -23,6 +23,7 @@ namespace SmartAdminMvc.Models
         public string p2_id { get; set; }
         public string p3_id { get; set; }
         public Nullable<int> reserva_id { get; set; }
+        public Nullable<int> carnet { get; set; }
     
         public virtual aloReservas aloReservas { get; set; }
         public virtual aloSorteos aloSorteos { get; set; }

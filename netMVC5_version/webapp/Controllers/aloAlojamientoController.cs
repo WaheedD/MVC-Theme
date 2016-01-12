@@ -19,13 +19,14 @@ namespace SmartAdminMvc.Controllers
                 new
                 {
                     o.Id,
+                    o.nroAlojamiento,
                     o.personas,
                     o.inhabilitado,
                     o.precioTempAlta,
                     o.precioTempBaja,
                     o.lat,
                     o.lon,
-                    tipo = o.tipo != null ? o.tipo.nombre : "",
+                    tipo = o.aloTipos != null ? o.aloTipos.nombre : "",
                     o.foto,
                     o.agrup1,
                     o.agrup2,
@@ -69,6 +70,7 @@ namespace SmartAdminMvc.Controllers
             var entity = new aloAlojamientos
             {
                 Id = input.Id,
+                nroAlojamiento=input.nroAlojamiento,
                 personas = input.personas,
                 inhabilitado = input.inhabilitado,
                 caracteristicas = input.caracteristicas,
@@ -96,6 +98,7 @@ namespace SmartAdminMvc.Controllers
             var input = new aloAlojamientoInput
             {
                 Id = entity.Id,
+                nroAlojamiento=entity.nroAlojamiento,
                 personas = entity.personas,
                 inhabilitado = entity.inhabilitado,
                 caracteristicas = entity.caracteristicas,
@@ -103,7 +106,7 @@ namespace SmartAdminMvc.Controllers
                 precioTempBaja = entity.precioTempBaja,
                 lat = entity.lat,
                 lon = entity.lon,
-                tipo = entity.tipo.Id,
+                tipo = entity.aloTipos.Id,
                 foto = entity.foto,
                 agrup1 = entity.agrup1,
                 agrup2 = entity.agrup2,
@@ -119,6 +122,7 @@ namespace SmartAdminMvc.Controllers
             if (!ModelState.IsValid) return PartialView("Create", input);
             var entity = UnitOfWork.AlojamientoRepository.GetById(input.Id);
 
+            entity.nroAlojamiento = input.nroAlojamiento;
             entity.personas = input.personas;
             entity.inhabilitado = input.inhabilitado;
             entity.caracteristicas = input.caracteristicas;

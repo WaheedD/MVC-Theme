@@ -32,10 +32,11 @@ namespace SmartAdminMvc.Models
         public double IGV { get; set; }
         public double total { get; set; }
         public bool confirmada { get; set; }
-        public string alojamiento_Id { get; set; }
+        public int alojamiento_Id { get; set; }
         public string gestor_Id { get; set; }
         public string socio_Id { get; set; }
         public string emision { get; set; }
+        public Nullable<int> carnet { get; set; }
     
         public virtual aloAlojamientos aloAlojamientos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

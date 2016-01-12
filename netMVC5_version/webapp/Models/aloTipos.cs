@@ -19,6 +19,8 @@ namespace SmartAdminMvc.Models
         {
             this.aloSorteos = new HashSet<aloSorteos>();
             this.aloZonas = new HashSet<aloZonas>();
+            this.aloAlojamientos = new HashSet<aloAlojamientos>();
+            this.aloExcepciones = new HashSet<aloExcepciones>();
         }
     
         public int Id { get; set; }
@@ -33,5 +35,9 @@ namespace SmartAdminMvc.Models
         public virtual ICollection<aloSorteos> aloSorteos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<aloZonas> aloZonas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<aloAlojamientos> aloAlojamientos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<aloExcepciones> aloExcepciones { get; set; }
     }
 }

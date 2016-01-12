@@ -4,12 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SmartAdminMvc.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SmartAdminMvc.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="aloAlojamientos">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nroAlojamiento" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="personas" Type="smallint" Nullable="false" />
           <Property Name="inhabilitado" Type="bit" Nullable="false" />
           <Property Name="caracteristicas" Type="nvarchar(max)" />
@@ -22,6 +23,7 @@
           <Property Name="foto" Type="nvarchar(max)" />
           <Property Name="tipo_Id" Type="int" />
           <Property Name="zona_Id" Type="nvarchar" MaxLength="128" />
+          <Property Name="bloqueoEspecial" Type="int" />
         </EntityType>
         <EntityType Name="aloExcepciones">
           <Key>
@@ -34,7 +36,7 @@
           <Property Name="hasta" Type="datetime" Nullable="false" />
           <Property Name="porcentaje" Type="smallint" Nullable="false" />
           <Property Name="tipoExcep" Type="nvarchar(max)" />
-          <Property Name="tipo_Id" Type="int" />
+          <Property Name="tipo_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="aloReservas">
           <Key>
@@ -44,7 +46,7 @@
           <Property Name="fecha" Type="datetime" Nullable="false" />
           <Property Name="fechaEntrada" Type="datetime" Nullable="false" />
           <Property Name="fechaSalida" Type="datetime" Nullable="false" />
-          <Property Name="codigoReserva" Type="nvarchar(max)" />
+          <Property Name="codigoReserva" Type="varchar" MaxLength="30" />
           <Property Name="comentarios" Type="nvarchar(max)" />
           <Property Name="DEUCON" Type="nvarchar(max)" />
           <Property Name="DEUPRV" Type="nvarchar(max)" />
@@ -52,10 +54,11 @@
           <Property Name="IGV" Type="float" Nullable="false" />
           <Property Name="total" Type="float" Nullable="false" />
           <Property Name="confirmada" Type="bit" Nullable="false" />
-          <Property Name="alojamiento_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="alojamiento_Id" Type="int" Nullable="false" />
           <Property Name="gestor_Id" Type="varchar" MaxLength="38" Nullable="false" />
           <Property Name="socio_Id" Type="varchar" MaxLength="38" Nullable="false" />
           <Property Name="emision" Type="nvarchar(max)" />
+          <Property Name="carnet" Type="int" />
         </EntityType>
         <EntityType Name="aloSorteoInscrip">
           <Key>
@@ -70,6 +73,7 @@
           <Property Name="p2_id" Type="varchar" MaxLength="50" />
           <Property Name="p3_id" Type="varchar" MaxLength="50" />
           <Property Name="reserva_id" Type="int" />
+          <Property Name="carnet" Type="int" />
         </EntityType>
         <EntityType Name="aloSorteos">
           <Key>
@@ -305,7 +309,6 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="desc" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="precio" Type="float" Nullable="false" />
           <Property Name="cupos" Type="int" Nullable="false" />
           <Property Name="vendidos" Type="int" Nullable="false" />
           <Property Name="croquis" Type="nvarchar(max)" />
@@ -335,6 +338,18 @@
           <Property Name="param1" Type="nvarchar(max)" />
           <Property Name="param2" Type="nvarchar(max)" />
         </EntityType>
+        <Association Name="FK_aloExcepciones_Tipo">
+          <End Role="aloTipos" Type="Self.aloTipos" Multiplicity="1" />
+          <End Role="aloExcepciones" Type="Self.aloExcepciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aloTipos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aloExcepciones">
+              <PropertyRef Name="tipo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_aloSorteoInscrip_reserva">
           <End Role="aloReservas" Type="Self.aloReservas" Multiplicity="0..1" />
           <End Role="aloSorteoInscrip" Type="Self.aloSorteoInscrip" Multiplicity="*" />
@@ -395,6 +410,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id">
+          <End Role="aloTipos" Type="Self.aloTipos" Multiplicity="0..1" />
+          <End Role="aloAlojamientos" Type="Self.aloAlojamientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aloTipos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aloAlojamientos">
+              <PropertyRef Name="tipo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id">
           <End Role="aloZonas" Type="Self.aloZonas" Multiplicity="0..1" />
           <End Role="aloAlojamientos" Type="Self.aloAlojamientos" Multiplicity="*" />
@@ -408,9 +435,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id">
-          <End Role="aloAlojamientos" Type="Self.aloAlojamientos" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="aloAlojamientos" Type="Self.aloAlojamientos" Multiplicity="1" />
           <End Role="aloReservas" Type="Self.aloReservas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="aloAlojamientos">
@@ -561,6 +586,10 @@
           <EntitySet Name="genTicketsVentas" EntityType="Self.genTicketsVentas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="genTicketsZonas" EntityType="Self.genTicketsZonas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="genTransaccionesVisanet" EntityType="Self.genTransaccionesVisanet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_aloExcepciones_Tipo" Association="Self.FK_aloExcepciones_Tipo">
+            <End Role="aloTipos" EntitySet="aloTipos" />
+            <End Role="aloExcepciones" EntitySet="aloExcepciones" />
+          </AssociationSet>
           <AssociationSet Name="FK_aloSorteoInscrip_reserva" Association="Self.FK_aloSorteoInscrip_reserva">
             <End Role="aloReservas" EntitySet="aloReservas" />
             <End Role="aloSorteoInscrip" EntitySet="aloSorteoInscrip" />
@@ -580,6 +609,10 @@
           <AssociationSet Name="FK_appChoferes_Usuarios" Association="Self.FK_appChoferes_Usuarios">
             <End Role="autUsuarios" EntitySet="autUsuarios" />
             <End Role="appChoferes" EntitySet="appChoferes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id" Association="Self.FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id">
+            <End Role="aloTipos" EntitySet="aloTipos" />
+            <End Role="aloAlojamientos" EntitySet="aloAlojamientos" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id" Association="Self.FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id">
             <End Role="aloZonas" EntitySet="aloZonas" />
@@ -630,8 +663,7 @@
             <End Role="appRutas" EntitySet="appRutas" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SmartAdminMvc" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -639,7 +671,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="String" Nullable="false" />
           <Property Name="personas" Type="Int16" Nullable="false" />
           <Property Name="inhabilitado" Type="Boolean" Nullable="false" />
           <Property Name="caracteristicas" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -654,6 +686,9 @@
           <Property Name="zona_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="aloZonas" Relationship="Self.FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id" FromRole="aloAlojamientos" ToRole="aloZonas" />
           <NavigationProperty Name="aloReservas" Relationship="Self.FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id" FromRole="aloAlojamientos" ToRole="aloReservas" />
+          <Property Name="nroAlojamiento" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="bloqueoEspecial" Type="Int32" />
+          <NavigationProperty Name="aloTipos" Relationship="SmartAdminMvc.FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id" FromRole="aloAlojamientos" ToRole="aloTipos" />
         </EntityType>
         <EntityType Name="aloExcepciones">
           <Key>
@@ -666,7 +701,8 @@
           <Property Name="hasta" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="porcentaje" Type="Int16" Nullable="false" />
           <Property Name="tipoExcep" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="tipo_Id" Type="Int32" />
+          <Property Name="tipo_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="aloTipos" Relationship="SmartAdminMvc.FK_aloExcepciones_Tipo" FromRole="aloExcepciones" ToRole="aloTipos" />
         </EntityType>
         <EntityType Name="aloReservas">
           <Key>
@@ -676,7 +712,7 @@
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="fechaEntrada" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="fechaSalida" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="codigoReserva" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="codigoReserva" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="comentarios" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DEUCON" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DEUPRV" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -684,7 +720,7 @@
           <Property Name="IGV" Type="Double" Nullable="false" />
           <Property Name="total" Type="Double" Nullable="false" />
           <Property Name="confirmada" Type="Boolean" Nullable="false" />
-          <Property Name="alojamiento_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="alojamiento_Id" Type="String" Nullable="false" />
           <Property Name="gestor_Id" Type="String" MaxLength="38" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="socio_Id" Type="String" MaxLength="38" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="emision" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -692,6 +728,7 @@
           <NavigationProperty Name="aloSorteoInscrip" Relationship="Self.FK_aloSorteoInscrip_reserva" FromRole="aloReservas" ToRole="aloSorteoInscrip" />
           <NavigationProperty Name="autUsuarios" Relationship="Self.FK_dbo_aloReservas_dbo_autUsuarios_gestor_Id" FromRole="aloReservas" ToRole="autUsuarios" />
           <NavigationProperty Name="autUsuarios1" Relationship="Self.FK_dbo_aloReservas_dbo_autUsuarios_socio_Id" FromRole="aloReservas" ToRole="autUsuarios" />
+          <Property Name="carnet" Type="Int32" />
         </EntityType>
         <EntityType Name="aloSorteoInscrip">
           <Key>
@@ -709,6 +746,7 @@
           <NavigationProperty Name="aloReservas" Relationship="Self.FK_aloSorteoInscrip_reserva" FromRole="aloSorteoInscrip" ToRole="aloReservas" />
           <NavigationProperty Name="aloSorteos" Relationship="Self.FK_aloSorteoInscrip_sorteo" FromRole="aloSorteoInscrip" ToRole="aloSorteos" />
           <NavigationProperty Name="autUsuarios" Relationship="Self.FK_aloSorteoInscrip_usuario" FromRole="aloSorteoInscrip" ToRole="autUsuarios" />
+          <Property Name="carnet" Type="Int32" />
         </EntityType>
         <EntityType Name="aloSorteos">
           <Key>
@@ -739,6 +777,8 @@
           <Property Name="idSede_idSede" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="aloSorteos" Relationship="Self.FK_dbo_aloSorteos_dbo_aloTipos_tipo_Id" FromRole="aloTipos" ToRole="aloSorteos" />
           <NavigationProperty Name="aloZonas" Relationship="Self.FK_aloZonas_Tipos" FromRole="aloTipos" ToRole="aloZonas" />
+          <NavigationProperty Name="aloAlojamientos" Relationship="SmartAdminMvc.FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id" FromRole="aloTipos" ToRole="aloAlojamientos" />
+          <NavigationProperty Name="aloExcepciones" Relationship="SmartAdminMvc.FK_aloExcepciones_Tipo" FromRole="aloTipos" ToRole="aloExcepciones" />
         </EntityType>
         <EntityType Name="aloZonas">
           <Key>
@@ -1293,7 +1333,39 @@
             <End Role="genTransaccionesVisanet" EntitySet="genTransaccionesVisanet" />
             <End Role="genTicketsVentas" EntitySet="genTicketsVentas" />
           </AssociationSet>
+          <AssociationSet Name="FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id" Association="SmartAdminMvc.FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id">
+            <End Role="aloTipos" EntitySet="aloTipos" />
+            <End Role="aloAlojamientos" EntitySet="aloAlojamientos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aloExcepciones_Tipo" Association="SmartAdminMvc.FK_aloExcepciones_Tipo">
+            <End Role="aloTipos" EntitySet="aloTipos" />
+            <End Role="aloExcepciones" EntitySet="aloExcepciones" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id">
+          <End Type="SmartAdminMvc.aloTipos" Role="aloTipos" Multiplicity="0..1" />
+          <End Type="SmartAdminMvc.aloAlojamientos" Role="aloAlojamientos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aloTipos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aloAlojamientos">
+              <PropertyRef Name="tipo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aloExcepciones_Tipo">
+          <End Type="SmartAdminMvc.aloTipos" Role="aloTipos" Multiplicity="1" />
+          <End Type="SmartAdminMvc.aloExcepciones" Role="aloExcepciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aloTipos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aloExcepciones">
+              <PropertyRef Name="tipo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1303,6 +1375,8 @@
           <EntitySetMapping Name="aloAlojamientos">
             <EntityTypeMapping TypeName="SmartAdminMvc.aloAlojamientos">
               <MappingFragment StoreEntitySet="aloAlojamientos">
+                <ScalarProperty Name="bloqueoEspecial" ColumnName="bloqueoEspecial" />
+                <ScalarProperty Name="nroAlojamiento" ColumnName="nroAlojamiento" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="personas" ColumnName="personas" />
                 <ScalarProperty Name="inhabilitado" ColumnName="inhabilitado" />
@@ -1336,6 +1410,7 @@
           <EntitySetMapping Name="aloReservas">
             <EntityTypeMapping TypeName="SmartAdminMvc.aloReservas">
               <MappingFragment StoreEntitySet="aloReservas">
+                <ScalarProperty Name="carnet" ColumnName="carnet" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="fechaEntrada" ColumnName="fechaEntrada" />
@@ -1358,6 +1433,7 @@
           <EntitySetMapping Name="aloSorteoInscrip">
             <EntityTypeMapping TypeName="SmartAdminMvc.aloSorteoInscrip">
               <MappingFragment StoreEntitySet="aloSorteoInscrip">
+                <ScalarProperty Name="carnet" ColumnName="carnet" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="socio_id" ColumnName="socio_id" />
                 <ScalarProperty Name="sorteo_id" ColumnName="sorteo_id" />
@@ -1616,7 +1692,6 @@
               <MappingFragment StoreEntitySet="genTicketsZonas">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="desc" ColumnName="desc" />
-                <ScalarProperty Name="precio" ColumnName="precio" />
                 <ScalarProperty Name="cupos" ColumnName="cupos" />
                 <ScalarProperty Name="vendidos" ColumnName="vendidos" />
                 <ScalarProperty Name="croquis" ColumnName="croquis" />
@@ -1664,7 +1739,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

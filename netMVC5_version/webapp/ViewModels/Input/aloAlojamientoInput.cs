@@ -10,7 +10,9 @@ namespace SmartAdminMvc.ViewModels.Input
     public class aloAlojamientoInput
     {
         [Required]
-        public string Id { get; set; }
+        public int Id { get; set; }
+        [Required]
+        public string nroAlojamiento { get; set; }
         [Required]
         public short personas { get; set; }
         [Required]

@@ -35,7 +35,7 @@ namespace SmartAdminMvc.ViewModels.Input
         [Required]
         [UIHint("Lookup")]
         [Lookup(Fullscreen = true, CustomSearch = true, TableLayout = true)]
-        public string alojamiento { get; set; }
+        public int alojamiento { get; set; }
         [UIHint("Lookup")]
         [Lookup(Controller = "autUsuario")]
         public string gestor { get; set; }

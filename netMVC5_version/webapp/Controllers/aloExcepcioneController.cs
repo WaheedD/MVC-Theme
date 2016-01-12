@@ -23,7 +23,7 @@ namespace SmartAdminMvc.Controllers
                     o.desde,
                     o.hasta,
                     o.porcentaje,
-                    tipo = o.tipo != null ? o.tipo.nombre : "", //.tipo_Id,
+                    tipo = o.aloTipos != null ? o.aloTipos.nombre : "", //.tipo_Id,
                     o.tipoExcep,
                 };
         }
@@ -51,7 +51,7 @@ namespace SmartAdminMvc.Controllers
 
             if (tipo_Id > 0)
             {
-                items = items.Where(o => o.tipo.Id == tipo_Id);
+                items = items.Where(o => o.aloTipos.Id == tipo_Id);
             }
 
             return Json(new GridModelBuilder<aloExcepciones>(items, g)
@@ -88,7 +88,7 @@ namespace SmartAdminMvc.Controllers
                 desde = input.desde,
                 hasta = input.hasta,
                 porcentaje = input.porcentaje,
-                tipo =UnitOfWork.AloTipoRepository.GetById( input.tipo),
+                aloTipos =UnitOfWork.AloTipoRepository.GetById( input.tipo),
                 tipoExcep = input.tipoExcep,
             };
 
@@ -110,7 +110,7 @@ namespace SmartAdminMvc.Controllers
                 desde = entity.desde,
                 hasta = entity.hasta,
                 porcentaje = entity.porcentaje,
-                tipo = entity.tipo.Id,
+                tipo = entity.aloTipos.Id,
                 hide_tipo = hide_tipo,
                 tipoExcep = entity.tipoExcep,
             };
@@ -129,7 +129,7 @@ namespace SmartAdminMvc.Controllers
             entity.desde = input.desde;
             entity.hasta = input.hasta;
             entity.porcentaje = input.porcentaje;
-            entity.tipo =UnitOfWork.AloTipoRepository.GetById( input.tipo);
+            entity.aloTipos =UnitOfWork.AloTipoRepository.GetById( input.tipo);
             entity.tipoExcep = input.tipoExcep;
 
             UnitOfWork.AloExcepcioneRepository.Update(entity);

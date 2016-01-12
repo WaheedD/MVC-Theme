@@ -21,6 +21,8 @@ namespace SmartAdminMvc.Models
         public System.DateTime hasta { get; set; }
         public short porcentaje { get; set; }
         public string tipoExcep { get; set; }
-        public virtual aloTipos tipo{ get; set; }
+        public int tipo_Id { get; set; }
+    
+        public virtual aloTipos aloTipos { get; set; }
     }
 }
