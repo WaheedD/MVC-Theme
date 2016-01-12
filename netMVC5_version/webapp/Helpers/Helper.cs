@@ -7,9 +7,20 @@ namespace SmartAdminMvc.Helpers
 {
     public class Helper
     {
-        public static string ImgHtml(string v)
+
+        public static string movePhoto(string name, string to)
         {
-            return string.IsNullOrWhiteSpace(v) ? "" : @"<img src='\uploads\images\" + v + "'style='height:120px;width:120px;' />";
+            if (String.IsNullOrEmpty(name)) return null;
+
+            string nameId = name + DateTime.Now.Millisecond + ".jpg";
+            string toDir = (new System.IO.DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).Parent.FullName) + "\\img\\" + to;
+            string path = AppDomain.CurrentDomain.BaseDirectory + "uploads\\images\\" + name;
+
+            System.IO.Directory.CreateDirectory(toDir);
+
+            System.IO.File.Move(path, toDir + "\\" + nameId);
+
+            return "http://app.crl.pe/img/" + to + "/" + nameId;
         }
     }
 }

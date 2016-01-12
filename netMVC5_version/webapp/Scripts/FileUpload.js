@@ -27,7 +27,7 @@ function FileUploadExists(prefix, name, fileName, isPdf) {
         $(divId + ' .fileupload-preview').html(fileName);
     }
     else {
-        $(divId + ' .fileupload-preview.fileupload-exists.thumbnail').html('<img src="' + imagePath + fileName + '">');
+        $(divId + ' .fileupload-preview.fileupload-exists.thumbnail').html('<img src="' + fileName + '">');
     }
 }
 

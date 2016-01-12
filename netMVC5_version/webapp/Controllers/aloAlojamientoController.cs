@@ -19,7 +19,6 @@ namespace SmartAdminMvc.Controllers
                 new
                 {
                     o.Id,
-                    o.caracteristicas,
                     o.personas,
                     o.inhabilitado,
                     o.precioTempAlta,
@@ -27,7 +26,7 @@ namespace SmartAdminMvc.Controllers
                     o.lat,
                     o.lon,
                     tipo = o.tipo != null ? o.tipo.nombre : "",
-                    foto = Helper.ImgHtml(o.foto),
+                    o.foto,
                     o.agrup1,
                     o.agrup2,
                     zona = o.zona_Id,

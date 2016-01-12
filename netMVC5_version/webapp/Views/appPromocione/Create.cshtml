@@ -8,7 +8,19 @@
         @Html.EditorFor(o => o.foto)
         @Html.EditorFor(o => o.desde)
         @Html.EditorFor(o => o.hasta)
-        @Html.EditorFor(o => o.sexo)
+        <div class="efield">
+            <div class="elabel">Sexo</div>
+                <div class="einput">
+                    @Html.DropDownListFor(o => o.sexo, new SelectList(
+                  new List<Object>{
+                       new { value = 1 , text = "M"  },
+                       new { value = 0 , text = "F" }
+                    },
+                  "value",
+                  "text",
+                   2), new { @class = "efield" })
+                </div>
+            </div>
         @Html.EditorFor(o => o.edadMax)
         @Html.EditorFor(o => o.edadMin)
         @Html.EditorFor(o => o.tipoAsociado)

@@ -158,7 +158,6 @@
     <Content Include="Content\ajax\notify\notifications.html" />
     <Content Include="Content\ajax\notify\tasks.html" />
     <Content Include="Content\ajax\website-template.html" />
-    <Content Include="Content\awedemo.png" />
     <Content Include="Content\common.css" />
     <Content Include="Content\css\bootstrap-fileupload.min.css" />
     <Content Include="Content\css\bootstrap.min.css" />
@@ -177,7 +176,6 @@
       <DependentUpon>your_style.css</DependentUpon>
     </Content>
     <Content Include="Content\data\dataList.json" />
-    <Content Include="Content\error-lolcat-problemz.jpg" />
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\fontawesome-webfont.ttf" />
@@ -374,26 +372,6 @@
     <Content Include="Content\pictures\Fruits\Mango.jpg" />
     <Content Include="Content\pictures\Fruits\Papaya.jpg" />
     <Content Include="Content\prettify.css" />
-    <Content Include="Content\sound\bigbox.mp3" />
-    <Content Include="Content\sound\bigbox.ogg" />
-    <Content Include="Content\sound\license.txt" />
-    <Content Include="Content\sound\messagebox.mp3" />
-    <Content Include="Content\sound\messagebox.ogg" />
-    <Content Include="Content\sound\smallbox.mp3" />
-    <Content Include="Content\sound\smallbox.ogg" />
-    <Content Include="Content\sound\voice_alert.mp3" />
-    <Content Include="Content\sound\voice_alert.ogg" />
-    <Content Include="Content\sound\voice_off.mp3" />
-    <Content Include="Content\sound\voice_off.ogg" />
-    <Content Include="Content\sound\voice_on.mp3" />
-    <Content Include="Content\sound\voice_on.ogg" />
-    <Content Include="Content\themes\black-cab\AwesomeMvc.css" />
-    <Content Include="Content\themes\black-cab\awe_icons.png" />
-    <Content Include="Content\themes\black-cab\awe_icons2.png" />
-    <Content Include="Content\themes\black-cab\editdel.png" />
-    <Content Include="Content\themes\black-cab\loading.gif" />
-    <Content Include="Content\themes\black-cab\mods.css" />
-    <Content Include="Content\themes\black-cab\pm.png" />
     <Content Include="Content\themes\bui\AwesomeMvc.css" />
     <Content Include="Content\themes\bui\awe_icons.png" />
     <Content Include="Content\themes\bui\editdel.png" />
@@ -1171,7 +1149,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="uploads\docs\" />
     <Folder Include="uploads\images\" />
     <Folder Include="Views\genTransaccionesVisanet\" />
   </ItemGroup>

@@ -6,7 +6,7 @@
 <div id="content">
     <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-            <h1 class="page-title txt-color-blueDark"><i class="fa fa-comments"></i> @ViewBag.Title <span>> @ViewBag.Title List</span></h1>
+            <h1 class="page-title txt-color-blueDark"><i class="fa fa-comments"></i> @ViewBag.Title <span>>Relación de @ViewBag.Title</span></h1>
         </div>
     </div>
 
@@ -21,26 +21,21 @@
     </div>
 
     @(Html.Awe().Grid("appPromocioneGrid")
-            .Mod(o => o.PageInfo().ColumnsSelector().ColumnsAutohide()).ColumnsPersistence(Persistence.Local)
+            .Mod(o => o.PageInfo().ColumnsSelector()).ColumnsPersistence(Persistence.Local)
                         .Url(Url.Action("GridGetItems", "appPromocione"))
             .Parent("txtSearch", "search")
-            //.Height(350)
             .Columns(
-            new Column { Bind = "Id", Width = 80 },
-                         new Column { Bind = "desc" },
-                            new Column { Bind = "detalle" },
-                            new Column { Bind = "foto" },
+
+                new Column { Bind = "Id", Hidden=true },
+                      new Column { Bind = "desc" },
+                      new Column { Bind = "marca" }, new Column { Bind = "foto" },
                             new Column { Bind = "desde" },
                             new Column { Bind = "hasta" },
-                            new Column { Bind = "sexo" },
-                            new Column { Bind = "edadMax" },
-                            new Column { Bind = "edadMin" },
-                            new Column { Bind = "tipoAsociado" },
+                            new Column { Bind = "sexo",Hidden=true },
+                            new Column { Bind = "edadMax", Hidden = true },
+                            new Column { Bind = "edadMin", Hidden = true },
+                            new Column { Bind = "tipoAsociado", Hidden = true },
                             new Column { Bind = "nroCupones" },
-                            new Column { Bind = "marca" },
-                            new Column { Bind = "email" },
-                            new Column { Bind = "tel" },
-                            new Column { Bind = "direccion" },
 
                     new Column { ClientFormat = GridUtils.EditFormatForGrid("appPromocioneGrid"), Width = 50 },
                     new Column { ClientFormat = GridUtils.DeleteFormatForGrid("appPromocioneGrid"), Width = 50 }))

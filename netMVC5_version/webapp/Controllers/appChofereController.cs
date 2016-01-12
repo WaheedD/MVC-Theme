@@ -20,7 +20,7 @@ namespace SmartAdminMvc.Controllers
                 {
                     o.Id,
                     o.nombre,
-                    foto = Helper.ImgHtml(o.foto),
+                    o.foto,
                     o.lic
                 };
 

@@ -20,8 +20,7 @@ namespace SmartAdminMvc.Controllers
                 {
                     o.Id,
                     o.desc,
-                    o.detalle,
-                    foto = Helper.ImgHtml(o.foto),
+                    o.foto,
                     o.desde,
                     o.hasta,
                     o.sexo,
@@ -29,10 +28,7 @@ namespace SmartAdminMvc.Controllers
                     o.edadMin,
                     o.tipoAsociado,
                     o.nroCupones,
-                    o.marca,
-                    o.email,
-                    o.tel,
-                    o.direccion,
+                    o.marca
                 };
 
         }
@@ -74,15 +70,13 @@ namespace SmartAdminMvc.Controllers
             {
                 desc = input.desc,
                 detalle = input.detalle,
-                foto = input.foto,
+                foto = Helper.movePhoto(input.foto, "promos"),
                 desde = input.desde,
                 hasta = input.hasta,
                 sexo = input.sexo,
                 edadMax = input.edadMax,
                 edadMin = input.edadMin,
                 tipoAsociado = input.tipoAsociado,
-                CreatedAt = DateTimeOffset.Now,
-                Deleted = false,
                 nroCupones = input.nroCupones,
                 marca = input.marca,
                 email = input.email,
@@ -125,27 +119,28 @@ namespace SmartAdminMvc.Controllers
         [HttpPost]
         public ActionResult Edit(appPromocioneInput input)
         {
-            if (!ModelState.IsValid) return PartialView("Create", input);
+            //if (!ModelState.IsValid) return PartialView("Create", input);
             var entity = UnitOfWork.AppPromocioneRepository.GetById(input.Id);
 
             entity.desc = input.desc;
             entity.detalle = input.detalle;
-            entity.foto = input.foto;
             entity.desde = input.desde;
             entity.hasta = input.hasta;
             entity.sexo = input.sexo;
             entity.edadMax = input.edadMax;
             entity.edadMin = input.edadMin;
             entity.tipoAsociado = input.tipoAsociado;
-            entity.UpdatedAt = DateTimeOffset.Now;
             entity.nroCupones = input.nroCupones;
             entity.marca = input.marca;
             entity.email = input.email;
             entity.tel = input.tel;
             entity.direccion = input.direccion;
 
+            if(input.foto!=entity.foto) entity.foto = Helper.movePhoto(input.foto, "promos");
+
             UnitOfWork.AppPromocioneRepository.Update(entity);
             UnitOfWork.Save();
+
 
             // returning the key to call grid.api.update
             return Json(new { input.Id });
@@ -159,7 +154,7 @@ namespace SmartAdminMvc.Controllers
             {
                 Id = id.ToString(),
                 GridId = gridId,
-                Message = string.Format("Are you sure you want to delete promocione <b>{0}</b> ?", entity.Id)
+                Message = string.Format("Seguro que deseas aliminar la promoción <b>{0}</b> ?", entity.Id)
             });
         }
 

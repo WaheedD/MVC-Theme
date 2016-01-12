@@ -25,7 +25,7 @@ namespace SmartAdminMvc.Controllers
                     o.lugar,
                     o.fecha,
                     o.refCosto,
-                    foto = Helper.ImgHtml(o.foto),
+                    o.foto,
                     o.tel,
                     o.mail,
                     o.ventaDesde,

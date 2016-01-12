@@ -24,7 +24,7 @@ namespace SmartAdminMvc.Controllers
                     o.esSede,
                     o.lat,
                     o.lon,
-                    foto = Helper.ImgHtml(o.foto),
+                    o.foto,
                 };
 
         }
