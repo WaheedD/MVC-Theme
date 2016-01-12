@@ -24,7 +24,7 @@
                             <label class="label">User Name</label>
                             <label class="input">
                                 <i class="icon-append fa fa-user"></i>
-                                <input type="text" id="username" name="username">
+                                <input type="text" id="username" name="username" value="@Model.UserName">
                                 <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Please enter username</b>
                             </label>
                         </section>
@@ -32,7 +32,7 @@
                             <label class="label">Password</label>
                             <label class="input">
                                 <i class="icon-append fa fa-lock"></i>
-                                <input type="password" id="password" name="password">
+                                <input type="password" id="password" name="password" value="@Model.Password">
                                 <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> Enter your password</b>
                             </label>
                             <div class="note">
@@ -41,10 +41,10 @@
                         </section>
                         <section>
                             <label class="checkbox">
-                                <input type="checkbox" name="rememberMe" value="@Model.RememberMe" @if(Model.RememberMe){ <text> checked="checked" </text>} >
-                                <input type="hidden" id="rememberMe" name="rememberMe" value="false" />
+                                <input type="checkbox" id="rememberMe" name="rememberMe" value="@Model.RememberMe" @if (Model.RememberMe) { <text> checked="checked" </text> } />
+                                <input type="hidden" name="rememberMe" value="false" />
                                 <i></i>Stay signed in
-</label>
+                            </label>
                         </section>
                     </fieldset>
                     <footer>
@@ -60,46 +60,13 @@
 </div>
 @section pagespecific {
     <script type="text/javascript">
-        $(function () {
-            // Validation
-            $("#login-form").validate({
-                // Rules for form validation
-                rules: {
-                    username: {
-                        required: true,
-                        username: true
-                    },
-                    password: {
-                        required: true,
-                        minlength: 3,
-                        maxlength: 20
-                    }
-                },
-
-                // Messages for form validation
-                messages: {
-                    username: {
-                        required: 'Please enter your username address',
-                        username: 'Please enter a VALID username address'
-                    },
-                    password: {
-                        required: 'Please enter your password'
-                    }
-                },
-
-                // Do not change code below
-                errorPlacement: function (error, element) {
-                    error.insertAfter(element.parent());
-                }
-            });
-        });
 
         function Login(jwt_token) {
             var username = $("#username").val();
             var password = $("#password").val();
-            var rememberMe = $("#rememberMe").val();
+            var rememberMe = $('#rememberMe').is(':checked');
             var returnUrl = $("#returnUrl").val();
-            
+
             $.ajax({
                 cache: false,
                 type: "POST",
@@ -112,7 +79,7 @@
                     "jwt_token": jwt_token,
                 },
                 success: function (data) {
-                    
+
                     if (data.Success) {
                         window.location.href = data.ReturnUrl;
                         return;
@@ -128,23 +95,32 @@
         }
 
         function GetToken() {
-            
+
             var username = $("#username").val();
             var password = $("#password").val();
+
+            if (!username) {
+                alert('Please enter your user name.')
+                return;
+            }
+            if (!password) {
+                alert('Please enter your password.')
+                return;
+            }
 
             $.ajax({
                 cache: false,
                 type: "POST",
-                url: "http://api.crl.pe/api/login",
+                url: "http://app.crl.pe/login",
                 data: {
                     "username": username,
                     "password": password,
                 },
                 datatype: "application/json",
                 success: function (data) {
-                    
-                    if (data.TokenWeb) {
-                        Login(data.TokenWeb);
+                    data.Token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6IjUzOTQ2NGI4LTAzYWMtNDA4Mi05NGM1LTk4NjU2MTYzOGUxMCIsIklkQXNvY2lhZG8iOiIwIiwiQ29uc2VjdXRpdm8iOiIwIiwiTm9tYnJlIjoiU1lTVEVNIiwiQXBlbGxpZG8iOiJBRE1JTiIsInBlcnNvbmFsQ1JMIjoiMSIsIm5pdmVsQWNjZXNvIjoiMTAiLCJpc3MiOiJodHRwOi8vYXBpLmNybC5wZSIsImF1ZCI6Imh0dHA6Ly9hcGkuY3JsLnBlIiwiZXhwIjoxNDU2NDc3Njk1LCJuYmYiOjE0NTI1ODk2OTV9.arKtDo567ncCIXVwBlfMJmhgSw4wQe-MJOuV9FvXwio';
+                    if (data.Token) {
+                        Login(data.Token);
                         return;
                     }
 

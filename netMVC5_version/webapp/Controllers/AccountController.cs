@@ -36,15 +36,23 @@ namespace SmartAdminMvc.Controllers
         [HttpPost]
         [AllowAnonymous]
         //[ValidateAntiForgeryToken]
-        public ActionResult Login(AccountLoginModel viewModel, string returnUrl = "/")
+        public ActionResult Login(AccountLoginModel viewModel, string returnUrl = "/", FormCollection f = null)
         {
+            // fcamarena / 12345
             // Ensure we have a valid viewModel to work with
             if (!ModelState.IsValid)
             {
                 var message = "";
-                foreach (var error in ModelState[""].Errors)
+                if (ModelState[""] == null)
                 {
-                    message = error.ErrorMessage + "\r\n";
+                    message = " An error occurred.";
+                }
+                else
+                {
+                    foreach (var error in ModelState[""].Errors)
+                    {
+                        message = error.ErrorMessage + "\r\n";
+                    }
                 }
 
                 return Json(new
@@ -55,34 +63,21 @@ namespace SmartAdminMvc.Controllers
                 JsonRequestBehavior.AllowGet);
             }
 
-            const string secretKey = "aj82kso94jnd6ue7039djs2husko261uq9esld92103sjalal2esfp";
-            const string authDom = "http://api.crl.pe";
-            var tokenHandler = new System.IdentityModel.Tokens.JwtSecurityTokenHandler();
-            var symmetricKey = System.Text.ASCIIEncoding.UTF8.GetBytes(secretKey);
-            var validationParameters = new TokenValidationParameters()
-            {
-                ValidAudience = authDom,
-                ValidIssuer = authDom,
-                IssuerSigningToken = new BinarySecretSecurityToken(symmetricKey)
-            };
-            SecurityToken securityToken;
-
             try
             {
-                var principal = tokenHandler.ValidateToken(viewModel.jwt_token, validationParameters, out securityToken);
-                if (principal.HasClaim(o => o.Type == "ID"))
-                {
-                    var v = principal.Claims.First().Value;
-                }
-
-                if (principal != null)
+                var auth = AUTH(viewModel.jwt_token);
+                if (auth != null)
                 {
                     if (viewModel.RememberMe)
                     {
                         SetRememberMeCookie(viewModel.UserName, viewModel.Password);
                     }
+                    else
+                    {
+                        RemoveRememberMeCookie();
+                    }
 
-                    SetTokenCookie(securityToken.ToString()); // 15min
+                    SetTokenCookie(viewModel.jwt_token); // 15min
                     SetIsAuthenticated(true);
                     // If the user came from a specific page, redirect back to it
                     //return RedirectToLocal(returnUrl);
@@ -119,6 +114,8 @@ namespace SmartAdminMvc.Controllers
         public ActionResult Logout()
         {
             SetIsAuthenticated(false);
+            RemoveRememberMeCookie();
+            RemoveTokenCookie();
 
             // Last we redirect to a controller/action that requires authentication to ensure a redirect takes place
             // this clears the Request.IsAuthenticated flag since this triggers a new request
@@ -142,5 +139,69 @@ namespace SmartAdminMvc.Controllers
         {
             return View();
         }
+
+        const string secretKey = "aj82kso94jnd6ue7039djs2husko261uq9esld92103sjalal2esfp";
+        const string authDom = "http://api.crl.pe";
+
+        public static usuarioAPI AUTH(string token = null)
+        {
+            //if (token == null) token = HttpContext.Current.Request.Headers["token"];//obtiene token del header
+
+            if (token == null) return null;
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var symmetricKey = System.Text.ASCIIEncoding.UTF8.GetBytes(secretKey);
+            var validationParameters = new TokenValidationParameters()
+            {
+                ValidAudience = authDom,
+                ValidIssuer = authDom,
+                IssuerSigningToken = new BinarySecretSecurityToken(symmetricKey)
+            };
+            SecurityToken securityToken;
+            try
+            {
+                var principal = tokenHandler.ValidateToken(token, validationParameters, out securityToken);
+
+                //Obtener los CLAIMS de aqui(variable "principal")
+                if (principal.HasClaim(o => o.Type == "ID"))
+                {
+                    return new usuarioAPI()
+                    {
+                        ID = principal.Claims.FirstOrDefault(o => o.Type == "ID").Value,
+                        IdAsociado = principal.Claims.FirstOrDefault(o => o.Type == "IdAsociado").Value,
+                        Consecutivo = short.Parse(principal.Claims.FirstOrDefault(o => o.Type == "Consecutivo").Value),
+                        Nombre = principal.Claims.FirstOrDefault(o => o.Type == "Nombre").Value,
+                        Apellidos = principal.Claims.FirstOrDefault(o => o.Type == "Apellido").Value,
+                        personalCRL = principal.Claims.FirstOrDefault(o => o.Type == "personalCRL").Value == "1",
+                        nivelAcceso = int.Parse(principal.Claims.FirstOrDefault(o => o.Type == "nivelAcceso").Value)
+                    };
+                }
+                else return null;
+            }
+            catch (Exception ex) { throw new Exception(ex.Message); }
+        }
+    }
+
+    public class usuarioAPI
+    {
+        /// <summary>
+        /// IdAsociado se usa para CARNET cuando se trata de asociado (ej: 12345) o para usuario cuando es personal del CRL (ej: 'fcamarena')
+        /// </summary>
+        public string IdAsociado { get; set; }
+        public short Consecutivo { get; set; }
+        public string Nombre { get; set; }
+        public string Apellidos { get; set; }
+        /// <summary>
+        /// Id en la table autUsuarios
+        /// </summary>
+        public string ID { get; set; }
+        /// <summary>
+        /// Si el usuario es administrador
+        /// </summary>
+        public bool personalCRL { get; set; }
+        /// <summary>
+        /// Nivel de acceso si es personalCRL. 5: Admin, 10: SuperAdmin
+        /// </summary>
+        public int nivelAcceso { get; set; }
     }
 }

@@ -73,11 +73,8 @@ namespace SmartAdminMvc.Controllers
         }
         public void RemoveRememberMeCookie()
         {
-            Response.Cookies.Remove("authetication_username");
-            Response.Cookies.Remove("authetication_password");
-
-            //Response.Cookies["authetication_username"].Expires = DateTime.Today.AddDays(-1);
-            //Response.Cookies["authetication_password"].Expires = DateTime.Today.AddDays(-1);
+            Response.Cookies["authetication_username"].Expires = DateTime.Today.AddDays(-1);
+            Response.Cookies["authetication_password"].Expires = DateTime.Today.AddDays(-1);
         }
         public string GetTokenCookie()
         {
@@ -96,8 +93,7 @@ namespace SmartAdminMvc.Controllers
         }
         public void RemoveTokenCookie()
         {
-            Response.Cookies.Remove("authetication_token");
-            //Response.Cookies["authetication_token"].Expires = DateTime.Today.AddDays(-1);
+            Response.Cookies["authetication_token"].Expires = DateTime.Today.AddDays(-1);
         }
     }
 }

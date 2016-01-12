@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var isAuthenticated = (Session["IsAuthenticated"] as bool?) == true;
+}
+<!DOCTYPE html>
 <html lang="en-us" id="@ViewBag.PageId" class="@SmartAdminMvc.Settings.CurrentTheme">
 <head>
     <meta charset=" utf-8">
@@ -39,9 +42,9 @@
 </head>
 <body class="@ViewBag.PageClass @SmartAdminMvc.Settings.CurrentTheme">
     @{ Html.RenderPartial("_Header", RenderSection("topright", false)); }
-    @{ Html.RenderPartialIf("_Aside",true); }
+    @{ Html.RenderPartialIf("_Aside", isAuthenticated); }
     <div id="main" role="main">
-        @{ Html.RenderPartialIf("_Ribbon", true); }
+        @{ Html.RenderPartialIf("_Ribbon", isAuthenticated); }
         @RenderBody()
     </div>
     @if (true)

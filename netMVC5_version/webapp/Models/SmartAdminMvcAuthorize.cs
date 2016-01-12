@@ -10,8 +10,8 @@ namespace SmartAdminMvc.Models
     {
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
-            return true;
-            //return (httpContext.Session["IsAuthenticated"] as bool?) == true;
+            //return true;
+            return (httpContext.Session["IsAuthenticated"] as bool?) == true;
         }
 
         protected override void HandleUnauthorizedRequest(AuthorizationContext authorizationContext)
