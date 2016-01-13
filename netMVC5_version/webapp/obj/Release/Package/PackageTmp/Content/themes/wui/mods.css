@@ -129,7 +129,8 @@
 
 .oitem.focus
 {
-    background-color: #ddd;
+    background-color: #555;
+    color: white;
 }
 
 .oitem.selected
@@ -139,7 +140,7 @@
 
         .oitem.selected.focus
         {
-            background-color: #ddd;
+            background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAKCAYAAACwoK7bAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sLHAoBFjlqnrwAAACUSURBVCjPrdMhCgJREAbgXRU0eARPICyYPYZ9BU9g9QQG7YJNzAoW72Db5B2MJoMgn8EHLiuG1ffH4fHBzJtJkojBGBfkMdGZV7axwBTzgJ7RjYWuAnpDvy6QIavUGth4J6+LdnDCDqNQa2JfQte/tjzAHQ8scSyhBdr/zHPqM1f0YnzWogIPkcZar0M4ggla3949AREf0AnV0H4LAAAAAElFTkSuQmCC) no-repeat left center #555;
         }
 
 .oddbtn
@@ -330,6 +331,10 @@ input[type="text"].osearch
 .cdropbtn .selbtn
 {
     position: inherit;
+}
+
+.cdropbtn:hover .selbtn {
+    color: #000;
 }
 
 input.combotxt[type="text"]

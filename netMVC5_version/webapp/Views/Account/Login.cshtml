@@ -117,7 +117,6 @@
                 },
                 datatype: "application/json",
                 success: function (data) {
-                    data.Token='eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6IjUzOTQ2NGI4LTAzYWMtNDA4Mi05NGM1LTk4NjU2MTYzOGUxMCIsIklkQXNvY2lhZG8iOiIwIiwiQ29uc2VjdXRpdm8iOiIwIiwiTm9tYnJlIjoiU1lTVEVNIiwiQXBlbGxpZG8iOiJBRE1JTiIsInBlcnNvbmFsQ1JMIjoiMSIsIm5pdmVsQWNjZXNvIjoiMTAiLCJpc3MiOiJodHRwOi8vYXBpLmNybC5wZSIsImF1ZCI6Imh0dHA6Ly9hcGkuY3JsLnBlIiwiZXhwIjoxNDU2NDc3Njk1LCJuYmYiOjE0NTI1ODk2OTV9.arKtDo567ncCIXVwBlfMJmhgSw4wQe-MJOuV9FvXwio';
                     if (data.Token) {
                         Login(data.Token);
                         return;

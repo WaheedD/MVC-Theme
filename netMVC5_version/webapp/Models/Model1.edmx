@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SmartAdminMvc.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AdminContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="aloAlojamientos">
           <Key>
             <PropertyRef Name="Id" />
@@ -104,8 +104,9 @@
         <EntityType Name="aloZonas">
           <Key>
             <PropertyRef Name="Id" />
+            <PropertyRef Name="tipo_Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Id" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="desc1" Type="nvarchar(max)" />
           <Property Name="desc2" Type="nvarchar(max)" />
           <Property Name="personas" Type="int" Nullable="false" />
@@ -113,7 +114,7 @@
           <Property Name="foto" Type="nvarchar(max)" />
           <Property Name="precioTempAlta" Type="float" />
           <Property Name="precioTempBaja" Type="float" />
-          <Property Name="tipo_Id" Type="int" />
+          <Property Name="tipo_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="appBuses">
           <Key>
@@ -199,20 +200,6 @@
           <Property Name="UpdatedAt" Type="datetimeoffset" Precision="7" />
           <Property Name="Deleted" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="appPromocionesSocio">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="cuponesUsados" Type="int" Nullable="false" />
-          <Property Name="ultimoUso" Type="datetime" />
-          <Property Name="Version" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
-          <Property Name="CreatedAt" Type="datetimeoffset" Precision="7" Nullable="false" />
-          <Property Name="UpdatedAt" Type="datetimeoffset" Precision="7" />
-          <Property Name="Deleted" Type="bit" Nullable="false" />
-          <Property Name="idPromo_Id" Type="int" />
-          <Property Name="socio_Id" Type="nvarchar" MaxLength="128" />
-        </EntityType>
         <EntityType Name="appRutas">
           <Key>
             <PropertyRef Name="Id" />
@@ -278,6 +265,16 @@
           <Property Name="refCosto" Type="nvarchar(max)" />
           <Property Name="ventaDesde" Type="datetime" Nullable="false" />
           <Property Name="ventaHasta" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="genTicketsPreciosEsp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="desc" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="precio" Type="float" Nullable="false" />
+          <Property Name="cantidad" Type="int" Nullable="false" />
+          <Property Name="zona_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="genTicketsVentas">
           <Key>
@@ -386,18 +383,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_aloZonas_Tipos">
-          <End Role="aloTipos" Type="Self.aloTipos" Multiplicity="0..1" />
-          <End Role="aloZonas" Type="Self.aloZonas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="aloTipos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="aloZonas">
-              <PropertyRef Name="tipo_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_appChoferes_Usuarios">
           <End Role="autUsuarios" Type="Self.autUsuarios" Multiplicity="1" />
           <End Role="appChoferes" Type="Self.appChoferes" Multiplicity="*" />
@@ -419,18 +404,6 @@
             </Principal>
             <Dependent Role="aloAlojamientos">
               <PropertyRef Name="tipo_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id">
-          <End Role="aloZonas" Type="Self.aloZonas" Multiplicity="0..1" />
-          <End Role="aloAlojamientos" Type="Self.aloAlojamientos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="aloZonas">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="aloAlojamientos">
-              <PropertyRef Name="zona_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -479,6 +452,20 @@
             </Principal>
             <Dependent Role="aloSorteos">
               <PropertyRef Name="tipo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_genTicketsPreciosEsp_dbo_genTicketsZonas_zona_id">
+          <End Role="genTicketsZonas" Type="Self.genTicketsZonas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="genTicketsPreciosEsp" Type="Self.genTicketsPreciosEsp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genTicketsZonas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="genTicketsPreciosEsp">
+              <PropertyRef Name="zona_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -566,7 +553,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="SmartAdminMvcStoreContainer">
+        <EntityContainer Name="AdminContextStoreContainer">
           <EntitySet Name="aloAlojamientos" EntityType="Self.aloAlojamientos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aloExcepciones" EntityType="Self.aloExcepciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aloReservas" EntityType="Self.aloReservas" Schema="dbo" store:Type="Tables" />
@@ -579,10 +566,10 @@
           <EntitySet Name="appEstaciones" EntityType="Self.appEstaciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="appParadas" EntityType="Self.appParadas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="appPromociones" EntityType="Self.appPromociones" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="appPromocionesSocio" EntityType="Self.appPromocionesSocio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="appRutas" EntityType="Self.appRutas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="autUsuarios" EntityType="Self.autUsuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="genActividades" EntityType="Self.genActividades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="genTicketsPreciosEsp" EntityType="Self.genTicketsPreciosEsp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="genTicketsVentas" EntityType="Self.genTicketsVentas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="genTicketsZonas" EntityType="Self.genTicketsZonas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="genTransaccionesVisanet" EntityType="Self.genTransaccionesVisanet" Schema="dbo" store:Type="Tables" />
@@ -602,20 +589,12 @@
             <End Role="autUsuarios" EntitySet="autUsuarios" />
             <End Role="aloSorteoInscrip" EntitySet="aloSorteoInscrip" />
           </AssociationSet>
-          <AssociationSet Name="FK_aloZonas_Tipos" Association="Self.FK_aloZonas_Tipos">
-            <End Role="aloTipos" EntitySet="aloTipos" />
-            <End Role="aloZonas" EntitySet="aloZonas" />
-          </AssociationSet>
           <AssociationSet Name="FK_appChoferes_Usuarios" Association="Self.FK_appChoferes_Usuarios">
             <End Role="autUsuarios" EntitySet="autUsuarios" />
             <End Role="appChoferes" EntitySet="appChoferes" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id" Association="Self.FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id">
             <End Role="aloTipos" EntitySet="aloTipos" />
-            <End Role="aloAlojamientos" EntitySet="aloAlojamientos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id" Association="Self.FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id">
-            <End Role="aloZonas" EntitySet="aloZonas" />
             <End Role="aloAlojamientos" EntitySet="aloAlojamientos" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id" Association="Self.FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id">
@@ -633,6 +612,10 @@
           <AssociationSet Name="FK_dbo_aloSorteos_dbo_aloTipos_tipo_Id" Association="Self.FK_dbo_aloSorteos_dbo_aloTipos_tipo_Id">
             <End Role="aloTipos" EntitySet="aloTipos" />
             <End Role="aloSorteos" EntitySet="aloSorteos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_genTicketsPreciosEsp_dbo_genTicketsZonas_zona_id" Association="Self.FK_dbo_genTicketsPreciosEsp_dbo_genTicketsZonas_zona_id">
+            <End Role="genTicketsZonas" EntitySet="genTicketsZonas" />
+            <End Role="genTicketsPreciosEsp" EntitySet="genTicketsPreciosEsp" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_genTicketsVentas_dbo_autUsuarios_socio_Id" Association="Self.FK_dbo_genTicketsVentas_dbo_autUsuarios_socio_Id">
             <End Role="autUsuarios" EntitySet="autUsuarios" />
@@ -663,15 +646,17 @@
             <End Role="appRutas" EntitySet="appRutas" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="SmartAdminMvc" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="AdminContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="aloAlojamientos">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nroAlojamiento" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="personas" Type="Int16" Nullable="false" />
           <Property Name="inhabilitado" Type="Boolean" Nullable="false" />
           <Property Name="caracteristicas" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -684,11 +669,9 @@
           <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="tipo_Id" Type="Int32" />
           <Property Name="zona_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="aloZonas" Relationship="Self.FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id" FromRole="aloAlojamientos" ToRole="aloZonas" />
-          <NavigationProperty Name="aloReservas" Relationship="Self.FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id" FromRole="aloAlojamientos" ToRole="aloReservas" />
-          <Property Name="nroAlojamiento" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="bloqueoEspecial" Type="Int32" />
-          <NavigationProperty Name="aloTipos" Relationship="SmartAdminMvc.FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id" FromRole="aloAlojamientos" ToRole="aloTipos" />
+          <NavigationProperty Name="aloTipos" Relationship="Self.FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id" FromRole="aloAlojamientos" ToRole="aloTipos" />
+          <NavigationProperty Name="aloReservas" Relationship="Self.FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id" FromRole="aloAlojamientos" ToRole="aloReservas" />
         </EntityType>
         <EntityType Name="aloExcepciones">
           <Key>
@@ -702,7 +685,7 @@
           <Property Name="porcentaje" Type="Int16" Nullable="false" />
           <Property Name="tipoExcep" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="tipo_Id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="aloTipos" Relationship="SmartAdminMvc.FK_aloExcepciones_Tipo" FromRole="aloExcepciones" ToRole="aloTipos" />
+          <NavigationProperty Name="aloTipos" Relationship="Self.FK_aloExcepciones_Tipo" FromRole="aloExcepciones" ToRole="aloTipos" />
         </EntityType>
         <EntityType Name="aloReservas">
           <Key>
@@ -720,15 +703,15 @@
           <Property Name="IGV" Type="Double" Nullable="false" />
           <Property Name="total" Type="Double" Nullable="false" />
           <Property Name="confirmada" Type="Boolean" Nullable="false" />
-          <Property Name="alojamiento_Id" Type="String" Nullable="false" />
+          <Property Name="alojamiento_Id" Type="Int32" Nullable="false" />
           <Property Name="gestor_Id" Type="String" MaxLength="38" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="socio_Id" Type="String" MaxLength="38" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="emision" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="carnet" Type="Int32" />
           <NavigationProperty Name="aloAlojamientos" Relationship="Self.FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id" FromRole="aloReservas" ToRole="aloAlojamientos" />
           <NavigationProperty Name="aloSorteoInscrip" Relationship="Self.FK_aloSorteoInscrip_reserva" FromRole="aloReservas" ToRole="aloSorteoInscrip" />
           <NavigationProperty Name="autUsuarios" Relationship="Self.FK_dbo_aloReservas_dbo_autUsuarios_gestor_Id" FromRole="aloReservas" ToRole="autUsuarios" />
           <NavigationProperty Name="autUsuarios1" Relationship="Self.FK_dbo_aloReservas_dbo_autUsuarios_socio_Id" FromRole="aloReservas" ToRole="autUsuarios" />
-          <Property Name="carnet" Type="Int32" />
         </EntityType>
         <EntityType Name="aloSorteoInscrip">
           <Key>
@@ -743,10 +726,10 @@
           <Property Name="p2_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="p3_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="reserva_id" Type="Int32" />
+          <Property Name="carnet" Type="Int32" />
           <NavigationProperty Name="aloReservas" Relationship="Self.FK_aloSorteoInscrip_reserva" FromRole="aloSorteoInscrip" ToRole="aloReservas" />
           <NavigationProperty Name="aloSorteos" Relationship="Self.FK_aloSorteoInscrip_sorteo" FromRole="aloSorteoInscrip" ToRole="aloSorteos" />
           <NavigationProperty Name="autUsuarios" Relationship="Self.FK_aloSorteoInscrip_usuario" FromRole="aloSorteoInscrip" ToRole="autUsuarios" />
-          <Property Name="carnet" Type="Int32" />
         </EntityType>
         <EntityType Name="aloSorteos">
           <Key>
@@ -775,16 +758,16 @@
           <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="restricFDStempAlta" Type="Boolean" Nullable="false" />
           <Property Name="idSede_idSede" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="aloAlojamientos" Relationship="Self.FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id" FromRole="aloTipos" ToRole="aloAlojamientos" />
+          <NavigationProperty Name="aloExcepciones" Relationship="Self.FK_aloExcepciones_Tipo" FromRole="aloTipos" ToRole="aloExcepciones" />
           <NavigationProperty Name="aloSorteos" Relationship="Self.FK_dbo_aloSorteos_dbo_aloTipos_tipo_Id" FromRole="aloTipos" ToRole="aloSorteos" />
-          <NavigationProperty Name="aloZonas" Relationship="Self.FK_aloZonas_Tipos" FromRole="aloTipos" ToRole="aloZonas" />
-          <NavigationProperty Name="aloAlojamientos" Relationship="SmartAdminMvc.FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id" FromRole="aloTipos" ToRole="aloAlojamientos" />
-          <NavigationProperty Name="aloExcepciones" Relationship="SmartAdminMvc.FK_aloExcepciones_Tipo" FromRole="aloTipos" ToRole="aloExcepciones" />
         </EntityType>
         <EntityType Name="aloZonas">
           <Key>
             <PropertyRef Name="Id" />
+            <PropertyRef Name="tipo_Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="desc1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="desc2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="personas" Type="Int32" Nullable="false" />
@@ -792,9 +775,7 @@
           <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="precioTempAlta" Type="Double" />
           <Property Name="precioTempBaja" Type="Double" />
-          <Property Name="tipo_Id" Type="Int32" />
-          <NavigationProperty Name="aloAlojamientos" Relationship="Self.FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id" FromRole="aloZonas" ToRole="aloAlojamientos" />
-          <NavigationProperty Name="aloTipos" Relationship="Self.FK_aloZonas_Tipos" FromRole="aloZonas" ToRole="aloTipos" />
+          <Property Name="tipo_Id" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="appBuses">
           <Key>
@@ -885,20 +866,6 @@
           <Property Name="UpdatedAt" Type="DateTimeOffset" Precision="7" />
           <Property Name="Deleted" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="appPromocionesSocio">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="cuponesUsados" Type="Int32" Nullable="false" />
-          <Property Name="ultimoUso" Type="DateTime" Precision="3" />
-          <Property Name="Version" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="CreatedAt" Type="DateTimeOffset" Nullable="false" Precision="7" />
-          <Property Name="UpdatedAt" Type="DateTimeOffset" Precision="7" />
-          <Property Name="Deleted" Type="Boolean" Nullable="false" />
-          <Property Name="idPromo_Id" Type="Int32" />
-          <Property Name="socio_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="appRutas">
           <Key>
             <PropertyRef Name="Id" />
@@ -973,6 +940,17 @@
           <Property Name="ventaDesde" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ventaHasta" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="genTicketsPreciosEsp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="precio" Type="Double" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="zona_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="genTicketsZonas" Relationship="Self.FK_dbo_genTicketsPreciosEsp_dbo_genTicketsZonas_zona_id" FromRole="genTicketsPreciosEsp" ToRole="genTicketsZonas" />
+        </EntityType>
         <EntityType Name="genTicketsVentas">
           <Key>
             <PropertyRef Name="idEntrada" />
@@ -1006,12 +984,12 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="precio" Type="Double" Nullable="false" />
           <Property Name="cupos" Type="Int32" Nullable="false" />
           <Property Name="vendidos" Type="Int32" Nullable="false" />
           <Property Name="croquis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="actividad_id" Type="Int32" Nullable="false" />
           <Property Name="porcSobreventa" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="genTicketsPreciosEsp" Relationship="Self.FK_dbo_genTicketsPreciosEsp_dbo_genTicketsZonas_zona_id" FromRole="genTicketsZonas" ToRole="genTicketsPreciosEsp" />
           <NavigationProperty Name="genTicketsVentas" Relationship="Self.FK_dbo_genTicketsVentas_dbo_genTicketsZonas_zona_id" FromRole="genTicketsZonas" ToRole="genTicketsVentas" />
         </EntityType>
         <EntityType Name="genTransaccionesVisanet">
@@ -1039,22 +1017,20 @@
           <NavigationProperty Name="autUsuarios" Relationship="Self.FK_dbo_genTransaccionesVisanet_dbo_appUsuarios_socio_Id" FromRole="genTransaccionesVisanet" ToRole="autUsuarios" />
           <NavigationProperty Name="genTicketsVentas" Relationship="Self.FK_dbo_genTicketsVentas_dbo_genTransaccionesVisanet_pagoOnline_Id" FromRole="genTransaccionesVisanet" ToRole="genTicketsVentas" />
         </EntityType>
-        <Association Name="FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id">
-          <End Role="aloZonas" Type="Self.aloZonas" Multiplicity="0..1" />
+        <Association Name="FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id">
+          <End Role="aloTipos" Type="Self.aloTipos" Multiplicity="0..1" />
           <End Role="aloAlojamientos" Type="Self.aloAlojamientos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="aloZonas">
+            <Principal Role="aloTipos">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="aloAlojamientos">
-              <PropertyRef Name="zona_Id" />
+              <PropertyRef Name="tipo_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id">
-          <End Role="aloAlojamientos" Type="Self.aloAlojamientos" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="aloAlojamientos" Type="Self.aloAlojamientos" Multiplicity="1" />
           <End Role="aloReservas" Type="Self.aloReservas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="aloAlojamientos">
@@ -1062,6 +1038,18 @@
             </Principal>
             <Dependent Role="aloReservas">
               <PropertyRef Name="alojamiento_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_aloExcepciones_Tipo">
+          <End Role="aloTipos" Type="Self.aloTipos" Multiplicity="1" />
+          <End Role="aloExcepciones" Type="Self.aloExcepciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aloTipos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aloExcepciones">
+              <PropertyRef Name="tipo_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1133,18 +1121,6 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="aloSorteos">
-              <PropertyRef Name="tipo_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_aloZonas_Tipos">
-          <End Role="aloTipos" Type="Self.aloTipos" Multiplicity="0..1" />
-          <End Role="aloZonas" Type="Self.aloZonas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="aloTipos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="aloZonas">
               <PropertyRef Name="tipo_Id" />
             </Dependent>
           </ReferentialConstraint>
@@ -1221,6 +1197,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_dbo_genTicketsPreciosEsp_dbo_genTicketsZonas_zona_id">
+          <End Role="genTicketsZonas" Type="Self.genTicketsZonas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="genTicketsPreciosEsp" Type="Self.genTicketsPreciosEsp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genTicketsZonas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="genTicketsPreciosEsp">
+              <PropertyRef Name="zona_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_genTicketsVentas_dbo_genTicketsZonas_zona_id">
           <End Role="genTicketsZonas" Type="Self.genTicketsZonas" Multiplicity="0..1" />
           <End Role="genTicketsVentas" Type="Self.genTicketsVentas" Multiplicity="*" />
@@ -1245,7 +1235,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AdminContext2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="aloAlojamientos" EntityType="Self.aloAlojamientos" />
           <EntitySet Name="aloExcepciones" EntityType="Self.aloExcepciones" />
           <EntitySet Name="aloReservas" EntityType="Self.aloReservas" />
@@ -1258,20 +1248,24 @@
           <EntitySet Name="appEstaciones" EntityType="Self.appEstaciones" />
           <EntitySet Name="appParadas" EntityType="Self.appParadas" />
           <EntitySet Name="appPromociones" EntityType="Self.appPromociones" />
-          <EntitySet Name="appPromocionesSocio" EntityType="Self.appPromocionesSocio" />
           <EntitySet Name="appRutas" EntityType="Self.appRutas" />
           <EntitySet Name="autUsuarios" EntityType="Self.autUsuarios" />
           <EntitySet Name="genActividades" EntityType="Self.genActividades" />
+          <EntitySet Name="genTicketsPreciosEsp" EntityType="Self.genTicketsPreciosEsp" />
           <EntitySet Name="genTicketsVentas" EntityType="Self.genTicketsVentas" />
           <EntitySet Name="genTicketsZonas" EntityType="Self.genTicketsZonas" />
           <EntitySet Name="genTransaccionesVisanet" EntityType="Self.genTransaccionesVisanet" />
-          <AssociationSet Name="FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id" Association="Self.FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id">
-            <End Role="aloZonas" EntitySet="aloZonas" />
+          <AssociationSet Name="FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id" Association="Self.FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id">
+            <End Role="aloTipos" EntitySet="aloTipos" />
             <End Role="aloAlojamientos" EntitySet="aloAlojamientos" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id" Association="Self.FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id">
             <End Role="aloAlojamientos" EntitySet="aloAlojamientos" />
             <End Role="aloReservas" EntitySet="aloReservas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_aloExcepciones_Tipo" Association="Self.FK_aloExcepciones_Tipo">
+            <End Role="aloTipos" EntitySet="aloTipos" />
+            <End Role="aloExcepciones" EntitySet="aloExcepciones" />
           </AssociationSet>
           <AssociationSet Name="FK_aloSorteoInscrip_reserva" Association="Self.FK_aloSorteoInscrip_reserva">
             <End Role="aloReservas" EntitySet="aloReservas" />
@@ -1297,10 +1291,6 @@
             <End Role="aloTipos" EntitySet="aloTipos" />
             <End Role="aloSorteos" EntitySet="aloSorteos" />
           </AssociationSet>
-          <AssociationSet Name="FK_aloZonas_Tipos" Association="Self.FK_aloZonas_Tipos">
-            <End Role="aloTipos" EntitySet="aloTipos" />
-            <End Role="aloZonas" EntitySet="aloZonas" />
-          </AssociationSet>
           <AssociationSet Name="FK_dbo_rutas_dbo_buses_currBus_Id" Association="Self.FK_dbo_rutas_dbo_buses_currBus_Id">
             <End Role="appBuses" EntitySet="appBuses" />
             <End Role="appRutas" EntitySet="appRutas" />
@@ -1325,6 +1315,10 @@
             <End Role="autUsuarios" EntitySet="autUsuarios" />
             <End Role="genTransaccionesVisanet" EntitySet="genTransaccionesVisanet" />
           </AssociationSet>
+          <AssociationSet Name="FK_dbo_genTicketsPreciosEsp_dbo_genTicketsZonas_zona_id" Association="Self.FK_dbo_genTicketsPreciosEsp_dbo_genTicketsZonas_zona_id">
+            <End Role="genTicketsZonas" EntitySet="genTicketsZonas" />
+            <End Role="genTicketsPreciosEsp" EntitySet="genTicketsPreciosEsp" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_genTicketsVentas_dbo_genTicketsZonas_zona_id" Association="Self.FK_dbo_genTicketsVentas_dbo_genTicketsZonas_zona_id">
             <End Role="genTicketsZonas" EntitySet="genTicketsZonas" />
             <End Role="genTicketsVentas" EntitySet="genTicketsVentas" />
@@ -1333,51 +1327,18 @@
             <End Role="genTransaccionesVisanet" EntitySet="genTransaccionesVisanet" />
             <End Role="genTicketsVentas" EntitySet="genTicketsVentas" />
           </AssociationSet>
-          <AssociationSet Name="FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id" Association="SmartAdminMvc.FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id">
-            <End Role="aloTipos" EntitySet="aloTipos" />
-            <End Role="aloAlojamientos" EntitySet="aloAlojamientos" />
-          </AssociationSet>
-          <AssociationSet Name="FK_aloExcepciones_Tipo" Association="SmartAdminMvc.FK_aloExcepciones_Tipo">
-            <End Role="aloTipos" EntitySet="aloTipos" />
-            <End Role="aloExcepciones" EntitySet="aloExcepciones" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id">
-          <End Type="SmartAdminMvc.aloTipos" Role="aloTipos" Multiplicity="0..1" />
-          <End Type="SmartAdminMvc.aloAlojamientos" Role="aloAlojamientos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="aloTipos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="aloAlojamientos">
-              <PropertyRef Name="tipo_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_aloExcepciones_Tipo">
-          <End Type="SmartAdminMvc.aloTipos" Role="aloTipos" Multiplicity="1" />
-          <End Type="SmartAdminMvc.aloExcepciones" Role="aloExcepciones" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="aloTipos">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="aloExcepciones">
-              <PropertyRef Name="tipo_Id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SmartAdminMvcStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="AdminContextStoreContainer" CdmEntityContainer="AdminContext2">
           <EntitySetMapping Name="aloAlojamientos">
-            <EntityTypeMapping TypeName="SmartAdminMvc.aloAlojamientos">
+            <EntityTypeMapping TypeName="AdminContext.aloAlojamientos">
               <MappingFragment StoreEntitySet="aloAlojamientos">
-                <ScalarProperty Name="bloqueoEspecial" ColumnName="bloqueoEspecial" />
-                <ScalarProperty Name="nroAlojamiento" ColumnName="nroAlojamiento" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="nroAlojamiento" ColumnName="nroAlojamiento" />
                 <ScalarProperty Name="personas" ColumnName="personas" />
                 <ScalarProperty Name="inhabilitado" ColumnName="inhabilitado" />
                 <ScalarProperty Name="caracteristicas" ColumnName="caracteristicas" />
@@ -1390,11 +1351,12 @@
                 <ScalarProperty Name="foto" ColumnName="foto" />
                 <ScalarProperty Name="tipo_Id" ColumnName="tipo_Id" />
                 <ScalarProperty Name="zona_Id" ColumnName="zona_Id" />
+                <ScalarProperty Name="bloqueoEspecial" ColumnName="bloqueoEspecial" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="aloExcepciones">
-            <EntityTypeMapping TypeName="SmartAdminMvc.aloExcepciones">
+            <EntityTypeMapping TypeName="AdminContext.aloExcepciones">
               <MappingFragment StoreEntitySet="aloExcepciones">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1408,9 +1370,8 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="aloReservas">
-            <EntityTypeMapping TypeName="SmartAdminMvc.aloReservas">
+            <EntityTypeMapping TypeName="AdminContext.aloReservas">
               <MappingFragment StoreEntitySet="aloReservas">
-                <ScalarProperty Name="carnet" ColumnName="carnet" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="fecha" ColumnName="fecha" />
                 <ScalarProperty Name="fechaEntrada" ColumnName="fechaEntrada" />
@@ -1427,13 +1388,13 @@
                 <ScalarProperty Name="gestor_Id" ColumnName="gestor_Id" />
                 <ScalarProperty Name="socio_Id" ColumnName="socio_Id" />
                 <ScalarProperty Name="emision" ColumnName="emision" />
+                <ScalarProperty Name="carnet" ColumnName="carnet" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="aloSorteoInscrip">
-            <EntityTypeMapping TypeName="SmartAdminMvc.aloSorteoInscrip">
+            <EntityTypeMapping TypeName="AdminContext.aloSorteoInscrip">
               <MappingFragment StoreEntitySet="aloSorteoInscrip">
-                <ScalarProperty Name="carnet" ColumnName="carnet" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="socio_id" ColumnName="socio_id" />
                 <ScalarProperty Name="sorteo_id" ColumnName="sorteo_id" />
@@ -1443,11 +1404,12 @@
                 <ScalarProperty Name="p2_id" ColumnName="p2_id" />
                 <ScalarProperty Name="p3_id" ColumnName="p3_id" />
                 <ScalarProperty Name="reserva_id" ColumnName="reserva_id" />
+                <ScalarProperty Name="carnet" ColumnName="carnet" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="aloSorteos">
-            <EntityTypeMapping TypeName="SmartAdminMvc.aloSorteos">
+            <EntityTypeMapping TypeName="AdminContext.aloSorteos">
               <MappingFragment StoreEntitySet="aloSorteos">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="detalle" ColumnName="detalle" />
@@ -1462,7 +1424,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="aloTipos">
-            <EntityTypeMapping TypeName="SmartAdminMvc.aloTipos">
+            <EntityTypeMapping TypeName="AdminContext.aloTipos">
               <MappingFragment StoreEntitySet="aloTipos">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1475,7 +1437,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="aloZonas">
-            <EntityTypeMapping TypeName="SmartAdminMvc.aloZonas">
+            <EntityTypeMapping TypeName="AdminContext.aloZonas">
               <MappingFragment StoreEntitySet="aloZonas">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="desc1" ColumnName="desc1" />
@@ -1490,7 +1452,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="appBuses">
-            <EntityTypeMapping TypeName="SmartAdminMvc.appBuses">
+            <EntityTypeMapping TypeName="AdminContext.appBuses">
               <MappingFragment StoreEntitySet="appBuses">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1505,7 +1467,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="appChoferes">
-            <EntityTypeMapping TypeName="SmartAdminMvc.appChoferes">
+            <EntityTypeMapping TypeName="AdminContext.appChoferes">
               <MappingFragment StoreEntitySet="appChoferes">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1516,7 +1478,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="appEstaciones">
-            <EntityTypeMapping TypeName="SmartAdminMvc.appEstaciones">
+            <EntityTypeMapping TypeName="AdminContext.appEstaciones">
               <MappingFragment StoreEntitySet="appEstaciones">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1533,7 +1495,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="appParadas">
-            <EntityTypeMapping TypeName="SmartAdminMvc.appParadas">
+            <EntityTypeMapping TypeName="AdminContext.appParadas">
               <MappingFragment StoreEntitySet="appParadas">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1554,7 +1516,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="appPromociones">
-            <EntityTypeMapping TypeName="SmartAdminMvc.appPromociones">
+            <EntityTypeMapping TypeName="AdminContext.appPromociones">
               <MappingFragment StoreEntitySet="appPromociones">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="desc" ColumnName="desc" />
@@ -1578,23 +1540,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="appPromocionesSocio">
-            <EntityTypeMapping TypeName="SmartAdminMvc.appPromocionesSocio">
-              <MappingFragment StoreEntitySet="appPromocionesSocio">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="cuponesUsados" ColumnName="cuponesUsados" />
-                <ScalarProperty Name="ultimoUso" ColumnName="ultimoUso" />
-                <ScalarProperty Name="Version" ColumnName="Version" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="idPromo_Id" ColumnName="idPromo_Id" />
-                <ScalarProperty Name="socio_Id" ColumnName="socio_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="appRutas">
-            <EntityTypeMapping TypeName="SmartAdminMvc.appRutas">
+            <EntityTypeMapping TypeName="AdminContext.appRutas">
               <MappingFragment StoreEntitySet="appRutas">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1614,7 +1561,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="autUsuarios">
-            <EntityTypeMapping TypeName="SmartAdminMvc.autUsuarios">
+            <EntityTypeMapping TypeName="AdminContext.autUsuarios">
               <MappingFragment StoreEntitySet="autUsuarios">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="idAsociado" ColumnName="idAsociado" />
@@ -1643,7 +1590,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="genActividades">
-            <EntityTypeMapping TypeName="SmartAdminMvc.genActividades">
+            <EntityTypeMapping TypeName="AdminContext.genActividades">
               <MappingFragment StoreEntitySet="genActividades">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="desc" ColumnName="desc" />
@@ -1662,8 +1609,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="genTicketsPreciosEsp">
+            <EntityTypeMapping TypeName="AdminContext.genTicketsPreciosEsp">
+              <MappingFragment StoreEntitySet="genTicketsPreciosEsp">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="desc" ColumnName="desc" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="zona_id" ColumnName="zona_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="genTicketsVentas">
-            <EntityTypeMapping TypeName="SmartAdminMvc.genTicketsVentas">
+            <EntityTypeMapping TypeName="AdminContext.genTicketsVentas">
               <MappingFragment StoreEntitySet="genTicketsVentas">
                 <ScalarProperty Name="idEntrada" ColumnName="idEntrada" />
                 <ScalarProperty Name="cantidad_real" ColumnName="cantidad_real" />
@@ -1688,7 +1646,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="genTicketsZonas">
-            <EntityTypeMapping TypeName="SmartAdminMvc.genTicketsZonas">
+            <EntityTypeMapping TypeName="AdminContext.genTicketsZonas">
               <MappingFragment StoreEntitySet="genTicketsZonas">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="desc" ColumnName="desc" />
@@ -1701,7 +1659,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="genTransaccionesVisanet">
-            <EntityTypeMapping TypeName="SmartAdminMvc.genTransaccionesVisanet">
+            <EntityTypeMapping TypeName="AdminContext.genTransaccionesVisanet">
               <MappingFragment StoreEntitySet="genTransaccionesVisanet">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="monto" ColumnName="monto" />
@@ -1739,7 +1697,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

@@ -24,7 +24,7 @@ namespace SmartAdminMvc.Controllers
                     o.croquis,
                     o.precioTempAlta,
                     o.precioTempBaja,
-                    tipo = o.aloTipos != null ? o.aloTipos.nombre : "", //.tipo_Id,
+                    tipo = o.tipo_Id
                 };
         }
 
@@ -70,7 +70,7 @@ namespace SmartAdminMvc.Controllers
                 croquis = input.croquis,
                 precioTempAlta = input.precioAlta,
                 precioTempBaja= input.precioBaja,
-                tipo_Id = input.tipo,
+                tipo_Id = input.tipo??0,
             };
 
             UnitOfWork.AloZonaRepository.Insert(entity);
@@ -110,7 +110,7 @@ namespace SmartAdminMvc.Controllers
             entity.croquis = input.croquis;
             entity.precioTempAlta = input.precioAlta;
             entity.precioTempBaja = input.precioBaja;
-            entity.tipo_Id = input.tipo;
+            entity.tipo_Id = input.tipo??0;
 
             UnitOfWork.AloZonaRepository.Update(entity);
             UnitOfWork.Save();

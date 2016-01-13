@@ -417,7 +417,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/11/2016 22:19:45</publishTime>
     </File>
     <File Include="bin/SmartAdminMvc.dll">
-      <publishTime>01/12/2016 12:16:15</publishTime>
+      <publishTime>01/13/2016 11:44:58</publishTime>
     </File>
     <File Include="bin/System.IdentityModel.Tokens.Jwt.dll">
       <publishTime>01/11/2016 22:19:42</publishTime>
@@ -1321,6 +1321,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Models/AdminContext.edmx.diagram">
       <publishTime>01/11/2016 22:19:47</publishTime>
+    </File>
+    <File Include="Models/Model1.edmx.diagram">
+      <publishTime>01/13/2016 11:15:50</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>01/11/2016 22:19:47</publishTime>
@@ -2697,10 +2700,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/11/2016 22:19:51</publishTime>
     </File>
     <File Include="Views/Account/Lock.cshtml">
-      <publishTime>01/11/2016 22:19:51</publishTime>
+      <publishTime>01/13/2016 10:40:04</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
-      <publishTime>01/12/2016 12:00:06</publishTime>
+      <publishTime>01/13/2016 11:43:45</publishTime>
     </File>
     <File Include="Views/Account/Register.cshtml">
       <publishTime>01/11/2016 22:19:51</publishTime>
@@ -2715,10 +2718,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/11/2016 22:19:51</publishTime>
     </File>
     <File Include="Views/aloAlojamiento/Create.cshtml">
-      <publishTime>01/11/2016 22:19:51</publishTime>
+      <publishTime>01/12/2016 16:00:34</publishTime>
     </File>
     <File Include="Views/aloAlojamiento/Index.cshtml">
-      <publishTime>01/12/2016 01:35:25</publishTime>
+      <publishTime>01/12/2016 16:08:08</publishTime>
     </File>
     <File Include="Views/aloExcepcione/Create.cshtml">
       <publishTime>01/11/2016 22:19:51</publishTime>
@@ -2904,7 +2907,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/12/2016 01:59:35</publishTime>
     </File>
     <File Include="Views/Home/Index1.cshtml">
-      <publishTime>01/11/2016 22:19:51</publishTime>
+      <publishTime>01/13/2016 10:40:04</publishTime>
     </File>
     <File Include="Views/Home/Widgets.cshtml">
       <publishTime>01/11/2016 22:19:51</publishTime>
@@ -3057,7 +3060,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/11/2016 22:19:51</publishTime>
     </File>
     <File Include="Views/Shared/_CurrentUser.cshtml">
-      <publishTime>01/11/2016 22:19:51</publishTime>
+      <publishTime>01/13/2016 10:40:04</publishTime>
     </File>
     <File Include="Views/Shared/_Footer.cshtml">
       <publishTime>01/12/2016 12:21:29</publishTime>
@@ -3066,7 +3069,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/11/2016 22:19:51</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>01/12/2016 10:49:38</publishTime>
+      <publishTime>01/13/2016 10:40:04</publishTime>
     </File>
     <File Include="Views/Shared/_Ribbon.cshtml">
       <publishTime>01/11/2016 22:19:51</publishTime>
@@ -3081,7 +3084,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/11/2016 22:19:51</publishTime>
     </File>
     <File Include="Views/Shared/_TopRight.cshtml">
-      <publishTime>01/11/2016 22:19:51</publishTime>
+      <publishTime>01/13/2016 10:40:04</publishTime>
     </File>
     <File Include="Views/Tables/DataTables.cshtml">
       <publishTime>10/08/2014 19:21:10</publishTime>
@@ -3117,7 +3120,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/11/2016 22:19:51</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/12/2016 15:56:01</publishTime>
+      <publishTime>01/13/2016 11:45:02</publishTime>
     </File>
   </ItemGroup>
 </Project>

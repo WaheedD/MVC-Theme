@@ -187,44 +187,9 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Content\img\ajax-loader.gif" />
     <Content Include="Content\img\alpha.png" />
-    <Content Include="Content\img\avatars\1.png" />
-    <Content Include="Content\img\avatars\2.png" />
-    <Content Include="Content\img\avatars\3.png" />
-    <Content Include="Content\img\avatars\4.png" />
-    <Content Include="Content\img\avatars\5.png" />
-    <Content Include="Content\img\avatars\female.png" />
-    <Content Include="Content\img\avatars\male.png" />
-    <Content Include="Content\img\avatars\sunny-big.png" />
-    <Content Include="Content\img\avatars\sunny-big1.png" />
-    <Content Include="Content\img\avatars\sunny.png" />
-    <Content Include="Content\img\avatars\sunny1.png" />
     <Content Include="Content\img\blank.gif" />
     <Content Include="Content\img\border.png" />
     <Content Include="Content\img\clear.png" />
-    <Content Include="Content\img\demo\64x64.png" />
-    <Content Include="Content\img\demo\basic.png" />
-    <Content Include="Content\img\demo\chat.png" />
-    <Content Include="Content\img\demo\demo-smartbig-alert.png" />
-    <Content Include="Content\img\demo\demo-smartmedium-alert.png" />
-    <Content Include="Content\img\demo\demo-smartsmall-alert.png" />
-    <Content Include="Content\img\demo\hero.png" />
-    <Content Include="Content\img\demo\image-placeholder-64x64.png" />
-    <Content Include="Content\img\demo\iphoneview.png" />
-    <Content Include="Content\img\demo\m1.jpg" />
-    <Content Include="Content\img\demo\m2.jpg" />
-    <Content Include="Content\img\demo\m3.jpg" />
-    <Content Include="Content\img\demo\newsletter.png" />
-    <Content Include="Content\img\demo\responseimg.png" />
-    <Content Include="Content\img\demo\s1.jpg" />
-    <Content Include="Content\img\demo\s2.jpg" />
-    <Content Include="Content\img\demo\s3.jpg" />
-    <Content Include="Content\img\demo\sa-demo.png" />
-    <Content Include="Content\img\demo\sample.jpg" />
-    <Content Include="Content\img\demo\sidebar.png" />
-    <Content Include="Content\img\demo\sidebarhero.png" />
-    <Content Include="Content\img\demo\site-1.jpg" />
-    <Content Include="Content\img\demo\site-2.jpg" />
-    <Content Include="Content\img\demo\widget-colorpicker.png" />
     <Content Include="Content\img\dropzone\spritemap%402x.png" />
     <Content Include="Content\img\dropzone\spritemap.png" />
     <Content Include="Content\img\favicon\1favicon.ico" />
@@ -237,10 +202,6 @@
     <Content Include="Content\img\glass.jpg" />
     <Content Include="Content\img\gradient\login.png" />
     <Content Include="Content\img\hue.png" />
-    <Content Include="Content\img\invoice\americanexpress.png" />
-    <Content Include="Content\img\invoice\mastercard.png" />
-    <Content Include="Content\img\invoice\paypal.png" />
-    <Content Include="Content\img\invoice\visa.png" />
     <Content Include="Content\img\jcrop\Jcrop.gif" />
     <Content Include="Content\img\jqueryui\ui-bg_flat_0_999999_40x100.png" />
     <Content Include="Content\img\jqueryui\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -362,28 +323,10 @@
     <Content Include="Content\img\versions\phpversion.png" />
     <Content Include="Content\img\versions\reactversion.png" />
     <Content Include="Content\img\violate.jpg" />
-    <Content Include="Content\img\voicecommand\active-btn.gif" />
     <Content Include="Content\img\vt-menu.png" />
     <Content Include="Content\o.png" />
     <Content Include="Content\o2.png" />
-    <Content Include="Content\pictures\Fruits\Apple.jpg" />
-    <Content Include="Content\pictures\Fruits\Banana.jpg" />
-    <Content Include="Content\pictures\Fruits\Cherry.jpg" />
-    <Content Include="Content\pictures\Fruits\Mango.jpg" />
-    <Content Include="Content\pictures\Fruits\Papaya.jpg" />
     <Content Include="Content\prettify.css" />
-    <Content Include="Content\themes\bui\AwesomeMvc.css" />
-    <Content Include="Content\themes\bui\awe_icons.png" />
-    <Content Include="Content\themes\bui\editdel.png" />
-    <Content Include="Content\themes\bui\loading.gif" />
-    <Content Include="Content\themes\bui\mods.css" />
-    <Content Include="Content\themes\bui\pm.png" />
-    <Content Include="Content\themes\gui2\AwesomeMvc.css" />
-    <Content Include="Content\themes\gui2\awe_icons.png" />
-    <Content Include="Content\themes\gui2\editdel.png" />
-    <Content Include="Content\themes\gui2\loading.gif" />
-    <Content Include="Content\themes\gui2\mods.css" />
-    <Content Include="Content\themes\gui2\pm.png" />
     <Content Include="Content\themes\gui3\AwesomeMvc.css" />
     <Content Include="Content\themes\gui3\awe_icons.png" />
     <Content Include="Content\themes\gui3\awe_icons2.png" />
@@ -397,20 +340,6 @@
     <Content Include="Content\themes\gui\loading.gif" />
     <Content Include="Content\themes\gui\mods.css" />
     <Content Include="Content\themes\gui\pm.png" />
-    <Content Include="Content\themes\met\AwesomeMvc.css" />
-    <Content Include="Content\themes\met\awe_icons.png" />
-    <Content Include="Content\themes\met\awe_icons2.png" />
-    <Content Include="Content\themes\met\editdel.png" />
-    <Content Include="Content\themes\met\loading.gif" />
-    <Content Include="Content\themes\met\mods.css" />
-    <Content Include="Content\themes\met\pm.png" />
-    <Content Include="Content\themes\start\AwesomeMvc.css" />
-    <Content Include="Content\themes\start\awe_icons.png" />
-    <Content Include="Content\themes\start\awe_icons2.png" />
-    <Content Include="Content\themes\start\editdel.png" />
-    <Content Include="Content\themes\start\loading.gif" />
-    <Content Include="Content\themes\start\mods.css" />
-    <Content Include="Content\themes\start\pm.png" />
     <Content Include="Content\themes\wui\AwesomeMvc.css" />
     <Content Include="Content\themes\wui\awe_icons.png" />
     <Content Include="Content\themes\wui\editdel.png" />
@@ -419,23 +348,23 @@
     <Content Include="Content\themes\wui\pm.png" />
     <Content Include="Content\themes\wui\pm3.png" />
     <Content Include="Global.asax" />
-    <Content Include="Models\AdminContext.Context.tt">
+    <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AdminContext.edmx</DependentUpon>
-      <LastGenOutput>AdminContext.Context.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\AdminContext.tt">
+    <Content Include="Models\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>AdminContext.edmx</DependentUpon>
-      <LastGenOutput>AdminContext.cs</LastGenOutput>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
     <Content Include="packages.config" />
-    <EntityDeploy Include="Models\AdminContext.edmx">
+    <EntityDeploy Include="Models\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>AdminContext.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\AdminContext.edmx.diagram">
-      <DependentUpon>AdminContext.edmx</DependentUpon>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\SmartAdmin - Release.pubxml" />
     <None Include="Properties\PublishProfiles\SmartAdmin - Debug.pubxml" />
@@ -1045,77 +974,77 @@
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Helpers\ShowCodeHelpers.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AdminContext.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AdminContext.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AdminContext.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AdminContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\AdminContext.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AdminContext.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\aloAlojamientos.cs">
-      <DependentUpon>AdminContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aloExcepciones.cs">
-      <DependentUpon>AdminContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aloReservas.cs">
-      <DependentUpon>AdminContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aloSorteoInscrip.cs">
-      <DependentUpon>AdminContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aloSorteos.cs">
-      <DependentUpon>AdminContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aloTipos.cs">
-      <DependentUpon>AdminContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\aloZonas.cs">
-      <DependentUpon>AdminContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\appBuses.cs">
-      <DependentUpon>AdminContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\appChoferes.cs">
-      <DependentUpon>AdminContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\appEstaciones.cs">
-      <DependentUpon>AdminContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\appParadas.cs">
-      <DependentUpon>AdminContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\appPromociones.cs">
-      <DependentUpon>AdminContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\appPromocionesSocio.cs">
-      <DependentUpon>AdminContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\appRutas.cs">
-      <DependentUpon>AdminContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\autUsuarios.cs">
-      <DependentUpon>AdminContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\genActividades.cs">
-      <DependentUpon>AdminContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\genTicketsPreciosEsp.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\genTicketsVentas.cs">
-      <DependentUpon>AdminContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\genTicketsZonas.cs">
-      <DependentUpon>AdminContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\genTransaccionesVisanet.cs">
-      <DependentUpon>AdminContext.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\SmartAdminMvcAuthorize.cs" />
     <Compile Include="Repositories\UnitOfWork.cs" />

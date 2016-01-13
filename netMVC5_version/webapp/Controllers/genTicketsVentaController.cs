@@ -89,9 +89,9 @@ namespace SmartAdminMvc.Controllers
                 numeracion = input.numeracion,
                 confirmada = input.confirmada,
                 cargoCuenta = input.cargoCuenta,
-                pagoOnline_Id = input.pagoOnline_Id,
+                pagoOnline_Id = input.pagoOnline_Id??0,
                 socio_Id = input.socio_Id,
-                zona_id = string.IsNullOrWhiteSpace(input.zona) ? (int?)null : int.Parse(input.zona),
+                zona_id = input.zona,
                 idPrecio = input.idPrecio,
             };
 
@@ -124,7 +124,7 @@ namespace SmartAdminMvc.Controllers
                 cargoCuenta = entity.cargoCuenta,
                 pagoOnline_Id = entity.pagoOnline_Id,
                 socio_Id = entity.socio_Id,
-                zona = entity.zona_id.HasValue?entity.zona_id.ToString():"",
+                zona = entity.zona_id??0,
                 idPrecio = entity.idPrecio,
             };
 
@@ -152,9 +152,9 @@ namespace SmartAdminMvc.Controllers
             entity.numeracion = input.numeracion;
             entity.confirmada = input.confirmada;
             entity.cargoCuenta = input.cargoCuenta;
-            entity.pagoOnline_Id = input.pagoOnline_Id;
+            entity.pagoOnline_Id = input.pagoOnline_Id??0;
             entity.socio_Id = input.socio_Id;
-            entity.zona_id = string.IsNullOrWhiteSpace(input.zona) ? (int?)null : int.Parse(input.zona);
+            entity.zona_id = input.zona;
             entity.idPrecio = input.idPrecio;
 
             UnitOfWork.GenTicketsVentaRepository.Update(entity);

@@ -11,7 +11,7 @@ namespace SmartAdminMvc.Repositories
 {
     public class UnitOfWork : IDisposable
     {
-        private Entities context = new Entities();
+        private AdminContext context = new AdminContext();
 
         private GenericRepository<aloAlojamientos> alojamientoRepository;
         private GenericRepository<aloExcepciones> aloExcepcioneRepository;

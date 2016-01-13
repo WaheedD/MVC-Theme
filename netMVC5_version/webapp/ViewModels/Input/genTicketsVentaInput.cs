@@ -50,7 +50,7 @@ namespace SmartAdminMvc.ViewModels.Input
         public string socio_Id { get; set; }
         [UIHint("Lookup")]
         [Lookup(Controller = "genTicketsZona")]
-        public string zona { get; set; }
+        public int zona { get; set; }
         [Required]
         public int idPrecio { get; set; }
     }

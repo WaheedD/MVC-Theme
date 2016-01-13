@@ -21,6 +21,7 @@ namespace SmartAdminMvc.Models
         }
     
         public int Id { get; set; }
+        public string nroAlojamiento { get; set; }
         public short personas { get; set; }
         public bool inhabilitado { get; set; }
         public string caracteristicas { get; set; }
@@ -33,12 +34,10 @@ namespace SmartAdminMvc.Models
         public string foto { get; set; }
         public Nullable<int> tipo_Id { get; set; }
         public string zona_Id { get; set; }
-        public string nroAlojamiento { get; set; }
         public Nullable<int> bloqueoEspecial { get; set; }
     
-        public virtual aloZonas aloZonas { get; set; }
+        public virtual aloTipos aloTipos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<aloReservas> aloReservas { get; set; }
-        public virtual aloTipos aloTipos { get; set; }
     }
 }

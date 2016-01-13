@@ -113,7 +113,7 @@ namespace SmartAdminMvc.Controllers
                 estadia_hasta = entity.estadia_hasta,
                 inscripcion_desde = entity.inscripcion_desde,
                 inscripcion_hasta = entity.inscripcion_hasta,
-                tipo = entity.tipo_Id,
+                tipo = entity.aloTipos.Id,
                 hide_tipo=hide_tipo,
             };
 

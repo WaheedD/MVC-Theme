@@ -78,7 +78,7 @@ namespace SmartAdminMvc.Controllers
                 precioTempBaja = input.precioTempBaja,
                 lat = input.lat,
                 lon = input.lon,
-                tipo_Id = input.tipo,
+                aloTipos =UnitOfWork.AloTipoRepository.GetById( input.tipo),
                 foto = input.foto,
                 agrup1 = input.agrup1,
                 agrup2 = input.agrup2,
@@ -91,7 +91,7 @@ namespace SmartAdminMvc.Controllers
             return Json(MapToGridModel(entity)); // returning grid model, used in grid.api.renderRow
         }
 
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int id)
         {
             var entity = UnitOfWork.AlojamientoRepository.GetById(id);
 
@@ -130,7 +130,7 @@ namespace SmartAdminMvc.Controllers
             entity.precioTempBaja = input.precioTempBaja;
             entity.lat = input.lat;
             entity.lon = input.lon;
-            entity.tipo_Id = input.tipo;
+            entity.aloTipos =UnitOfWork.AloTipoRepository.GetById( input.tipo);
             entity.foto = input.foto;
             entity.agrup1 = input.agrup1;
             entity.agrup2 = input.agrup2;
