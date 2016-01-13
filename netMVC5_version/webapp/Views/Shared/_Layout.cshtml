@@ -1,5 +1,15 @@
 ﻿@{
     var isAuthenticated = (Session["IsAuthenticated"] as bool?) == true;
+    var usuarioAPI = (Session["usuarioAPI"] as SmartAdminMvc.Controllers.usuarioAPI);
+
+    if (usuarioAPI!=null)
+    {
+        ViewBag.Nombre = usuarioAPI.Nombre;
+    }
+    else
+    {
+        ViewBag.Nombre = "Anonymous";
+    }
 }
 <!DOCTYPE html>
 <html lang="en-us" id="@ViewBag.PageId" class="@SmartAdminMvc.Settings.CurrentTheme">
