@@ -1,5 +1,5 @@
 ﻿/*
-met
+gui3
 */
 
 .awe-lookup-field, .awe-multilookup-field, .awe-datepicker-field,
@@ -51,8 +51,9 @@ met
         margin-left: 3px;
     }
 
-.awe-caption {
-    padding: 0.3em 0.7em;
+.awe-caption
+{
+    padding: 0.2em 0.7em;
 }
 
 .awe-multilookup-field .awe-display, .awe-lookup-field .awe-display, .awe-datepicker-field .awe-display
@@ -105,7 +106,7 @@ met
 
     .awe-multilookup-field .awe-display li
     {
-        padding: 0.3em 0.7em;
+        padding: 0.2em 0.7em;
         line-height: 1.2em;
     }
 
@@ -271,11 +272,13 @@ tr.awe-li
 .awe-btn, .ui-button.ui-state-default, .ui-widget-header .ui-state-default, .awe-morebtn, .awe-spincont
 {
     cursor: pointer;
-    border: 1px solid #36A9E1;
     background-image: none;
-    background-image: linear-gradient(to bottom,#3DA9E1,#36A9E1);
-    background-color: #36A9E1;
-    border-radius: 2px;
+    font-size: .9em;
+    border:1px solid #3079ED;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+    background-color: #4D90FE;
+    background-image: linear-gradient(to bottom,#4D90FE,#4787ED);
+    border-radius: 3px;
     color: #fff;
     padding: 2px 3px;
     text-align: center;
@@ -294,15 +297,17 @@ tr.awe-li
 
     .awe-btn:hover, .ui-button.ui-state-hover, .awe-morebtn:hover
     {
-        background-image: none;
+        border: 1px solid #2F5BB7;
         color: #fff;
-        background: #1e8fc6;
-        border-color: #1e8fc6;
+        text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+        background-color: #357AE8;
+        background-image: linear-gradient(to bottom,#4D90FE,#357AE8);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     }
 
     .awe-btn:active, .ui-button.ui-state-active, .awe-morebtn:active
     {
-        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
     }
 
     .awe-btn.awe-selected
@@ -316,18 +321,36 @@ tr.awe-li
     
     .awe-btn.awe-selected.awe-spinbtn {
         color: white;
-        box-shadow: inset 0 0 13px rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
     }
 
     .awe-btn.awe-disabled {
         color: lightgray;
-        border: 1px solid #36A9E1;
-        background-image: none;
-        background-image: linear-gradient(to bottom,#3DA9E1,#36A9E1);
-        background-color: #36A9E1;
+        border:1px solid #3079ED;
+        text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+        background-color: #4D90FE;
+        background-image: linear-gradient(to bottom,#4D90FE,#4787ED);
         box-shadow: none;
     }
 
+.awe-morebtn
+{
+    background-color: #F8F8F8;
+    background-image: linear-gradient(to bottom,#fcfcfc 0,#f8f8f8 100%);
+    border: 1px solid;
+    border-color: #D3D3D3;
+    color: #333;
+    font-size: 12px;
+    outline: 0;
+}
+
+    .awe-morebtn:hover
+    {
+        background-color: #f0f0f0;
+        background-image: linear-gradient(to bottom, #f8f8f8 0, #eee 100%);
+        border-color: #c5c5c5;
+        color: #333;
+    }
 
 .awe-openbtn, .awe-dpbtn, .awe-clearbtn
 {
@@ -373,28 +396,12 @@ tr.awe-li
 
 .awe-morebtn
 {
-	font-weight: bold;
-	text-align: center;
-	padding: 7px 9px;
-	margin: 3px;
-	border-radius: 2px;
-      background-color: #F8F8F8;
-      background-image: linear-gradient(to bottom,#fcfcfc 0,#f8f8f8 100%);
-      border: 1px solid;
-      border-color: #D3D3D3;
-      color: #333;
-      font-size: 12px;
-      outline: 0;
-	    
-	    
-    }
-
-    .awe-morebtn:hover {
-        background-color: #f0f0f0;
-        background-image: linear-gradient(to bottom, #f8f8f8 0, #eee 100%);
-        border-color: #c5c5c5;
-        color: #333;
-    }
+    font-weight: bold;
+    text-align: center;
+    padding: 7px 9px;
+    margin: 3px;
+    border-radius: 2px;
+}
 
 .awe-movebtn
 {
@@ -521,7 +528,7 @@ tr.awe-li
     position: absolute;
     font-weight: bold;
     border: 1px solid gainsboro;
-    border-radius: 2px;
+    border-radius: 3px;
     line-height: 20px !important;
 }
 
@@ -579,7 +586,7 @@ tr.awe-li
 
 .awe-row.awe-alt, .awe-li:nth-child(even):not(.awe-morecont)
 {
-    background: #F7F7F7;
+    background: #F4F9F9;
 }
 
 .awe-row.awe-selected
@@ -645,7 +652,7 @@ tr.awe-li
 {
     background-image: linear-gradient(to bottom, #FCFCFC 0, #F8F8F8 100%);
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-    background-color: #36A9E1;
+    background-color: #F8F8F8;
     color: #333;
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
@@ -950,7 +957,7 @@ input[type="text"].awe-txt, .awe-searchtxt
 
 .awe-rtl input.awe-txt.awe-hasSpinners
 {
-    padding-right: 4px;
+    padding-right: 8px;
     padding-left: 2em;
 }
 
@@ -1061,7 +1068,7 @@ input[type="text"].awe-txt, .awe-searchtxt
     box-shadow: none;
     width: 40px;
     margin: -10px 0 0 0;
-	outline: none;
+    outline: none;
 }
 
 .ui-datepicker-calendar .ui-state-default
@@ -1072,15 +1079,18 @@ input[type="text"].awe-txt, .awe-searchtxt
     border: none;
 }
 
-.ui-datepicker-calendar .ui-state-default.ui-state-highlight {
-    background-color: #FBFEC9;
-}
+    .ui-datepicker-calendar .ui-state-default.ui-state-highlight
+    {
+        background-color: #FBFEC9;
+    }
 
-.ui-datepicker-calendar .ui-state-default.ui-state-hover {
-    background-color: #d7e9f2;
-}
+    .ui-datepicker-calendar .ui-state-default.ui-state-hover
+    {
+        background-color: #d7e9f2;
+    }
 
-.ui-datepicker-calendar .ui-state-default.ui-state-active {
-    color: #fff;
-    background-color: #36a9e1;
-}
+    .ui-datepicker-calendar .ui-state-default.ui-state-active
+    {
+        color: #fff;
+        background-color: #4D90FE;
+    }

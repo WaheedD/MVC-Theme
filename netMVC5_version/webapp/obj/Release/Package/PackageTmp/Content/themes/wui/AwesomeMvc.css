@@ -1,5 +1,5 @@
 ﻿/*
-bui
+wui
 */
 
 .awe-lookup-field, .awe-multilookup-field, .awe-datepicker-field,
@@ -132,22 +132,22 @@ table.awe-ajaxlist
 
     table.awe-ajaxlist th:first-child
     {
-        border-radius: 5px 0 0 0;
+        border-radius: 2px 0 0 0;
     }
 
     table.awe-ajaxlist th:last-child
     {
-        border-radius: 0 5px 0 0;
+        border-radius: 0 2px 0 0;
     }
 
     table.awe-ajaxlist tr:last-child td:last-child
     {
-        border-radius: 0 0 5px 0;
+        border-radius: 0 0 2px 0;
     }
 
     table.awe-ajaxlist tr:last-child td:first-child
     {
-        border-radius: 0 0 0 5px;
+        border-radius: 0 0 0 2px;
     }
 
 .awe-ajaxlist
@@ -156,7 +156,7 @@ table.awe-ajaxlist
     padding: 0;
     width: 100%;
     *width: 99%;
-    border-radius: 5px;
+    border-radius: 2px;
 }
 
     .awe-ajaxlist.awe-lookup-list
@@ -170,11 +170,11 @@ table.awe-ajaxlist
         overflow: hidden;
     }
 
-li.awe-li.awe-morecont
+li.awe-li.awe-morecont, tr.awe-li.awe-morecont
 {
+    padding: 1px;
     background: #FFF;
-    border-radius: 5px;
-    padding: 3px;
+    border-radius: 2px;
 }
 
 .awe-ajaxlist th, .awe-ajaxlist td, .awe-list td, .awe-list th
@@ -271,49 +271,33 @@ tr.awe-li
 .awe-btn, .ui-button.ui-state-default, .ui-widget-header .ui-state-default, .awe-morebtn, .awe-spincont
 {
     cursor: pointer;
-    border: 1px solid #ccc;
+    border: 1px solid #D3D3D3;
     background-image: none;
-    border-color: #e5e5e5 #e5e5e5 #bfbfbf;
-    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    border-bottom-color: #b3b3b3;
-    background-image: linear-gradient(to bottom, #ffffff, #e5e5e5);
+    background-image: linear-gradient(to bottom, #FCFCFC 0, #F8F8F8 100%);
+    background-color: #F8F8F8;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-    background-color: #f5f5f5;
-    border-radius: 4px;
+    border-radius: 2px;
     color: #333;
     padding: 2px 3px;
     text-align: center;
-    background-repeat: repeat-x;
-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-    -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
     margin: 0;
     font: inherit;
 }
-
-.awe-btn.awe-disabled {
-    color: gray;
-}
-
     .awe-btn::-moz-focus-inner
     {
         border: 0;
         padding: 0;
     }
 
-    .awe-btn:hover, .ui-button.ui-state-hover, .awe-morebtn:hover,
-    .awe-btn:focus, .ui-button.ui-state-focus, .awe-morebtn:focus
+    .awe-btn:hover, .ui-button.ui-state-hover, .awe-morebtn:hover
     {
+        background-color: #eee;
+        background-image: linear-gradient(to bottom, #f8f8f8 0, #eee 100%);
+        border-color: #C5C5C5;
         color: #333;
-        background-position: 0 -15px;
-        -webkit-transition: background-position 0.1s linear;
-        -moz-transition: background-position 0.1s linear;
-        -o-transition: background-position 0.1s linear;
-        transition: background-position 0.1s linear;
-        background-color: #e5e5e5;
     }
 
     .awe-btn:active, .ui-button.ui-state-active, .awe-morebtn:active, .awe-btn.awe-selected
@@ -326,7 +310,7 @@ tr.awe-li
 
     .awe-btn.awe-selected.awe-spinbtn {
         
-        box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.25),0 1px 0 white;
+        box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.25),0 1px 0 white;
     }
 
     .awe-btn.awe-disabled {
@@ -339,7 +323,7 @@ tr.awe-li
     }
 .awe-openbtn, .awe-dpbtn, .awe-clearbtn
 {
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 2px 2px 0;
     padding: 0;
     height: 1.9em;
     position: absolute;
@@ -385,7 +369,7 @@ tr.awe-li
     text-align: center;
     padding: 7px 9px;
     margin: 3px;
-    border-radius: 3px;
+    border-radius: 2px;
 }
 
 .awe-movebtn
@@ -455,7 +439,7 @@ tr.awe-li
 {
     border: 1px solid gainsboro;
     border-radius: 2px;
-    background: #F7F7F7;
+    background: #fafafa;
 }
 
 .awe-mcontent
@@ -465,7 +449,7 @@ tr.awe-li
 
 .awe-tablc
 {
-    background: #F7F7F7;
+    background: #fafafa;
 }
 
 .awe-gfc
@@ -571,7 +555,7 @@ tr.awe-li
 
 .awe-row.awe-alt, .awe-li:nth-child(even):not(.awe-morecont)
 {
-    background: #f7f7f7;
+    background: #FAFAFA;
 }
 
 .awe-row.awe-selected
@@ -615,7 +599,7 @@ tr.awe-li
 {
     line-height: 2.2em;
     text-decoration: none;
-    padding: 0 .9em;
+    padding: 0 .7em;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -633,11 +617,11 @@ tr.awe-li
     width: 16px;
 }
 
-.awe-header th, .awe-header, .awe-hrow .awe-idn, .awe-drag
+.awe-header th, .awe-header, .awe-hrow .awe-idn, .awe-drag, .awe-col
 {
-    background-image: linear-gradient(to bottom, #ffffff, #e5e5e5);
+    background-image: linear-gradient(to bottom, #FCFCFC 0, #F8F8F8 100%);
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-    background-color: #f5f5f5;
+    background-color: #F8F8F8;
     color: #333;
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
@@ -1061,21 +1045,24 @@ input[type="text"].awe-txt, .awe-searchtxt
     color: #333;
 }
 
-.ui-datepicker-calendar .ui-state-default.ui-state-highlight {
-    border: 1px solid #dcdcdc;
-    background: #fafafa;
-    color: #333;
-}
+    .ui-datepicker-calendar .ui-state-default.ui-state-highlight
+    {
+        border: 1px solid #dcdcdc;
+        background: #fafafa;
+        color: #333;
+    }
 
-.ui-datepicker-calendar .ui-state-default.ui-state-hover {
-    background: #f0f0f0;
-    color: #333;
-}
+    .ui-datepicker-calendar .ui-state-default.ui-state-hover
+    {
+        background: #f0f0f0;
+        color: #333;
+    }
 
-.ui-datepicker-calendar .ui-state-default.ui-state-active {
-    color: #000;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
-    border-color: #C5C5C5;
-    background-color: #DADADA;
-    border-radius: 2px;
-}
+    .ui-datepicker-calendar .ui-state-default.ui-state-active
+    {
+        color: #000;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+        border-color: #C5C5C5;
+        background-color: #DADADA;
+        border-radius: 2px;
+    }
