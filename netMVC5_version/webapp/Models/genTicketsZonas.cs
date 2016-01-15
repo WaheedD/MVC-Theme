@@ -17,7 +17,6 @@ namespace SmartAdminMvc.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public genTicketsZonas()
         {
-            this.genTicketsPreciosEsp = new HashSet<genTicketsPreciosEsp>();
             this.genTicketsVentas = new HashSet<genTicketsVentas>();
         }
     
@@ -29,8 +28,6 @@ namespace SmartAdminMvc.Models
         public int actividad_id { get; set; }
         public int porcSobreventa { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<genTicketsPreciosEsp> genTicketsPreciosEsp { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<genTicketsVentas> genTicketsVentas { get; set; }
     }

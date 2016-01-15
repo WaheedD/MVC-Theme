@@ -119,7 +119,7 @@ namespace SmartAdminMvc.Controllers
         [HttpPost]
         public ActionResult Edit(appPromocioneInput input)
         {
-            //if (!ModelState.IsValid) return PartialView("Create", input);
+            if (!ModelState.IsValid) return PartialView("Create", input);
             var entity = UnitOfWork.AppPromocioneRepository.GetById(input.Id);
 
             entity.desc = input.desc;

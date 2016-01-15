@@ -29,6 +29,7 @@ namespace SmartAdminMvc.Models
         public string foto { get; set; }
         public bool restricFDStempAlta { get; set; }
         public string idSede_idSede { get; set; }
+        public System.DateTime habHasta { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<aloAlojamientos> aloAlojamientos { get; set; }

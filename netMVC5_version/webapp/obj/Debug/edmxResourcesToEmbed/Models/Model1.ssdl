@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="SmartAdminMvc.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="AdminContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="aloAlojamientos">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nroAlojamiento" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="personas" Type="smallint" Nullable="false" />
     <Property Name="inhabilitado" Type="bit" Nullable="false" />
     <Property Name="caracteristicas" Type="nvarchar(max)" />
@@ -17,6 +18,7 @@
     <Property Name="foto" Type="nvarchar(max)" />
     <Property Name="tipo_Id" Type="int" />
     <Property Name="zona_Id" Type="nvarchar" MaxLength="128" />
+    <Property Name="bloqueoEspecial" Type="int" />
   </EntityType>
   <EntityType Name="aloExcepciones">
     <Key>
@@ -29,7 +31,7 @@
     <Property Name="hasta" Type="datetime" Nullable="false" />
     <Property Name="porcentaje" Type="smallint" Nullable="false" />
     <Property Name="tipoExcep" Type="nvarchar(max)" />
-    <Property Name="tipo_Id" Type="int" />
+    <Property Name="tipo_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="aloReservas">
     <Key>
@@ -39,7 +41,7 @@
     <Property Name="fecha" Type="datetime" Nullable="false" />
     <Property Name="fechaEntrada" Type="datetime" Nullable="false" />
     <Property Name="fechaSalida" Type="datetime" Nullable="false" />
-    <Property Name="codigoReserva" Type="nvarchar(max)" />
+    <Property Name="codigoReserva" Type="varchar" MaxLength="30" />
     <Property Name="comentarios" Type="nvarchar(max)" />
     <Property Name="DEUCON" Type="nvarchar(max)" />
     <Property Name="DEUPRV" Type="nvarchar(max)" />
@@ -47,10 +49,11 @@
     <Property Name="IGV" Type="float" Nullable="false" />
     <Property Name="total" Type="float" Nullable="false" />
     <Property Name="confirmada" Type="bit" Nullable="false" />
-    <Property Name="alojamiento_Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="alojamiento_Id" Type="int" Nullable="false" />
     <Property Name="gestor_Id" Type="varchar" MaxLength="38" Nullable="false" />
     <Property Name="socio_Id" Type="varchar" MaxLength="38" Nullable="false" />
     <Property Name="emision" Type="nvarchar(max)" />
+    <Property Name="carnet" Type="int" />
   </EntityType>
   <EntityType Name="aloSorteoInscrip">
     <Key>
@@ -65,6 +68,7 @@
     <Property Name="p2_id" Type="varchar" MaxLength="50" />
     <Property Name="p3_id" Type="varchar" MaxLength="50" />
     <Property Name="reserva_id" Type="int" />
+    <Property Name="carnet" Type="int" />
   </EntityType>
   <EntityType Name="aloSorteos">
     <Key>
@@ -95,8 +99,9 @@
   <EntityType Name="aloZonas">
     <Key>
       <PropertyRef Name="Id" />
+      <PropertyRef Name="tipo_Id" />
     </Key>
-    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Id" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="desc1" Type="nvarchar(max)" />
     <Property Name="desc2" Type="nvarchar(max)" />
     <Property Name="personas" Type="int" Nullable="false" />
@@ -104,7 +109,7 @@
     <Property Name="foto" Type="nvarchar(max)" />
     <Property Name="precioTempAlta" Type="float" />
     <Property Name="precioTempBaja" Type="float" />
-    <Property Name="tipo_Id" Type="int" />
+    <Property Name="tipo_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="appBuses">
     <Key>
@@ -190,20 +195,6 @@
     <Property Name="UpdatedAt" Type="datetimeoffset" Precision="7" />
     <Property Name="Deleted" Type="bit" Nullable="false" />
   </EntityType>
-  <EntityType Name="appPromocionesSocio">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="cuponesUsados" Type="int" Nullable="false" />
-    <Property Name="ultimoUso" Type="datetime" />
-    <Property Name="Version" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
-    <Property Name="CreatedAt" Type="datetimeoffset" Precision="7" Nullable="false" />
-    <Property Name="UpdatedAt" Type="datetimeoffset" Precision="7" />
-    <Property Name="Deleted" Type="bit" Nullable="false" />
-    <Property Name="idPromo_Id" Type="int" />
-    <Property Name="socio_Id" Type="nvarchar" MaxLength="128" />
-  </EntityType>
   <EntityType Name="appRutas">
     <Key>
       <PropertyRef Name="Id" />
@@ -270,6 +261,16 @@
     <Property Name="ventaDesde" Type="datetime" Nullable="false" />
     <Property Name="ventaHasta" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="genTicketsPreciosEsp">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="desc" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="precio" Type="float" Nullable="false" />
+    <Property Name="cantidad" Type="int" Nullable="false" />
+    <Property Name="zona_id" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="genTicketsVentas">
     <Key>
       <PropertyRef Name="idEntrada" />
@@ -300,7 +301,6 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="desc" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="precio" Type="float" Nullable="false" />
     <Property Name="cupos" Type="int" Nullable="false" />
     <Property Name="vendidos" Type="int" Nullable="false" />
     <Property Name="croquis" Type="nvarchar(max)" />
@@ -330,6 +330,18 @@
     <Property Name="param1" Type="nvarchar(max)" />
     <Property Name="param2" Type="nvarchar(max)" />
   </EntityType>
+  <Association Name="FK_aloExcepciones_Tipo">
+    <End Role="aloTipos" Type="Self.aloTipos" Multiplicity="1" />
+    <End Role="aloExcepciones" Type="Self.aloExcepciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aloTipos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="aloExcepciones">
+        <PropertyRef Name="tipo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_aloSorteoInscrip_reserva">
     <End Role="aloReservas" Type="Self.aloReservas" Multiplicity="0..1" />
     <End Role="aloSorteoInscrip" Type="Self.aloSorteoInscrip" Multiplicity="*" />
@@ -366,18 +378,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_aloZonas_Tipos">
-    <End Role="aloTipos" Type="Self.aloTipos" Multiplicity="0..1" />
-    <End Role="aloZonas" Type="Self.aloZonas" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="aloTipos">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="aloZonas">
-        <PropertyRef Name="tipo_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_appChoferes_Usuarios">
     <End Role="autUsuarios" Type="Self.autUsuarios" Multiplicity="1" />
     <End Role="appChoferes" Type="Self.appChoferes" Multiplicity="*" />
@@ -390,22 +390,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id">
-    <End Role="aloZonas" Type="Self.aloZonas" Multiplicity="0..1" />
+  <Association Name="FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id">
+    <End Role="aloTipos" Type="Self.aloTipos" Multiplicity="0..1" />
     <End Role="aloAlojamientos" Type="Self.aloAlojamientos" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="aloZonas">
+      <Principal Role="aloTipos">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="aloAlojamientos">
-        <PropertyRef Name="zona_Id" />
+        <PropertyRef Name="tipo_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id">
-    <End Role="aloAlojamientos" Type="Self.aloAlojamientos" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
+    <End Role="aloAlojamientos" Type="Self.aloAlojamientos" Multiplicity="1" />
     <End Role="aloReservas" Type="Self.aloReservas" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="aloAlojamientos">
@@ -449,6 +447,20 @@
       </Principal>
       <Dependent Role="aloSorteos">
         <PropertyRef Name="tipo_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_genTicketsPreciosEsp_dbo_genTicketsZonas_zona_id">
+    <End Role="genTicketsZonas" Type="Self.genTicketsZonas" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="genTicketsPreciosEsp" Type="Self.genTicketsPreciosEsp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="genTicketsZonas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="genTicketsPreciosEsp">
+        <PropertyRef Name="zona_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -536,7 +548,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="SmartAdminMvcStoreContainer">
+  <EntityContainer Name="AdminContextStoreContainer">
     <EntitySet Name="aloAlojamientos" EntityType="Self.aloAlojamientos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="aloExcepciones" EntityType="Self.aloExcepciones" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="aloReservas" EntityType="Self.aloReservas" Schema="dbo" store:Type="Tables" />
@@ -549,13 +561,17 @@
     <EntitySet Name="appEstaciones" EntityType="Self.appEstaciones" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="appParadas" EntityType="Self.appParadas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="appPromociones" EntityType="Self.appPromociones" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="appPromocionesSocio" EntityType="Self.appPromocionesSocio" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="appRutas" EntityType="Self.appRutas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="autUsuarios" EntityType="Self.autUsuarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="genActividades" EntityType="Self.genActividades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="genTicketsPreciosEsp" EntityType="Self.genTicketsPreciosEsp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="genTicketsVentas" EntityType="Self.genTicketsVentas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="genTicketsZonas" EntityType="Self.genTicketsZonas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="genTransaccionesVisanet" EntityType="Self.genTransaccionesVisanet" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_aloExcepciones_Tipo" Association="Self.FK_aloExcepciones_Tipo">
+      <End Role="aloTipos" EntitySet="aloTipos" />
+      <End Role="aloExcepciones" EntitySet="aloExcepciones" />
+    </AssociationSet>
     <AssociationSet Name="FK_aloSorteoInscrip_reserva" Association="Self.FK_aloSorteoInscrip_reserva">
       <End Role="aloReservas" EntitySet="aloReservas" />
       <End Role="aloSorteoInscrip" EntitySet="aloSorteoInscrip" />
@@ -568,16 +584,12 @@
       <End Role="autUsuarios" EntitySet="autUsuarios" />
       <End Role="aloSorteoInscrip" EntitySet="aloSorteoInscrip" />
     </AssociationSet>
-    <AssociationSet Name="FK_aloZonas_Tipos" Association="Self.FK_aloZonas_Tipos">
-      <End Role="aloTipos" EntitySet="aloTipos" />
-      <End Role="aloZonas" EntitySet="aloZonas" />
-    </AssociationSet>
     <AssociationSet Name="FK_appChoferes_Usuarios" Association="Self.FK_appChoferes_Usuarios">
       <End Role="autUsuarios" EntitySet="autUsuarios" />
       <End Role="appChoferes" EntitySet="appChoferes" />
     </AssociationSet>
-    <AssociationSet Name="FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id" Association="Self.FK_dbo_aloAlojamientos_dbo_aloZonas_zona_Id">
-      <End Role="aloZonas" EntitySet="aloZonas" />
+    <AssociationSet Name="FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id" Association="Self.FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id">
+      <End Role="aloTipos" EntitySet="aloTipos" />
       <End Role="aloAlojamientos" EntitySet="aloAlojamientos" />
     </AssociationSet>
     <AssociationSet Name="FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id" Association="Self.FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id">
@@ -595,6 +607,10 @@
     <AssociationSet Name="FK_dbo_aloSorteos_dbo_aloTipos_tipo_Id" Association="Self.FK_dbo_aloSorteos_dbo_aloTipos_tipo_Id">
       <End Role="aloTipos" EntitySet="aloTipos" />
       <End Role="aloSorteos" EntitySet="aloSorteos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_genTicketsPreciosEsp_dbo_genTicketsZonas_zona_id" Association="Self.FK_dbo_genTicketsPreciosEsp_dbo_genTicketsZonas_zona_id">
+      <End Role="genTicketsZonas" EntitySet="genTicketsZonas" />
+      <End Role="genTicketsPreciosEsp" EntitySet="genTicketsPreciosEsp" />
     </AssociationSet>
     <AssociationSet Name="FK_dbo_genTicketsVentas_dbo_autUsuarios_socio_Id" Association="Self.FK_dbo_genTicketsVentas_dbo_autUsuarios_socio_Id">
       <End Role="autUsuarios" EntitySet="autUsuarios" />

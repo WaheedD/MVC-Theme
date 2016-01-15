@@ -29,6 +29,7 @@ namespace SmartAdminMvc.Models
         public System.DateTime inscripcion_desde { get; set; }
         public System.DateTime inscripcion_hasta { get; set; }
         public Nullable<int> tipo_Id { get; set; }
+        public string nroSorteo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<aloSorteoInscrip> aloSorteoInscrip { get; set; }
