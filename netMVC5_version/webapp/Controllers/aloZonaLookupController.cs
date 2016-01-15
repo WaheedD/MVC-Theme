@@ -3,6 +3,7 @@ using System.Web.Mvc;
 
 using SmartAdminMvc.Models;
 using Omu.AwesomeMvc;
+using System;
 
 namespace SmartAdminMvc.Controllers.Awesome.Lookup
 {
@@ -36,8 +37,17 @@ namespace SmartAdminMvc.Controllers.Awesome.Lookup
             return Json(result);
         }
 
+        public ActionResult GetItems(string v,string parent)
+        {
+            var i = Convert.ToInt32(parent);
+            var zonas = UnitOfWork.AloZonaRepository.Get(o => o.tipo_Id == i);
+
+            return Json(zonas.Select(o => new KeyContent(o.Id, o.Id)));
+        }
+
         public ActionResult GetItem(string v)
         {
+            
             var o = string.IsNullOrWhiteSpace(v) || v == "0" ? new aloZonas() : UnitOfWork.AloZonaRepository.GetById(v);
 
             return Json(new KeyContent(o.Id, o.Id));

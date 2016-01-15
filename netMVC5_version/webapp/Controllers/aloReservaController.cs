@@ -23,16 +23,11 @@ namespace SmartAdminMvc.Controllers
                     o.fechaEntrada,
                     o.fechaSalida,
                     o.comentarios,
-                    o.DEUCON,
-                    o.DEUPRV,
-                    o.monto,
-                    o.IGV,
-                    o.total,
-                    o.confirmada,
+                   total="S/. "+ o.total,
+                    confirmada = o.confirmada ? "Sí" : "",
                     o.emision,
-                    o.alojamiento_Id,
-                    o.gestor_Id,
-                    o.socio_Id,
+                    aloj = o.aloAlojamientos.nroAlojamiento,
+                    tipo = o.aloAlojamientos.aloTipos.nombre
                 };
         }
 
@@ -47,11 +42,11 @@ namespace SmartAdminMvc.Controllers
             }
 
             return Json(new GridModelBuilder<aloReservas>(items, g)
-                {
-                    Key = "Id", // needed for api select, update, tree, nesting, EF
-                    GetItem = () => UnitOfWork.AloReservaRepository.GetById(g.Key), // called by the grid.api.update ( edit popupform success js func )
-                    Map = MapToGridModel
-                }.Build());
+            {
+                Key = "Id", // needed for api select, update, tree, nesting, EF
+                GetItem = () => UnitOfWork.AloReservaRepository.GetById(Convert.ToInt32(g.Key)), // called by the grid.api.update ( edit popupform success js func )
+                Map = MapToGridModel
+            }.Build());
         }
 
         public ActionResult Index()

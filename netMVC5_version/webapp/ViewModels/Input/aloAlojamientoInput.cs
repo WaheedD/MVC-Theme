@@ -33,8 +33,8 @@ namespace SmartAdminMvc.ViewModels.Input
         public string foto { get; set; }
         public string agrup1 { get; set; }
         public string agrup2 { get; set; }
-        [UIHint("Lookup")]
-        [Lookup(Fullscreen = true, CustomSearch = true, TableLayout = true)]
+        //[UIHint("Lookup")]
+        //[Lookup(Fullscreen = true, CustomSearch = true, TableLayout = true)]
         public string zona { get; set; }
     }
 }

@@ -6,7 +6,7 @@
 <div id="content">
     <div class="row">
         <div class="col-xs-12 col-sm-7 col-md-7 col-lg-4">
-            <h1 class="page-title txt-color-blueDark"><i class="fa fa-comments"></i> @ViewBag.Title <span>> @ViewBag.Title List</span></h1>
+            <h1 class="page-title txt-color-blueDark"><i class="fa fa-comments"></i> @ViewBag.Title <span>> Lista @ViewBag.Title </span></h1>
         </div>
     </div>
 
@@ -21,7 +21,7 @@
     </div>
 
     @(Html.Awe().Grid("appParadaGrid")
-            .Mod(o => o.PageInfo().ColumnsSelector().ColumnsAutohide()).ColumnsPersistence(Persistence.Local)
+            .Mod(o => o.PageInfo().ColumnsSelector()).ColumnsPersistence(Persistence.Local)
                         .Url(Url.Action("GridGetItems", "appParada"))
             .Parent("txtSearch", "search")
             //.Height(350)

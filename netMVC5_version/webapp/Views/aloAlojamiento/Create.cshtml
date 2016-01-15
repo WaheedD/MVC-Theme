@@ -20,7 +20,8 @@
                 @Html.EditorFor(o => o.foto)
                 @Html.EditorFor(o => o.agrup1)
                 @Html.EditorFor(o => o.agrup2)
-                @Html.EditorFor(o => o.zona)
+
+                @Html.Awe().AjaxDropdown("zona").Parent("aloalojamientoedittipo").Url(Url.Action("GetItems", "ZonaLookup"))
 
                 @Html.HiddenFor(o => o.lat)
                 @Html.HiddenFor(o => o.lon)
