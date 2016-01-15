@@ -8,10 +8,11 @@ namespace SmartAdminMvc.Helpers.Awesome
     public static class CrudHelpers
     {
         /*beging*/
-        public static IHtmlString InitCrudPopupsForGrid<T>(this HtmlHelper<T> html, string gridId, string crudController, int createPopupHeight = 430, int createPopupWidth = 600)
+        public static IHtmlString InitCrudPopupsForGrid<T>(this HtmlHelper<T> html, string gridId, string crudController, int createPopupHeight = 430, int createPopupWidth = 600
+            , string itemCreatedSuccess = "", string itemEditedSuccess = "")
         {
             var url = new UrlHelper(html.ViewContext.RequestContext);
-
+            
             var result =
             html.Awe()
                 .InitPopupForm()
@@ -20,7 +21,7 @@ namespace SmartAdminMvc.Helpers.Awesome
                 .Height(createPopupHeight)
                 .Width(createPopupWidth)
                 .Url(url.Action("Create", crudController))
-                .Success("utils.itemCreated('" + gridId + "')")
+                .Success(string.IsNullOrWhiteSpace(itemCreatedSuccess) ? "utils.itemCreated('" + gridId + "')" : itemCreatedSuccess)
                 .ToString()
 
             + html.Awe()
@@ -31,7 +32,7 @@ namespace SmartAdminMvc.Helpers.Awesome
                   .Width(createPopupWidth)
                   .Url(url.Action("Edit", crudController))
                   .Modal(true)
-                  .Success("utils.itemEdited('" + gridId + "')")
+                  .Success(string.IsNullOrWhiteSpace(itemEditedSuccess) ? "utils.itemEdited('" + gridId + "')" : itemEditedSuccess)
 
             + html.Awe()
                   .InitPopupForm()

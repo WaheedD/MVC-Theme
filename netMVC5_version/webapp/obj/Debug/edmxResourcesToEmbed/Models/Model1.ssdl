@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="CRLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="AdminContext.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="aloAlojamientos">
     <Key>
       <PropertyRef Name="Id" />
@@ -30,9 +30,8 @@
     <Property Name="desde" Type="datetime" Nullable="false" />
     <Property Name="hasta" Type="datetime" Nullable="false" />
     <Property Name="porcentaje" Type="smallint" Nullable="false" />
-    <Property Name="tipoExcep" Type="varchar" MaxLength="3" />
+    <Property Name="tipoExcep" Type="nvarchar(max)" />
     <Property Name="tipo_Id" Type="int" Nullable="false" />
-    <Property Name="usoMaxVeces" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="aloReservas">
     <Key>
@@ -84,7 +83,6 @@
     <Property Name="inscripcion_desde" Type="datetime" Nullable="false" />
     <Property Name="inscripcion_hasta" Type="datetime" Nullable="false" />
     <Property Name="tipo_Id" Type="int" />
-    <Property Name="nroSorteo" Type="varchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="aloTipos">
     <Key>
@@ -97,7 +95,6 @@
     <Property Name="foto" Type="nvarchar(max)" />
     <Property Name="restricFDStempAlta" Type="bit" Nullable="false" />
     <Property Name="idSede_idSede" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="habHasta" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="aloZonas">
     <Key>
@@ -263,6 +260,16 @@
     <Property Name="refCosto" Type="nvarchar(max)" />
     <Property Name="ventaDesde" Type="datetime" Nullable="false" />
     <Property Name="ventaHasta" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="genTicketsPreciosEsp">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="desc" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="precio" Type="float" Nullable="false" />
+    <Property Name="cantidad" Type="int" Nullable="false" />
+    <Property Name="zona_id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="genTicketsVentas">
     <Key>
@@ -443,6 +450,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_dbo_genTicketsPreciosEsp_dbo_genTicketsZonas_zona_id">
+    <End Role="genTicketsZonas" Type="Self.genTicketsZonas" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="genTicketsPreciosEsp" Type="Self.genTicketsPreciosEsp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="genTicketsZonas">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="genTicketsPreciosEsp">
+        <PropertyRef Name="zona_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_dbo_genTicketsVentas_dbo_autUsuarios_socio_Id">
     <End Role="autUsuarios" Type="Self.autUsuarios" Multiplicity="0..1" />
     <End Role="genTicketsVentas" Type="Self.genTicketsVentas" Multiplicity="*" />
@@ -527,7 +548,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="CRLModelStoreContainer">
+  <EntityContainer Name="AdminContextStoreContainer">
     <EntitySet Name="aloAlojamientos" EntityType="Self.aloAlojamientos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="aloExcepciones" EntityType="Self.aloExcepciones" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="aloReservas" EntityType="Self.aloReservas" Schema="dbo" store:Type="Tables" />
@@ -543,6 +564,7 @@
     <EntitySet Name="appRutas" EntityType="Self.appRutas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="autUsuarios" EntityType="Self.autUsuarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="genActividades" EntityType="Self.genActividades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="genTicketsPreciosEsp" EntityType="Self.genTicketsPreciosEsp" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="genTicketsVentas" EntityType="Self.genTicketsVentas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="genTicketsZonas" EntityType="Self.genTicketsZonas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="genTransaccionesVisanet" EntityType="Self.genTransaccionesVisanet" Schema="dbo" store:Type="Tables" />
@@ -585,6 +607,10 @@
     <AssociationSet Name="FK_dbo_aloSorteos_dbo_aloTipos_tipo_Id" Association="Self.FK_dbo_aloSorteos_dbo_aloTipos_tipo_Id">
       <End Role="aloTipos" EntitySet="aloTipos" />
       <End Role="aloSorteos" EntitySet="aloSorteos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_genTicketsPreciosEsp_dbo_genTicketsZonas_zona_id" Association="Self.FK_dbo_genTicketsPreciosEsp_dbo_genTicketsZonas_zona_id">
+      <End Role="genTicketsZonas" EntitySet="genTicketsZonas" />
+      <End Role="genTicketsPreciosEsp" EntitySet="genTicketsPreciosEsp" />
     </AssociationSet>
     <AssociationSet Name="FK_dbo_genTicketsVentas_dbo_autUsuarios_socio_Id" Association="Self.FK_dbo_genTicketsVentas_dbo_autUsuarios_socio_Id">
       <End Role="autUsuarios" EntitySet="autUsuarios" />
