@@ -29,7 +29,6 @@ namespace SmartAdminMvc.Controllers
                     currChofer = o.appChoferes != null ? o.appChoferes.nombre : "",
                     o.lastBoard,
                 };
-
         }
 
         public ActionResult GridGetItems(GridParams g, string search)
@@ -55,33 +54,39 @@ namespace SmartAdminMvc.Controllers
             return View();
         }
 
+        public ActionResult Details(int id)
+        {
+            return PartialView(id);
+        }
+
         public ActionResult Create()
         {
-            var entity = new appRutas { };
-            UnitOfWork.AppRutaRepository.Insert(entity);
-            UnitOfWork.Save();
-
-            return PartialView(new appRutaInput { Id = entity.Id });
+            return PartialView(new appRutaInput { });
         }
 
         [HttpPost]
         public ActionResult Create(appRutaInput input)
         {
             if (!ModelState.IsValid) return PartialView("Create", input);
-            var entity = UnitOfWork.AppRutaRepository.GetById(input.Id);
-            
-            entity.nombre = input.nombre;
-            entity.descrip = input.descrip;
-            entity.dias = input.dias == null ? "" : string.Join("-", input.dias);
-            entity.activa = input.activa;
-            entity.currLat = input.currLat;
-            entity.currLon = input.currLon;
-            entity.appBuses = UnitOfWork.AppBusRepository.GetById( input.currBus_Id);
-            entity.appChoferes = UnitOfWork.AppChofereRepository.GetById(input.currChofer_Id);
-            entity.lastBoard = input.lastBoard;
+            var entity = new appRutas
+            {
+                nombre = input.nombre,
+                descrip = input.descrip,
+                dias = input.dias == null ? "" : string.Join("-", input.dias),
+                activa = input.activa,
+                currLat = input.currLat,
+                currLon = input.currLon,
+                currBus_Id = input.currBus_Id,
+                currChofer_Id = input.currChofer_Id,
+                //appBuses = UnitOfWork.AppBusRepository.GetById( input.currBus_Id),
+                //appChoferes = UnitOfWork.AppChofereRepository.GetById(input.currChofer_Id),
+                lastBoard = input.lastBoard,
+            };
 
-            UnitOfWork.AppRutaRepository.Update(entity);
+            UnitOfWork.AppRutaRepository.Insert(entity);
             UnitOfWork.Save();
+
+            //return PartialView("Details", entity.Id);
 
             return Json(MapToGridModel(entity)); // returning grid model, used in grid.api.renderRow
         }
@@ -125,6 +130,8 @@ namespace SmartAdminMvc.Controllers
 
             UnitOfWork.AppRutaRepository.Update(entity);
             UnitOfWork.Save();
+
+            //return PartialView("Details", entity.Id);
 
             // returning the key to call grid.api.update
             return Json(new { input.Id });

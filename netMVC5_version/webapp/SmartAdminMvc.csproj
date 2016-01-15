@@ -906,7 +906,6 @@
     <Content Include="Views\genActividade\Index.cshtml" />
     <Content Include="Views\genActividade\Create.cshtml" />
     <Content Include="Views\appRuta\Index.cshtml" />
-    <Content Include="Views\appRuta\Create.cshtml" />
     <Content Include="Views\appPromocione\Index.cshtml" />
     <Content Include="Views\appPromocione\Create.cshtml" />
     <Content Include="Views\appParada\Index.cshtml" />
@@ -920,6 +919,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\FileUpload.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\double.cshtml" />
+    <Content Include="Views\appRuta\Details.cshtml" />
+    <Content Include="Views\appRuta\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

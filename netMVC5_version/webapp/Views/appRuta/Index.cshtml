@@ -12,7 +12,11 @@
     </div>
 
     @*begin*@
-    @Html.InitCrudPopupsForGrid("appRutaGrid", "appRuta")
+    @Html.InitCrudPopupsForGrid(gridId: "appRutaGrid", crudController: "appRuta", itemCreatedSuccess: "itemCreatedSuccess('appRutaGrid')", itemEditedSuccess: "itemEditedSuccess")
+    @(Html.Awe().InitPopup()
+            .Name("createDetails_appRutaGrid")
+            .Width(600)
+            .Url(Url.Action("Details")))
 
     <div class="bar">
         <div style="float: right;">
@@ -42,4 +46,45 @@
 </div>
 @*end*@
 
+<script type="text/javascript">
+    function closePopup() {
+        $(this).dialog('close');
+    }
+    function itemCreatedSuccess(gridId) {
+        return function (item) {
+            var $grid = $("#" + gridId);
+            var $row = $grid.data('api').renderRow(item);
+            $grid.find(".awe-content .awe-tbody").prepend($row);
+            $row.addClass("awe-changing").removeClass("awe-changing", 1000);
 
+            var data = $grid.data('o').lrs.Data;
+            if (data.Items) {
+                data.Items.unshift(item);
+            } else {
+                $grid.data('lrso', 1);
+            }
+
+            awe.open('createDetails_appRutaGrid', { params: { id: item.Id } });
+        };
+    }
+    function itemEditedSuccess(gridId) {
+
+        return function (item) {
+            var $grid = $('#' + gridId);
+            var api = $grid.data('api');
+            var key = $grid.data('o').k;
+            var xhr = api.update(item[key]);
+            $.when(xhr).done(function () {
+
+                var $row = api.select(item[key])[0];
+                var altcl = $row.hasClass("awe-alt") ? "awe-alt" : "";
+                $row.switchClass(altcl, "awe-changing", 1).switchClass("awe-changing", altcl, 1000);
+                    
+                $grid.data('lrso', 1);
+
+                awe.open('createDetails_appRutaGrid', { params: { id: item.Id } });
+            });
+        };
+    }
+
+</script>
