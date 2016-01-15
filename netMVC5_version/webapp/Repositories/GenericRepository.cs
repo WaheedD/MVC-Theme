@@ -13,10 +13,10 @@ namespace SmartAdminMvc.Repositories
 {
     public class GenericRepository<TEntity> where TEntity : class
     {
-        internal AdminContext context;
+        internal DB context;
         internal DbSet<TEntity> dbSet;
 
-        public GenericRepository(AdminContext context)
+        public GenericRepository(DB context)
         {
             this.context = context;
             this.dbSet = context.Set<TEntity>();

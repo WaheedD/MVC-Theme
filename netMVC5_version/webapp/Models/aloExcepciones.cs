@@ -22,6 +22,7 @@ namespace SmartAdminMvc.Models
         public short porcentaje { get; set; }
         public string tipoExcep { get; set; }
         public int tipo_Id { get; set; }
+        public int usoMaxVeces { get; set; }
     
         public virtual aloTipos aloTipos { get; set; }
     }

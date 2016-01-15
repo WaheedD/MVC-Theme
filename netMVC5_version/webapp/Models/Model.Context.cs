@@ -13,10 +13,10 @@ namespace SmartAdminMvc.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AdminContext : DbContext
+    public partial class DB : DbContext
     {
-        public AdminContext()
-            : base("name=AdminContext")
+        public DB()
+            : base("name=DB")
         {
         }
     
@@ -40,7 +40,6 @@ namespace SmartAdminMvc.Models
         public virtual DbSet<appRutas> appRutas { get; set; }
         public virtual DbSet<autUsuarios> autUsuarios { get; set; }
         public virtual DbSet<genActividades> genActividades { get; set; }
-        public virtual DbSet<genTicketsPreciosEsp> genTicketsPreciosEsp { get; set; }
         public virtual DbSet<genTicketsVentas> genTicketsVentas { get; set; }
         public virtual DbSet<genTicketsZonas> genTicketsZonas { get; set; }
         public virtual DbSet<genTransaccionesVisanet> genTransaccionesVisanet { get; set; }

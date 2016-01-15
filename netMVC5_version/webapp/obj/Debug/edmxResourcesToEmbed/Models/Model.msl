@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="SmartAdminMvcStoreContainer" CdmEntityContainer="Entities">
+  <EntityContainerMapping StorageEntityContainer="CRLModelStoreContainer" CdmEntityContainer="DB">
     <EntitySetMapping Name="aloAlojamientos">
-      <EntityTypeMapping TypeName="SmartAdminMvc.aloAlojamientos">
+      <EntityTypeMapping TypeName="CRLModel.aloAlojamientos">
         <MappingFragment StoreEntitySet="aloAlojamientos">
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nroAlojamiento" ColumnName="nroAlojamiento" />
           <ScalarProperty Name="personas" ColumnName="personas" />
           <ScalarProperty Name="inhabilitado" ColumnName="inhabilitado" />
           <ScalarProperty Name="caracteristicas" ColumnName="caracteristicas" />
@@ -17,11 +18,12 @@
           <ScalarProperty Name="foto" ColumnName="foto" />
           <ScalarProperty Name="tipo_Id" ColumnName="tipo_Id" />
           <ScalarProperty Name="zona_Id" ColumnName="zona_Id" />
+          <ScalarProperty Name="bloqueoEspecial" ColumnName="bloqueoEspecial" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="aloExcepciones">
-      <EntityTypeMapping TypeName="SmartAdminMvc.aloExcepciones">
+      <EntityTypeMapping TypeName="CRLModel.aloExcepciones">
         <MappingFragment StoreEntitySet="aloExcepciones">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -31,11 +33,12 @@
           <ScalarProperty Name="porcentaje" ColumnName="porcentaje" />
           <ScalarProperty Name="tipoExcep" ColumnName="tipoExcep" />
           <ScalarProperty Name="tipo_Id" ColumnName="tipo_Id" />
+          <ScalarProperty Name="usoMaxVeces" ColumnName="usoMaxVeces" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="aloReservas">
-      <EntityTypeMapping TypeName="SmartAdminMvc.aloReservas">
+      <EntityTypeMapping TypeName="CRLModel.aloReservas">
         <MappingFragment StoreEntitySet="aloReservas">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="fecha" ColumnName="fecha" />
@@ -53,11 +56,12 @@
           <ScalarProperty Name="gestor_Id" ColumnName="gestor_Id" />
           <ScalarProperty Name="socio_Id" ColumnName="socio_Id" />
           <ScalarProperty Name="emision" ColumnName="emision" />
+          <ScalarProperty Name="carnet" ColumnName="carnet" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="aloSorteoInscrip">
-      <EntityTypeMapping TypeName="SmartAdminMvc.aloSorteoInscrip">
+      <EntityTypeMapping TypeName="CRLModel.aloSorteoInscrip">
         <MappingFragment StoreEntitySet="aloSorteoInscrip">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="socio_id" ColumnName="socio_id" />
@@ -68,11 +72,12 @@
           <ScalarProperty Name="p2_id" ColumnName="p2_id" />
           <ScalarProperty Name="p3_id" ColumnName="p3_id" />
           <ScalarProperty Name="reserva_id" ColumnName="reserva_id" />
+          <ScalarProperty Name="carnet" ColumnName="carnet" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="aloSorteos">
-      <EntityTypeMapping TypeName="SmartAdminMvc.aloSorteos">
+      <EntityTypeMapping TypeName="CRLModel.aloSorteos">
         <MappingFragment StoreEntitySet="aloSorteos">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="detalle" ColumnName="detalle" />
@@ -83,11 +88,12 @@
           <ScalarProperty Name="inscripcion_desde" ColumnName="inscripcion_desde" />
           <ScalarProperty Name="inscripcion_hasta" ColumnName="inscripcion_hasta" />
           <ScalarProperty Name="tipo_Id" ColumnName="tipo_Id" />
+          <ScalarProperty Name="nroSorteo" ColumnName="nroSorteo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="aloTipos">
-      <EntityTypeMapping TypeName="SmartAdminMvc.aloTipos">
+      <EntityTypeMapping TypeName="CRLModel.aloTipos">
         <MappingFragment StoreEntitySet="aloTipos">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -96,11 +102,12 @@
           <ScalarProperty Name="foto" ColumnName="foto" />
           <ScalarProperty Name="restricFDStempAlta" ColumnName="restricFDStempAlta" />
           <ScalarProperty Name="idSede_idSede" ColumnName="idSede_idSede" />
+          <ScalarProperty Name="habHasta" ColumnName="habHasta" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="aloZonas">
-      <EntityTypeMapping TypeName="SmartAdminMvc.aloZonas">
+      <EntityTypeMapping TypeName="CRLModel.aloZonas">
         <MappingFragment StoreEntitySet="aloZonas">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="desc1" ColumnName="desc1" />
@@ -115,7 +122,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="appBuses">
-      <EntityTypeMapping TypeName="SmartAdminMvc.appBuses">
+      <EntityTypeMapping TypeName="CRLModel.appBuses">
         <MappingFragment StoreEntitySet="appBuses">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -130,7 +137,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="appChoferes">
-      <EntityTypeMapping TypeName="SmartAdminMvc.appChoferes">
+      <EntityTypeMapping TypeName="CRLModel.appChoferes">
         <MappingFragment StoreEntitySet="appChoferes">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -141,7 +148,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="appEstaciones">
-      <EntityTypeMapping TypeName="SmartAdminMvc.appEstaciones">
+      <EntityTypeMapping TypeName="CRLModel.appEstaciones">
         <MappingFragment StoreEntitySet="appEstaciones">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -158,7 +165,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="appParadas">
-      <EntityTypeMapping TypeName="SmartAdminMvc.appParadas">
+      <EntityTypeMapping TypeName="CRLModel.appParadas">
         <MappingFragment StoreEntitySet="appParadas">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -179,7 +186,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="appPromociones">
-      <EntityTypeMapping TypeName="SmartAdminMvc.appPromociones">
+      <EntityTypeMapping TypeName="CRLModel.appPromociones">
         <MappingFragment StoreEntitySet="appPromociones">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="desc" ColumnName="desc" />
@@ -203,23 +210,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="appPromocionesSocio">
-      <EntityTypeMapping TypeName="SmartAdminMvc.appPromocionesSocio">
-        <MappingFragment StoreEntitySet="appPromocionesSocio">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="cuponesUsados" ColumnName="cuponesUsados" />
-          <ScalarProperty Name="ultimoUso" ColumnName="ultimoUso" />
-          <ScalarProperty Name="Version" ColumnName="Version" />
-          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
-          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-          <ScalarProperty Name="idPromo_Id" ColumnName="idPromo_Id" />
-          <ScalarProperty Name="socio_Id" ColumnName="socio_Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="appRutas">
-      <EntityTypeMapping TypeName="SmartAdminMvc.appRutas">
+      <EntityTypeMapping TypeName="CRLModel.appRutas">
         <MappingFragment StoreEntitySet="appRutas">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -239,7 +231,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="autUsuarios">
-      <EntityTypeMapping TypeName="SmartAdminMvc.autUsuarios">
+      <EntityTypeMapping TypeName="CRLModel.autUsuarios">
         <MappingFragment StoreEntitySet="autUsuarios">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="idAsociado" ColumnName="idAsociado" />
@@ -268,7 +260,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="genActividades">
-      <EntityTypeMapping TypeName="SmartAdminMvc.genActividades">
+      <EntityTypeMapping TypeName="CRLModel.genActividades">
         <MappingFragment StoreEntitySet="genActividades">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="desc" ColumnName="desc" />
@@ -288,7 +280,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="genTicketsVentas">
-      <EntityTypeMapping TypeName="SmartAdminMvc.genTicketsVentas">
+      <EntityTypeMapping TypeName="CRLModel.genTicketsVentas">
         <MappingFragment StoreEntitySet="genTicketsVentas">
           <ScalarProperty Name="idEntrada" ColumnName="idEntrada" />
           <ScalarProperty Name="cantidad_real" ColumnName="cantidad_real" />
@@ -313,11 +305,10 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="genTicketsZonas">
-      <EntityTypeMapping TypeName="SmartAdminMvc.genTicketsZonas">
+      <EntityTypeMapping TypeName="CRLModel.genTicketsZonas">
         <MappingFragment StoreEntitySet="genTicketsZonas">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="desc" ColumnName="desc" />
-          <ScalarProperty Name="precio" ColumnName="precio" />
           <ScalarProperty Name="cupos" ColumnName="cupos" />
           <ScalarProperty Name="vendidos" ColumnName="vendidos" />
           <ScalarProperty Name="croquis" ColumnName="croquis" />
@@ -327,7 +318,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="genTransaccionesVisanet">
-      <EntityTypeMapping TypeName="SmartAdminMvc.genTransaccionesVisanet">
+      <EntityTypeMapping TypeName="CRLModel.genTransaccionesVisanet">
         <MappingFragment StoreEntitySet="genTransaccionesVisanet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="monto" ColumnName="monto" />

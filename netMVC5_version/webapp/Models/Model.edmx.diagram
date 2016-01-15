@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aa1444efec2441ba97f9c34958cc349d" Name="Diagram1">
+        <EntityTypeShape EntityType="CRLModel.aloAlojamientos" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRLModel.aloExcepciones" Width="1.5" PointX="3.75" PointY="35" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRLModel.aloReservas" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRLModel.aloSorteoInscrip" Width="1.5" PointX="5.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRLModel.aloSorteos" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRLModel.aloTipos" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRLModel.aloZonas" Width="1.5" PointX="7.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRLModel.appBuses" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRLModel.appChoferes" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRLModel.appEstaciones" Width="1.5" PointX="5.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRLModel.appParadas" Width="1.5" PointX="8" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRLModel.appPromociones" Width="1.5" PointX="9.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRLModel.appRutas" Width="1.5" PointX="5.25" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRLModel.autUsuarios" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRLModel.genActividades" Width="1.5" PointX="10.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRLModel.genTicketsVentas" Width="1.5" PointX="5.25" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRLModel.genTicketsZonas" Width="1.5" PointX="3" PointY="31.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRLModel.genTransaccionesVisanet" Width="1.5" PointX="3" PointY="25.25" IsExpanded="true" />
+        <AssociationConnector Association="CRLModel.FK_dbo_aloAlojamientos_dbo_aloZonas_tipo_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CRLModel.FK_dbo_aloReservas_dbo_aloAlojamientos_alojamiento_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CRLModel.FK_aloExcepciones_Tipo" ManuallyRouted="false" />
+        <AssociationConnector Association="CRLModel.FK_aloSorteoInscrip_reserva" ManuallyRouted="false" />
+        <AssociationConnector Association="CRLModel.FK_dbo_aloReservas_dbo_autUsuarios_gestor_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CRLModel.FK_dbo_aloReservas_dbo_autUsuarios_socio_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CRLModel.FK_aloSorteoInscrip_sorteo" ManuallyRouted="false" />
+        <AssociationConnector Association="CRLModel.FK_aloSorteoInscrip_usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="CRLModel.FK_dbo_aloSorteos_dbo_aloTipos_tipo_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CRLModel.FK_dbo_rutas_dbo_buses_currBus_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CRLModel.FK_appChoferes_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="CRLModel.FK_dbo_rutas_dbo_chofers_currChofer_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CRLModel.FK_dbo_rutaParadas_dbo_estacions_estacion_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CRLModel.FK_dbo_genTicketsVentas_dbo_autUsuarios_socio_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CRLModel.FK_dbo_genTransaccionesVisanet_dbo_appUsuarios_socio_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="CRLModel.FK_dbo_genTicketsVentas_dbo_genTicketsZonas_zona_id" ManuallyRouted="false" />
+        <AssociationConnector Association="CRLModel.FK_dbo_genTicketsVentas_dbo_genTransaccionesVisanet_pagoOnline_Id" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
